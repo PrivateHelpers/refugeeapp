@@ -1,0 +1,89 @@
+INITIAL SETUP
+	= how to INSTALL AngularJS IONIC CORDOVA on your machine to start new app development
+
+
+CHANGELOG
+	for setting up an angularJS WebApp for Cross Platform Mobile App with Cordova
+	Find AngularJS at https://angularjs.org
+	Find Cordova   at http://cordova.apache.org
+	Find IONIC at 
+
+	Tutorial: http://www.hascode.com/2015/05/creating-a-hybrid-mobile-application-with-ionic-cordova-and-angularjs/
+	
+2015-12-07 setup infrastructure
+==========
+
+###################### SYSTEM ######################
+# update existing ruby environment
+gem update 
+gem update --system
+
+# update existing node and node package manager (npm) installation
+download node pkg from https://nodejs.org 
+	or brew upgrade npm
+sudo npm install -g npm
+# now update all global packages, with
+sudo npm update -g
+###################### SYSTEM ######################
+
+###################### TOOLS ######################
+
+ sudo npm install -g ionic
+ sudo npm install -g ios-deploy
+ 
+###################### APP INITIALISATION ######################
+# create the "refugeeapp" with the ionic-"tabs" template
+ionic start refugeeapp tabs
+cd refugeeapp
+###################### APP INITIALISATION ######################
+ 
+ 
+###################### TEST THE WEB-APP ######################
+ionic serve
+# => http://localhost:8100/#/tab/dash
+# press c for client debugging
+###################### TEST THE WEB-APP ######################
+  
+  
+  
+###################### CONFIGURE CROSS-PLATFORM APPS ######################
+ 
+
+
+# in ./www/index.html:
+	...
+    # below the line
+	# <script src="js/services.js"></script>
+	# we add
+	<script src="js/directives.js"></script>
+	...
+	# and we change our appname
+	<body ng-app="refugeeapp">
+	...
+	
+# in www/js/app.js
+	...
+	# we change the appname 
+	angular.module('refugeeapp', ['ionic', 'starter.controllers', 'starter.services'])
+	...
+
+# in www/templates/tabs.html
+	...
+	# Rename the tabs and select some icons: http://ionicons.com
+	
+#	...
+#	now the REAL development starts...
+#	...
+	
+###################### CONFIGURE CROSS-PLATFORM APPS ######################
+
+
+ 
+###################### RUN/EMULATE CROSS-PLATFORM APPS ######################
+# setup Cordova-Cross-Platform-(XP)-Wrapper for the refugeeapp
+ionic platform add ios
+
+# run the xp version
+ionic emulate ios
+	
+###################### RUN/EMULATE CROSS-PLATFORM APPS ######################
