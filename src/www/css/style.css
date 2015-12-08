@@ -1,0 +1,8 @@
+/* Empty. Add your own CSS if you like */
+.custom-nav-button {
+  font-size: 1.6em !important;
+  box-shadow: none !important;
+  border-color: rgba(0,0,0,0) !important;
+  outline: none !important;
+  background: transparent;
+}

@@ -1,0 +1,41 @@
+<ion-view view-title="Give and Take Lists">
+
+  <ion-content class="padding">
+    <div class="list card">
+      <div class="item item-divider">Good and Services for Free</div>
+      <div class="item item-body">
+	    <ion-list>
+	      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="item in items|filter: filterOtherOffers |  orderBy: 'name'" type="item-text-wrap" href="#/tab/goods/{{item.id}}">
+	        <img ng-src="{{item.face}}">
+	        <h2>{{item.name}}</h2>
+	        <p>{{item.lastText}}</p>
+	        <i class="icon ion-chevron-right icon-accessory"></i>
+	        <ion-option-button class="button-assertive" ng-click="remove(item)">
+	          Delete
+	        </ion-option-button>
+	      </ion-item>
+	    </ion-list>
+      </div>
+    </div>
+	
+	
+    <div class="list card">
+      <div class="item item-divider">I can offer</div>
+      <div class="item item-body">
+	    <ion-list>
+	      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="item in items |filter: filterMyOffers |  orderBy: 'name'" type="item-text-wrap" href="#/tab/goods/{{item.id}}">
+	        <img ng-src="{{item.face}}">
+	        <h2>{{item.name}}</h2>
+	        <p>{{item.lastText}}</p>
+	        <i class="icon ion-chevron-right icon-accessory"></i>
+	        <ion-option-button class="button-assertive" ng-click="remove(item)">
+	          Delete
+	        </ion-option-button>
+	      </ion-item>
+	    </ion-list>
+      </div>
+    </div>
+	
+  </ion-content>
+</ion-view>
+

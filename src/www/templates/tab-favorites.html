@@ -1,0 +1,45 @@
+<ion-view view-title="My Favorite Items">
+ 
+  <ion-content class="padding">
+    <div class="list card">
+      <div class="item item-divider">Last Search</div>
+      <div class="item item-body">
+        <div>
+          Today: German Courses ...
+        </div>
+        <div>
+          Yesterday: Take me to ...
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Top Searches Last Week</div>
+      <div class="item item-body">
+        <div>
+          *** German Courses in Austria: Dates and Times
+        </div>
+        <div>
+          ** Syrian to English Translations ...
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Settings</div>
+      <div class="item item-body">
+		<label class="item item-input item-select">
+		    <div class="input-label">
+		      Language
+		    </div>
+		    <select>
+		      <option>German</option>
+		      <option selected>English</option>
+		    </select>
+		  </label>
+	    <ion-toggle  ng-model="settings.enableFriends">
+	        Notify me when courses are available
+	    </ion-toggle>
+      </div>
+	  
+  </ion-content>
+  
+</ion-view>
