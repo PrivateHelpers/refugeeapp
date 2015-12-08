@@ -1,5 +1,5 @@
-# DANKE refugeeapp
-The "Danke" RefugeeApp for refugees seeking information and support.
+# DANKE
+The "Danke" **RefugeeApp** for refugees seeking information and support in Austria.
 
 ## Design Prototype
 The main page of DANKE. Content First! 
@@ -15,11 +15,13 @@ Selected info details page of DANKE.
 Provide an easy way to get Information and Help about offers in Austria:
 
 * provide information
-	* public services, transportation, asylum, ...
+	* public services, transportation, asylum, work and more
 * search (fulltext, tags)
 * select language (german, english)
 
 ## See also
+
+This is part of the [Private Helpers](https://github.com/PrivateHelpers/) initiative.
 
 Find more [Paper Prototypes](https://github.com/PrivateHelpers/doc) at design and documentation. ["Bitte Sehr" Web Service](https://github.com/PrivateHelpers/ws) is the name of an web service, implemented in RoR Ruby On Rails, a restful web service endpoint for this ["Danke" RefugeeApp](https://github.com/PrivateHelpers/refugeeapp) and [the HelpersApp "Gerne"](https://github.com/PrivateHelpers/helpersapp).
 
