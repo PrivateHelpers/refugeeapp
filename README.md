@@ -1,4 +1,4 @@
-# DANKE
+# DANKE, the app for refugees
 The "Danke" **RefugeeApp** for refugees seeking information and support in Austria.
 
 ## Design Prototype
