@@ -1,12 +1,34 @@
 angular.module('refugeeapp.controllers', [])
 
-.controller('FavoritesCtrl', function($scope) {})
+.controller('FavoritesCtrl', function($scope,
+	$translate  //inject the $translate service
+	) {
+	
+    $scope.settings = {
+  	  enableFriends: true,
+      showDebug: true,
+      langs:  [ {name:"English", id:"en"},
+				{name:"Deutsch", id:"de"} ],
+      lang:   {} 
+    };
+	// per default english
+	$scope.settings.lang = $scope.settings.langs[1]
+	
+	$scope.switchLanguage = function(key) {	  
+	  console.log(" DEBUG-INFOS: we switch the GUI to lang-key='"+key+"'")
+  	  $translate.use(key);
+	};
+	$scope.$watch('settings.lang', function() {
+	  console.log('DEBUG-Dropdown: The lang has changed to '+$scope.settings.lang.id);
+	  // TODO: refresh the list on all the tabs/pages !!
+	  //       e.g. the items in Scope GoodsCtrl
+	  $scope.switchLanguage($scope.settings.lang.id)	 
+	});
+})
 
 .controller('FavoriteDetailCtrl', function($scope, $stateParams) {
-  $scope.settings = {
-    enableFriends: true
-  };
-})
+
+ })
 
 .controller('InfosCtrl', function($scope) {
   // With the new view caching in Ionic, Controllers are only called
@@ -25,9 +47,11 @@ angular.module('refugeeapp.controllers', [])
 })
 
 
-.controller('GoodsCtrl', function($scope, Items) {
-	console.log("DEBUG GoodsCtrl: we have Items: ",Items.all());
-    $scope.items = Items.all();
+.controller('GoodsCtrl', function($scope, Items, $translate) {
+	console.log("DEBUG GoodsCtrl: We load items for current language=",$translate.use())
+	$scope.lang_key=$translate.use()
+	console.log("DEBUG GoodsCtrl:   we got Items: ",Items.all($scope.lang_key));
+    $scope.items = Items.all($scope.lang_key);
     $scope.remove = function(item) {
       Items.remove(item);
     };

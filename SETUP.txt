@@ -31,6 +31,26 @@ sudo npm update -g
  sudo npm install -g ionic
  sudo npm install -g ios-deploy
  
+ sudo npm install -g bower
+ change configuration of bower:
+ install modules into new folder bower_modules, so modify file:
+ .bowerrc
+	 {
+  	 	"directory": "bower_modules"
+ 	  }
+ 
+ ignore all those bower downloaded modules with git
+ i.e. ignore dir bower_modules
+  modify file ".gitignore" and ad "bower_modules":
+	src/.gitignore
+		...
+		node_modules/
+		bower_modules/
+		platforms/
+		plugins/
+		...
+ 
+ 
 ###################### APP INITIALISATION ######################
 # create the "refugeeapp" with the ionic-"tabs" template
 ionic start refugeeapp tabs
@@ -85,5 +105,38 @@ ionic platform add ios
 
 # run the xp version
 ionic emulate ios
-	
+	  dd
 ###################### RUN/EMULATE CROSS-PLATFORM APPS ######################
+
+###################### GIT-CLONE/COMMIT/PUSH ######################
+mkdir /tmp/tst
+cd /tmp/tst
+git clone git@github.com:PrivateHelpers/refugeeapp.git .
+touch SETUP.txt
+git commit -a - m"tst"
+git push
+###################### GIT-CLONE/COMMIT/PUSH ######################
+
+
+###################### Add I18N ######################
+# cmp: http://robferguson.org/2015/07/22/internationalisation-i18n-and-localisation-l10n-for-ionic-apps/
+
+bower install --save angular-translate
+bower install --save angular-translate-loader-static-files
+
+set 
+
+and copy (or move) files into a new folder "www/lib/ionic/js/i18n":
+..../www/lib/ionic/js/i18n/angular-translate-loader-static-files.js
+..../www/lib/ionic/js/i18n/angular-translate-loader-static-files.min.js
+..../www/lib/ionic/js/i18n/angular-translate.js
+..../www/lib/ionic/js/i18n/angular-translate.min.js
+
+in file index.html
+	...
+	<!-- angular translations -->
+	<script src="lib/ionic/js/angular-translate/angular-translate.js"></script>
+	<script src="lib/ionic/js/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+	...
+###################### Add I18N ######################
+

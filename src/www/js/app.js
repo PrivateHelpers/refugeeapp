@@ -5,7 +5,11 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('refugeeapp', ['ionic', 'refugeeapp.controllers', 'refugeeapp.services'])
+angular.module('refugeeapp', 
+				['ionic', 
+				 'pascalprecht.translate',  // inject the angular-translate module
+				 'refugeeapp.controllers', 
+ 				 'refugeeapp.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -25,13 +29,28 @@ angular.module('refugeeapp', ['ionic', 'refugeeapp.controllers', 'refugeeapp.ser
 
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
-	console.log("DEBUG: stateProvider = ",$stateProvider )
-	console.log("DEBUG: urlRouterProvider",$urlRouterProvider)
+.config(function($ionicConfigProvider, // ??
+				$stateProvider, 
+				$urlRouterProvider,
+				$translateProvider) {
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
+	$translateProvider
+      .useStaticFilesLoader({
+        prefix: 'js/locales/',
+        suffix: '.json'
+      })
+      .registerAvailableLanguageKeys(['en', 'de'], {
+        'en' : 'en', 'en_GB': 'en', 'en_US': 'en',
+        'de' : 'de', 'de_DE': 'de', 'de_CH': 'de'
+      })
+      .preferredLanguage('de')
+      .fallbackLanguage('de')
+      .determinePreferredLanguage()
+      .useSanitizeValueStrategy('escapeParameters');
+  
   $stateProvider
 
   // setup an abstract state for the tabs directive
@@ -101,8 +120,6 @@ angular.module('refugeeapp', ['ionic', 'refugeeapp.controllers', 'refugeeapp.ser
       }
     }
   })
- 
-
   ;
 
   // if none of the above states are matched, use this as the fallback

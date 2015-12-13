@@ -1,8 +1,8 @@
-<ion-view view-title="My Favorite Items">
+<ion-view view-title="{{ 'FAVORITES.TITLE' | translate }}" >
  
   <ion-content class="padding">
     <div class="list card">
-      <div class="item item-divider">Last Search</div>
+      <div class="item item-divider">{{ 'FAVORITES.LAST_SEARCH' | translate }}</div>
       <div class="item item-body">
         <div>
           Today: German Courses ...
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="list card">
-      <div class="item item-divider">Top Searches Last Week</div>
+      <div class="item item-divider">{{ 'FAVORITES.TOP_SEARCHES' | translate }}</div>
       <div class="item item-body">
         <div>
           *** German Courses in Austria: Dates and Times
@@ -24,22 +24,40 @@
       </div>
     </div>
     <div class="list card">
-      <div class="item item-divider">Settings</div>
+      <div class="item item-divider">{{ 'SETTINGS.TITLE' | translate }}</div>
       <div class="item item-body">
 		<label class="item item-input item-select">
 		    <div class="input-label">
-		      Language
+		      {{ 'SETTINGS.LANGUAGE' | translate }}
 		    </div>
-		    <select>
-		      <option>German</option>
-		      <option selected>English</option>
-		    </select>
-		  </label>
+			<select ng-options="o as o.name for o in settings.langs  track by o.id" ng-model="settings.lang"></select>
+		</label>
+		<!--
 	    <ion-toggle  ng-model="settings.enableFriends">
 	        Notify me when courses are available
 	    </ion-toggle>
+		-->
       </div>
-	  
+     </div>
+	<!--
+	<div class="list card">
+	  <div class="item item-divider">
+          <ion-toggle ng-model="settings.showDebug">{{ 'DEBUG.TITLE' | translate }} </ion-toggle>
+  	  </div>
+	  <div class="card" ng-if="settings.showDebug">
+		<div  class="item item-text-wrap">  lang={{settings.lang}}	</div> 
+		<div  class="item item-text-wrap">  WHERE_AM_I={{ 'INFOS.WHERE_AM_I' | translate}}	</div> 
+		<ion-item menu-close class="item-icon-left item-dark"  ng-click="switchLanguage('de')">
+		  Switch to German
+		</ion-item>
+		<ion-item menu-close class="item-icon-left item-dark"  ng-click="switchLanguage('en')">
+		  Switch to English
+		</ion-item>
+	  </div> <!- - card - ->
+	 </div> <!- - list card - ->
+	 
+	--> 
+	 
   </ion-content>
   
 </ion-view>

@@ -1,8 +1,8 @@
-<ion-view view-title="Give and Take Lists">
+<ion-view view-title="{{ 'GOODS.TITLE' | translate }}">
 
   <ion-content class="padding">
     <div class="list card">
-      <div class="item item-divider">Good and Services for Free</div>
+      <div class="item item-divider">{{ 'GOODS.FOR_FREE' | translate }}</div>
       <div class="item item-body">
 	    <ion-list>
 	      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="item in items|filter: filterOtherOffers |  orderBy: 'name'" type="item-text-wrap" href="#/tab/goods/{{item.id}}">
@@ -20,7 +20,7 @@
 	
 	
     <div class="list card">
-      <div class="item item-divider">I can offer</div>
+      <div class="item item-divider">{{ 'GOODS.MY_OFFERS' | translate }}</div>
       <div class="item item-body">
 	    <ion-list>
 	      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="item in items |filter: filterMyOffers |  orderBy: 'name'" type="item-text-wrap" href="#/tab/goods/{{item.id}}">

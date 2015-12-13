@@ -1,0 +1,34 @@
+{
+  "FAVORITES": {
+	  "TITLE" : "Meine Favoriten",
+	  "TAB_TITLE": "Favoriten",
+	  "LAST_SEARCH" : "Zuletzt gesucht",
+	  "TOP_SEARCHES": "Diese Woche gesucht"
+  },
+  "SETTINGS": {
+	  "TITLE": "Einstellungen",
+	  "LANGUAGE": "Sprache"
+  },
+  "DEBUG": {
+	  "TITLE": "Debug (für EntwicklerInnen)"
+  },
+  
+  
+  "INFOS":{
+	   "TITLE": "Willkommen in Östereich",
+	   "TAB_TITLE": "Infos",
+	 "WHERE_AM_I": "Wo befinde ich mich?",
+	 "HOW_CAN_I_GET_TO" :"Wie komme ich ... ?",
+	 "I_NEED_MEDICAL_HELP": "Ich brauche medizinische Hilfe"
+  },
+  
+  "GOODS": {
+	  "TITLE": "Gratis Angebote",
+	  "TAB_TITLE": "Angebote",
+	  "FOR_FREE": "Kostenlos für mich",
+	  "MY_OFFERS": "Ich kann gratis anbieten..."
+  }
+  
+
+  
+}
