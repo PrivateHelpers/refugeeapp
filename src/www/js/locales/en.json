@@ -1,9 +1,13 @@
 {
+  "NAVIGATION": {
+   "BACK": "Back"
+  },
+  
   "FAVORITES": {
 	  "TITLE" : "My Favorites",
 	  "TAB_TITLE": "Favorites",
 	  "LAST_SEARCH" : "Last Search",
-	  "TOP_SEARCHES": "Top Searches Last Week"
+	  "TOP_SEARCHES": "Top Searches"
   },
   "SETTINGS": {
 	  "TITLE": "Settings",
@@ -18,7 +22,7 @@
 	   "TITLE": "Welcome to Austria",
 	   "TAB_TITLE": "Infos",
 	 "WHERE_AM_I": "Where am I?",
-	 "HOW_CAN_I_GET_TO" :"How Can I get to?",
+	 "HOW_CAN_I_GET" :"Where Can I get free ...?",
 	 "I_NEED_MEDICAL_HELP": "I Need Medical Help"
   },
   

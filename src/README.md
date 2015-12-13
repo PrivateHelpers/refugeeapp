@@ -9,4 +9,5 @@ Please help to improve this open source project for the refugees in Austria.
 
 
 ## Changelog
+2015-12-13 i18n added
 2015-12-07 initial version

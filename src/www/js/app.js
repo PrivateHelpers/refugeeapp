@@ -1,14 +1,15 @@
-// Ionic Starter App
+// refugeeapp build with IONIC
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// 'refugeeapp' is the name of this angular module (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
+// 'refugeeapp.services' is found in services.js
+// 'refugeeapp.controllers' is found in controllers.js
 angular.module('refugeeapp', 
 				['ionic', 
 				 'pascalprecht.translate',  // inject the angular-translate module
-				 'refugeeapp.controllers', 
+				 'refugeeapp.controllers',
+	 			 'refugeeapp.controllers.infos',
  				 'refugeeapp.services'])
 
 .run(function($ionicPlatform) {
@@ -46,7 +47,8 @@ angular.module('refugeeapp',
         'en' : 'en', 'en_GB': 'en', 'en_US': 'en',
         'de' : 'de', 'de_DE': 'de', 'de_CH': 'de'
       })
-      .preferredLanguage('de')
+	  // TODO: set the default language (overriden by browser !!)
+      .preferredLanguage('de') 
       .fallbackLanguage('de')
       .determinePreferredLanguage()
       .useSanitizeValueStrategy('escapeParameters');

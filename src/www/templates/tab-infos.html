@@ -10,41 +10,52 @@
 
   <ion-content class="padding">
     <div class="list card">
-      <div class="item item-divider">
+      <div class="item item-divider ion-location">
 		  {{ 'INFOS.WHERE_AM_I' | translate }}
 	  </div>
       <div class="item item-body">
-        <div>
-          Current City ...
-        </div>
-        <div>
-          Nearest Camp ...
-        </div>
+		  
+	    <ion-list>
+	      <ion-item class="item-icon-right" ng-repeat="item in items |filter: filterLocationAndRouting |  orderBy: 'name'" type="item-text-wrap" href="#/tab/favorites/{{item.id}}">
+		    <div>
+				<img ng-src="{{item.image}}" class="info-image-preview"></img>&nbsp; 
+				{{item.name}}</div>
+	        <i class="icon ion-chevron-right icon-accessory"></i>
+	      </ion-item>
+	    </ion-list>
+		
       </div>
     </div>
     <div class="list card">
-      <div class="item item-divider">{{ 'INFOS.HOW_CAN_I_GET_TO' | translate }}</div>
+      <div class="item item-divider  ion-university">&nbsp;
+		  {{ 'INFOS.HOW_CAN_I_GET' | translate }}</div>
       <div class="item item-body">
-        <div>
-          Education: German Courses ...
-        </div>
-        <div>
-          Translations ...
-        </div>
+		  
+    <ion-list>
+      <ion-item class="item-icon-right" ng-repeat="item in items |filter: filterLanguage |  orderBy: 'name'" type="item-text-wrap" href="#/tab/favorites/{{item.id}}">
+	    <div>
+			<img ng-src="{{item.image}}" class="info-image-preview"></img>&nbsp; 
+			{{item.name}}</div>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>	  
+		  
+   
       </div>
     </div>
     <div class="list card">
-      <div class="item item-divider">{{ 'INFOS.I_NEED_MEDICAL_HELP' | translate }}</div>
+      <div class="item item-divider ion-medkit">&nbsp;{{ 'INFOS.I_NEED_MEDICAL_HELP' | translate }}</div>
       <div class="item item-body">
-        <div>
-          Hospital ...
-        </div>
-        <div>
-          Doctor ...
-        </div>
-        <div>
-          Ambulance ...
-        </div>
+
+    <ion-list>
+      <ion-item class="item-icon-right" ng-repeat="item in items |filter: filterMedi |  orderBy: 'name'" type="item-text-wrap" href="#/tab/favorites/{{item.id}}">
+	    <div>
+			<img ng-src="{{item.image}}" class="info-image-preview"></img>&nbsp; 
+			{{item.name}}</div>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>	  
+
       </div>
     </div>
   </ion-content>

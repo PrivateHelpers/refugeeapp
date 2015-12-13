@@ -1,9 +1,13 @@
 {
+  "NAVIGATION": {
+   "BACK": "Zurück"
+  },
+  
   "FAVORITES": {
 	  "TITLE" : "Meine Favoriten",
 	  "TAB_TITLE": "Favoriten",
 	  "LAST_SEARCH" : "Zuletzt gesucht",
-	  "TOP_SEARCHES": "Diese Woche gesucht"
+	  "TOP_SEARCHES": "Top Suchanfragen"
   },
   "SETTINGS": {
 	  "TITLE": "Einstellungen",
@@ -18,7 +22,7 @@
 	   "TITLE": "Willkommen in Östereich",
 	   "TAB_TITLE": "Infos",
 	 "WHERE_AM_I": "Wo befinde ich mich?",
-	 "HOW_CAN_I_GET_TO" :"Wie komme ich ... ?",
+	 "HOW_CAN_I_GET" :"Wo erhalte ich kostenlose ... ?",
 	 "I_NEED_MEDICAL_HELP": "Ich brauche medizinische Hilfe"
   },
   

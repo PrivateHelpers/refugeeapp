@@ -5,11 +5,15 @@
   The Friends service returns an array of friend data
 -->
 
-<ion-view view-title="{{item.name}}">
-  <ion-content class="padding">
-    <img ng-src="{{item.face}}" style="width: 64px; height: 64px">
+<ion-view view-title="{{item.name}}" href="#/tab/goods" >
+	
+  <ion-content class="padding" >
+    <center>
+    <img ng-src="{{item.face}}" style="width: 164px; height: 164px">
     <p>
       {{item.lastText}}
     </p>
+    <a class="button ion-arrow-left-c" href="#/tab/goods" > {{ 'NAVIGATION.BACK' | translate }} </a>
+	</center>
   </ion-content>
 </ion-view>
