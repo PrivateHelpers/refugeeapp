@@ -10,7 +10,11 @@ angular.module('refugeeapp',
 				 'pascalprecht.translate',  // inject the angular-translate module
 				 'refugeeapp.controllers',
 	 			 'refugeeapp.controllers.infos',
- 				 'refugeeapp.services'])
+				 'refugeeapp.controllers.profile',
+				 'refugeeapp.controllers.search',
+ 				 'refugeeapp.services',
+				 'refugeeapp.services.infos'
+				])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -62,6 +66,8 @@ angular.module('refugeeapp',
     	templateUrl: 'templates/tabs.html'
   	})
 
+	
+
   // Each tab has its own nav history stack:
 
   .state('tab.favorites', {
@@ -77,7 +83,7 @@ angular.module('refugeeapp',
       url: '/:favoriteId',
       views: {
         '@': {
-          templateUrl: 'templates/favorite-detail.html',
+          templateUrl: 'templates/tab-favorites-detail.html',
           controller: 'FavoriteDetailCtrl'
         }
       }
@@ -97,7 +103,7 @@ angular.module('refugeeapp',
     url: '/:infoId',
     views: {
       '@': {
-        templateUrl: 'templates/info-detail.html',
+        templateUrl: 'templates/tab-infos-detail.html',
         controller: 'InfoDetailCtrl'
       }
     }
@@ -117,12 +123,28 @@ angular.module('refugeeapp',
     url: '/:itemId',
     views: {
       '@': {
-		templateUrl: 'templates/good-detail.html',
+		templateUrl: 'templates/tab-goods-detail.html',
         controller: 'GoodDetailCtrl'
       }
     }
   })
-  ;
+
+
+ .state('profile', {
+     url: '/profile',
+	 templateUrl: 'templates/profile.html',
+	 controller: 'ProfileCtrl',
+	 onEnter: function (){console.log("ENTER-STATE")}
+    }
+  )
+  
+  .state('search', {
+      url: '/search',
+ 	 templateUrl: 'templates/search.html',
+ 	 controller: 'SearchCtrl',
+ 	 onEnter: function (){console.log("ENTER-search-controller-state")}
+     }
+   );
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/infos');

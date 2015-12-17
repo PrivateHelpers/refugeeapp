@@ -1,14 +1,11 @@
 angular.module('refugeeapp.controllers.infos', [])
 
 .controller('InfosCtrl', function($scope,
-		Items, 
 		$translate,
-		Infos
+		Infos,
+		$location
 		) {
 
-  $scope.searchInfos = function(){
-  	console.log("DEBUG-INFOS: TODO implement searching...")
-  };
   $scope.openProfile = function(){
   	console.log("DEBUG-INFOS: TODO implement profile and settings")
   }
@@ -49,8 +46,26 @@ angular.module('refugeeapp.controllers.infos', [])
   });
 
 
+  $scope.navigateTo = function ( path ) {
+	  console.log("we navigate to url: "+ path)
+      $location.path( path );
+    };
+
 })
 
+.controller('InfoDetailCtrl', function($scope, $stateParams, Infos, $translate) {
+  Infos.setLanguageKey( $translate.use() );
+  console.log("DEBUG InfoDetailCtrl: All Infos = ",Infos.all() );
+  console.log("DEBUG InfoDetailCtrl: currentItem: ",$stateParams.infoId );
+  
+  $scope.item = Infos.get($stateParams.infoId);
+  
+  $scope.$on('$ionicView.enter', function(e) {
+  	Infos.setLanguageKey($translate.use());
+	$scope.item = Infos.get($stateParams.infoId);	
+  });
+  
+})
 
 
 ;

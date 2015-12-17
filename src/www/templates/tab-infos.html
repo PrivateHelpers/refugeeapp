@@ -2,10 +2,10 @@
 <ion-view view-title=" {{ 'INFOS.TITLE' | translate }}" left-buttons="leftButtons" right-buttons="rightButtons">
 
    <ion-nav-buttons side="left">
-      <button class="ion-ios-person custom-nav-button" ng-click="openProfile()"></button>
+      <button class="ion-ios-person custom-nav-button" ng-click="navigateTo('/profile')" ></button>
     </ion-nav-buttons>
  <ion-nav-buttons side="right">
-    <button class="ion-ios-search-strong custom-nav-button" ng-click="searchInfos()"></button>
+    <button class="ion-ios-search-strong custom-nav-button" ng-click="navigateTo('/search')"></button>
   </ion-nav-buttons>
 
   <ion-content class="padding">
@@ -16,7 +16,7 @@
       <div class="item item-body">
 		  
 	    <ion-list>
-	      <ion-item class="item-icon-right" ng-repeat="item in items |filter: filterLocationAndRouting |  orderBy: 'name'" type="item-text-wrap" href="#/tab/favorites/{{item.id}}">
+	      <ion-item class="item-icon-right" ng-repeat="item in items |filter: filterLocationAndRouting |  orderBy: 'name'" type="item-text-wrap" href="#/tab/infos/{{item.id}}">
 		    <div>
 				<img ng-src="{{item.image}}" class="info-image-preview"></img>&nbsp; 
 				{{item.name}}</div>
@@ -32,7 +32,7 @@
       <div class="item item-body">
 		  
     <ion-list>
-      <ion-item class="item-icon-right" ng-repeat="item in items |filter: filterLanguage |  orderBy: 'name'" type="item-text-wrap" href="#/tab/favorites/{{item.id}}">
+      <ion-item class="item-icon-right" ng-repeat="item in items |filter: filterLanguage |  orderBy: 'name'" type="item-text-wrap" href="#/tab/infos/{{item.id}}">
 	    <div>
 			<img ng-src="{{item.image}}" class="info-image-preview"></img>&nbsp; 
 			{{item.name}}</div>
@@ -48,7 +48,7 @@
       <div class="item item-body">
 
     <ion-list>
-      <ion-item class="item-icon-right" ng-repeat="item in items |filter: filterMedi |  orderBy: 'name'" type="item-text-wrap" href="#/tab/favorites/{{item.id}}">
+      <ion-item class="item-icon-right" ng-repeat="item in items |filter: filterMedi |  orderBy: 'name'" type="item-text-wrap" href="#/tab/infos/{{item.id}}">
 	    <div>
 			<img ng-src="{{item.image}}" class="info-image-preview"></img>&nbsp; 
 			{{item.name}}</div>

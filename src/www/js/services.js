@@ -159,10 +159,10 @@ angular.module('refugeeapp.services', [])
 
   return {
 	setLanguageKey: function(lang_key){
-	  console.log("DEBUG-ITEMS: changing currLangKey to "+lang_key)
+	  console.log("DEBUG-Favorites: changing currLangKey to "+lang_key)
 	  currLangKey =lang_key // we change the object currLang 
 	  items = itemDict[ currLangKey ]; 
-	  console.log("DEBUG-ITEMS: so we reset the items: ",items)
+	  console.log("DEBUG-Favorites: so we reset the items: ",items)
 	},
     all: function() {
 	  console.log("we return the items for lang="+currLangKey )
@@ -171,113 +171,10 @@ angular.module('refugeeapp.services', [])
     remove: function(item) { // TODO i18n
       items.splice(items.indexOf(item), 1);
     },
-    get: function(itemId) { // TODO: i18n
+    get: function(favoriteId) { // TODO: i18n
+	  
       for (var i = 0; i < items.length; i++) {
-        if (items[i].id === parseInt(itemId)) {
-          return items[i];
-        }
-      }
-      return null;
-    }
-  };
-})
-
-
-
-.factory('Infos', function() {
-
-  var items_en = [
-   {  id: 1,
-      tags: ["location"],
-      name: 'My current position...',
-      icon: 'ion-location', 
-	  image: 'img/info/currentpos.png',
-   },
-   {  id: 10,
-      tags: ["location"],
-      name: 'Way to the nearest camp...',
-	  icon: "ion-home",
-	  image: 'img/info/waytocamp.png',
-   },
-   {  id: 12,
-      tags: ["language"],
-      name: 'German Courses',
-      icon: "ion-home",
-      image: 'img/info/language.png',
-   },
-   {  id: 14,
-      tags: ["language"],
-      name: 'Translation',
-      icon: "ion-home",
-      image: 'img/info/translation.png',
-   },
-   {  id: 17,
-      tags: ["medi"],
-      name: 'Doctors Hospitals',
-      icon: "ion-home",
-      image: 'img/info/med.png',
-   },
-  ];
-  var items_de = [
-   {  id: 1,
-      tags: ["location"],
-      name: 'Mein aktueller Standpunkt...',
-	  icon: 'ion-location', 
-      image: 'img/info/currentpos.png',
-   },
-   {  id: 10,
-      tags: ["location"],
-      name: 'Wie komme ich ins nächstgelegene...', // Flüchtlingszentrum in der Steiermark.',
-	  icon: "ion-home",
-      image: 'img/info/waytocamp.png',
-   },
-   {  id: 12,
-      tags: ["language"],
-      name: 'Deutschkurse',
-      icon: "ion-home",
-      image: 'img/info/language.png',
-    },
-    {  id: 14,
-       tags: ["language"],
-       name: 'Übersetzungen',
-       icon: "ion-home",
-       image: 'img/info/translation.png',
-    },
-    {  id: 17,
-       tags: ["medi"],
-       name: 'Ärzte und Spitäler',
-       icon: "ion-home",
-       image: 'img/info/med.png',
-    },
-  ];
-	
-	var itemDict={
-		  "de": items_de,
-		  "en": items_en
-	};
-	
-	// we do not know default language here ($translate.use())
-	// => we expect someone to call setLanguageKey !
-	var currLangKey="";
-	var items = []; 
-
-  return {
-	setLanguageKey: function(lang_key){
-	  console.log("DEBUG-ITEMS: changing currLangKey to "+lang_key)
-	  currLangKey =lang_key // we change the object currLang 
-	  items = itemDict[ currLangKey ]; 
-	  console.log("DEBUG-ITEMS: so we reset the items: ",items)
-	},
-    all: function() {
-	  console.log("we return the items for lang="+currLangKey )
-	  return items
-    },
-    remove: function(item) { // TODO i18n
-      items.splice(items.indexOf(item), 1);
-    },
-    get: function(itemId) { // TODO: i18n
-      for (var i = 0; i < items.length; i++) {
-        if (items[i].id === parseInt(itemId)) {
+        if (items[i].id === parseInt(favoriteId)) {
           return items[i];
         }
       }

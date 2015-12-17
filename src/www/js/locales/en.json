@@ -9,8 +9,9 @@
 	  "LAST_SEARCH" : "Last Search",
 	  "TOP_SEARCHES": "Top Searches"
   },
-  "SETTINGS": {
-	  "TITLE": "Settings",
+  "PROFILE": {
+	  "TITLE": "Profile",
+	  "SETTINGS": "Settings",
 	  "LANGUAGE": "Language"
   },
   "DEBUG": {
@@ -32,6 +33,14 @@
 	  "FOR_FREE": "Goods and Services for Free",
 	  "TITLE": "Give and Take Lists",
 	  "MY_OFFERS": "I can offer"
+  },
+  
+  "SEARCH": {
+	  "TITLE": "Seach for Info",
+	  "SEARCHTERM": {
+	  	  "PLACEHOLDER": "Search articles fulltext or by tag"
+	  },
+	  "HITS": "Hits for"
   }
 
 }

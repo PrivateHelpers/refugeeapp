@@ -1,4 +1,4 @@
-<ion-view view-title="{{ 'FAVORITES.TITLE' | translate }}" >
+<ion-view view-title="{{ 'SEARCH.TITLE' | translate }}" >
  
   <ion-content class="padding">
     <div class="list card">
@@ -27,34 +27,6 @@
 		
       </div>
     </div>
-    <div class="list card">
-      <div class="item item-divider">{{ 'SETTINGS.TITLE' | translate }}</div>
-      <div class="item item-body">
-		<label class="item item-input item-select">
-		    <div class="input-label"> {{ 'SETTINGS.LANGUAGE' | translate }} </div>
-			<select ng-options="o as o.name for o in settings.langs  track by o.id" ng-model="settings.lang"></select>
-		</label>
-      </div>
-     </div>
-	<!-- - - SWITCH ON = UNCOMMENT FOR DEBUGGING - - 
-	<div class="list card">
-	  <div class="item item-divider">
-          <ion-toggle ng-model="settings.showDebug">{{ 'DEBUG.TITLE' | translate }} </ion-toggle>
-  	  </div>
-	  <div class="card" ng-if="settings.showDebug">
-		<div  class="item item-text-wrap">  lang={{settings.lang}}	</div> 
-		<div  class="item item-text-wrap">  WHERE_AM_I={{ 'INFOS.WHERE_AM_I' | translate}}	</div> 
-		<ion-item menu-close class="item-icon-left item-dark"  ng-click="switchLanguage('de')">
-		  Switch to German
-		</ion-item>
-		<ion-item menu-close class="item-icon-left item-dark"  ng-click="switchLanguage('en')">
-		  Switch to English
-		</ion-item>
-	  </div> 
-	 </div> 
-	 
-	--> 
-	 
   </ion-content>
   
 </ion-view>

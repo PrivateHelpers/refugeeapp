@@ -6,44 +6,13 @@ angular.module('refugeeapp.controllers', [])
 	$rootScope,
 	Favorites
 	) {
-	
-    $scope.settings = {
-  	  enableFriends: true,
-      showDebug: true,
-      langs:  [ {name:"English", id:"en"},
-				{name:"Deutsch", id:"de"} ],
-      lang:   {} 
-    };
 
 	Favorites.setLanguageKey( $translate.use() );
 	$scope.items = Favorites.all();
 	
-	// default for the dropdown to en or de <= see defaults for translate 
-	console.log("D-E-B-U-G: tanslate.use = "+ $translate.use() )
-	if ( $translate.use() == "en" ){
-		$scope.settings.lang = $scope.settings.langs[0] // en
-	}else{
-		$scope.settings.lang = $scope.settings.langs[1] // de
-	};
-	
-	$scope.switchLanguage = function(key) {	  
-	  console.log(" DEBUG-INFOS: we switch the GUI to lang-key='"+key+"'")
-  	  $translate.use(key);
 
-	  console.log(" DEBUG-INFOS: we set lang-key'"+key+"' for items")
-	  Items.setLanguageKey(key);
-	  Favorites.setLanguageKey(key);
-
-	  // Tell GoodsController and InfosController to update!
-  	  console.log("TRIGGER EVENT: DATA CHANGED");
-  	  $rootScope.$broadcast("updateTheData"); 
-	  $scope.items = Favorites.all();
-	};
-	$scope.$watch('settings.lang', function() {
-	  console.log('DEBUG-Dropdown: The lang has changed to '+$scope.settings.lang.id);
-	  $scope.switchLanguage($scope.settings.lang.id)	 
-	});
 	
+
 	$scope.filterTopFavorites = function(element) {
 	  return element.top == true;
 	};
@@ -53,8 +22,16 @@ angular.module('refugeeapp.controllers', [])
 	
 })
 
-.controller('FavoriteDetailCtrl', function($scope, $stateParams) {
-
+.controller('FavoriteDetailCtrl', function($scope, $stateParams, Favorites) {
+    console.log("DEBUG FavoriteDetailCtrl: All Items = ",Favorites.all() );
+    console.log("DEBUG FavoriteDetailCtrl: currentItem: ",$stateParams.favoriteId );
+  
+    $scope.item = Favorites.get($stateParams.favoriteId);
+  
+    $scope.$on('$ionicView.enter', function(e) {
+    	Favorites.setLanguageKey($translate.use());
+  		$scope.item = Favorites.get($stateParams.favoriteId);	
+    });
  })
 
 
@@ -99,5 +76,6 @@ angular.module('refugeeapp.controllers', [])
   });
   
 })
+
 
 ;

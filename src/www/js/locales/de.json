@@ -9,8 +9,9 @@
 	  "LAST_SEARCH" : "Zuletzt gesucht",
 	  "TOP_SEARCHES": "Top Suchanfragen"
   },
-  "SETTINGS": {
-	  "TITLE": "Einstellungen",
+  "PROFILE": {
+	  "TITLE": "Profil",
+	  "SETTINGS": "Einstellungen",
 	  "LANGUAGE": "Sprache"
   },
   "DEBUG": {
@@ -31,8 +32,16 @@
 	  "TAB_TITLE": "Angebote",
 	  "FOR_FREE": "Kostenlos für mich",
 	  "MY_OFFERS": "Ich kann gratis anbieten..."
+  },
+
+  "SEARCH": {
+	  "TITLE": "Suche",
+	  "SEARCHTERM": {
+	  	  "PLACEHOLDER": "Volltext- und Stichwortsuche "
+	  },
+	  "HITS": "Treffer für"
   }
-  
+	
 
   
 }
