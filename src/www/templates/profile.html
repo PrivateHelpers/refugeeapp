@@ -1,0 +1,23 @@
+<ion-view view-title="{{ 'PROFILE.TITLE' | translate }}">
+
+ <ion-nav-buttons side="left">
+       &nbsp;<a class="ion-home custom-nav-button" href="#/tab" ></a>
+ </ion-nav-buttons>
+
+  <ion-content class="padding">
+    <div class="list card">
+      <div class="item item-divider">{{ 'PROFILE.SETTINGS' | translate }}</div>
+      <div class="item item-body">
+	
+	      <div class="item item-body">
+			<label class="item item-input item-select">
+			    <div class="input-label"> {{ 'PROFILE.LANGUAGE' | translate }} </div>
+				<select ng-options="o as o.name for o in settings.langs  track by o.id" ng-model="settings.lang"></select>
+			</label>
+	      </div>
+	
+      </div>
+    </div>
+	
+  </ion-content>
+</ion-view>

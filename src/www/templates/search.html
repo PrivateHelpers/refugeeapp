@@ -1,0 +1,28 @@
+<ion-view view-title="{{ 'SEARCH.TITLE' | translate }}">
+
+ <ion-nav-buttons side="left">
+       &nbsp;<a class="ion-home custom-nav-button" href="#/tab" ></a>
+ </ion-nav-buttons>
+
+  <ion-content class="padding">
+          <div class="list list-inset">
+              <label class="item item-input">
+                  <i class="icon ion-search placeholder-icon"></i>
+                  <!-- SEARCH ONLY WHEN RETURN PRESSED
+					  input type="text" placeholder="{{ 'SEARCH.SEARCHTERM.PLACEHOLDER' | translate }}" ng-model="term" ng-keyup="$event.keyCode == 13 && searchTerm()" ng-change="searchNow()"-->
+
+                  <input type="text" 
+				  		placeholder="{{ 'SEARCH.SEARCHTERM.PLACEHOLDER' | translate }}" 
+						ng-model="term" 
+						ng-keyup="searchTerm()" >
+
+              </label>
+              <h3 ng-show="showResults">{{hits.length}} {{ 'SEARCH.HITS' | translate }} "{{term}}"</h3>
+          
+			  
+			  <div class="list" ng-repeat="hit in hits">
+                  <singleresult data="hit"/>
+              </div>
+          </div>
+      </ion-content>
+</ion-view>
