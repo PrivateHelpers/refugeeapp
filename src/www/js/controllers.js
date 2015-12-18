@@ -54,6 +54,10 @@ angular.module('refugeeapp.controllers', [])
 	  return element.my == true;
 	};
 	
+	$scope.refreshData = function(){
+		console.log("TODO: refresh the data")
+	}
+	
 	// we got the broadcast notification, that the background data has changed
 	// e.g. the language was switched
 	$scope.$on("updateTheData", function() {
