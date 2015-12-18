@@ -12,26 +12,54 @@
   "PROFILE": {
 	  "TITLE": "Profil",
 	  "SETTINGS": "Einstellungen",
-	  "LANGUAGE": "Sprache"
+	  "LANGUAGE": "Sprache",
+	  "USERINFO":{
+		  "TITLE":"Um Angebote abzusenden",
+		  "NAME": "Mein Name",
+		  "EMAIL": "Meine eMail Adresse"
+	  }
   },
   "DEBUG": {
 	  "TITLE": "Debug (für EntwicklerInnen)"
   },
   
+  "FEEDBACK": {
+	  "TITLE": "Feedback",
+	  "TEXT": "Meine Anregung",
+	  "DESCRIPTION": "Details",
+	  "SUBMIT": "Feedback absenden"
+  },
+  
+  "ABOUT": {
+	  "TITLE": "Über",
+	  "BY":  "Die<br /><b>\"Danke\"</b><br />Flüchtlings App wurde an der<br /> <b>FH JOANNEUM</b><br /> im Jahre 2016 entwickelt.",
+	  "CREDITS": "<b>Danksagung:</b><br />Logo von <br />Ra. Wa.",
+	  "SENDFEEDBACK": "Feedback"
+  },
+  
   
   "INFOS":{
-	   "TITLE": "Willkommen in Östereich",
-	   "TAB_TITLE": "Infos",
-	 "WHERE_AM_I": "Wo befinde ich mich?",
-	 "HOW_CAN_I_GET" :"Wo erhalte ich kostenlose ... ?",
-	 "I_NEED_MEDICAL_HELP": "Ich brauche medizinische Hilfe"
+	"TITLE": "Willkommen in Östereich",
+	"TAB_TITLE": "Infos",
+	"WHERE_AM_I": "Wo befinde ich mich?",
+	"HOW_CAN_I_GET" :"Wo erhalte ich kostenlose ... ?",
+	"I_NEED_MEDICAL_HELP": "Ich brauche medizinische Hilfe"
   },
   
   "GOODS": {
 	  "TITLE": "Gratis Angebote",
 	  "TAB_TITLE": "Angebote",
 	  "FOR_FREE": "Kostenlos für mich",
-	  "MY_OFFERS": "Ich kann gratis anbieten..."
+	  "MY_OFFERS": "Ich kann gratis anbieten...",
+	  "NEW_OFFER": {
+	  	"TITLE": "Mein neues Angebot:",
+		"PLACEHOLDER" : {
+			"TITLE" : "Ich kann anbieten",
+			"DESCRIPTION": "Beschreibung",
+			"COMMENTS": "Kommentar"
+		},
+		"SUBMIT":"Mein Angebot absenden"
+	  }
   },
 
   "SEARCH": {
@@ -39,7 +67,8 @@
 	  "SEARCHTERM": {
 	  	  "PLACEHOLDER": "Volltext- und Stichwortsuche "
 	  },
-	  "HITS": "Treffer für"
+	  "HITS": "Treffer für",
+	  "NOSEARCHTERMENTRY": "Enter a search term above."
   }
 	
 

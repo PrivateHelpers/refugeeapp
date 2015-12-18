@@ -11,14 +11,21 @@
                   <!-- SEARCH ONLY WHEN RETURN PRESSED
 					  input type="text" placeholder="{{ 'SEARCH.SEARCHTERM.PLACEHOLDER' | translate }}" ng-model="term" ng-keyup="$event.keyCode == 13 && searchTerm()" ng-change="searchNow()"-->
 
-                  <input type="text" 
+                  <input id="searchTermInput" type="text" 
 				  		placeholder="{{ 'SEARCH.SEARCHTERM.PLACEHOLDER' | translate }}" 
 						ng-model="term" 
 						ng-keyup="searchTerm()" >
 
               </label>
-              <h3 ng-show="showResults">{{hits.length}} {{ 'SEARCH.HITS' | translate }} "{{term}}"</h3>
-          
+              
+			  <h3 ng-show="showResults">{{hits.length}} {{ 'SEARCH.HITS' | translate }} "{{term}}"</h3>
+
+		  		<center> 
+					<h3 ng-show="!term" class="button button-clear button-light">
+						
+						{{ 'SEARCH.NOSEARCHTERMENTRY' | translate }}
+					</h3>
+				</center>
 			  
 			  <div class="list" ng-repeat="hit in hits">
                   <singleresult data="hit"/>

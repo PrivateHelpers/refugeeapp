@@ -3,8 +3,19 @@ angular.module('refugeeapp.controllers.infos', [])
 .controller('InfosCtrl', function($scope,
 		$translate,
 		Infos,
-		$location
+		$location,
+	    $localstorage
 		) {
+
+
+	// TODO: should only be executed once at startup time!
+	// var lang = $localstorage.get('language')
+// 	if (lang){
+// 		console.log("LOCAL-STORAGE: LANG we should set the language to "+lang)
+// 		$translate.use(lang)
+// 	}
+  
+
 
   $scope.openProfile = function(){
   	console.log("DEBUG-INFOS: TODO implement profile and settings")
@@ -42,7 +53,17 @@ angular.module('refugeeapp.controllers.infos', [])
   // listen for the $ionicView.enter event:
   //
   $scope.$on('$ionicView.enter', function(e) {
-  	console.log("INFO: we could also update data in the enter event...")
+  	console.log("INFO: we enter the infos view. So we check/set the language")
+	  Infos.setLanguageKey($translate.use());
+	   $scope.items = Infos.all();
+  });
+  $scope.$on('$ionicView.loaded', function(e){
+  	console.log("INFO: the infos view is generated (ONCE). we check for language in the local storage...")
+  	var lang = $localstorage.get('language')
+  	if (lang){
+  		console.log("LOCAL-STORAGE: LANG we should set the language to "+lang)
+  		$translate.use(lang)
+  	}
   });
 
 

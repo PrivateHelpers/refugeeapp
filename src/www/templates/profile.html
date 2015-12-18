@@ -6,7 +6,8 @@
 
   <ion-content class="padding">
     <div class="list card">
-      <div class="item item-divider">{{ 'PROFILE.SETTINGS' | translate }}</div>
+      
+	  <div class="item item-divider">{{ 'PROFILE.SETTINGS' | translate }}</div>
       <div class="item item-body">
 	
 	      <div class="item item-body">
@@ -17,7 +18,30 @@
 	      </div>
 	
       </div>
-    </div>
+    
 	
+	
+	</div>
+	
+    <div class="list card">
+      
+	  <div class="item item-divider">{{ 'PROFILE.USERINFO.TITLE' | translate }}</div>
+      <div class="item item-body">
+	
+	      <div class="item item-body">
+			  <label class="item item-input">
+			    <input type="text" placeholder="{{ 'PROFILE.USERINFO.NAME' | translate }}">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="{{ 'PROFILE.USERINFO.EMAIL' | translate }}">
+			  </label>
+			  
+	      </div>
+	
+      </div>
+    
+	
+	
+	</div>
   </ion-content>
 </ion-view>

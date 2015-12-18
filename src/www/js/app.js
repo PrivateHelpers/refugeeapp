@@ -16,7 +16,11 @@ angular.module('refugeeapp',
 				 'refugeeapp.services.infos'
 				])
 
-.run(function($ionicPlatform) {
+.run(function(	$ionicPlatform,
+				$localstorage,
+				$translate,
+				$rootScope
+				) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -29,15 +33,27 @@ angular.module('refugeeapp',
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+	// Note: it would be too early to set the language in platform ready!!
+	//       because: WHY?? Who calls "setCurrLanguagKey()"
+	// var lang = $localstorage.get('language')
+	// if (lang){
+	// 	console.log("LOCAL-STORAGE: LANG we should set the language to "+lang)
+	// 	$translate.use(lang)
+	// }
 	
   });
 
+  $rootScope.$on('$stateChangeStart', function (event, next, current) {
+	  // every time the sate changes to another state
+  });
+ 
 })
 
 .config(function($ionicConfigProvider, // ??
 				$stateProvider, 
 				$urlRouterProvider,
-				$translateProvider) {
+				$translateProvider
+				) {
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
@@ -55,7 +71,8 @@ angular.module('refugeeapp',
       .preferredLanguage('de') 
       .fallbackLanguage('de')
       .determinePreferredLanguage()
-      .useSanitizeValueStrategy('escapeParameters');
+      .useSanitizeValueStrategy('escapeParameters')
+	  ;
   
   $stateProvider
 
@@ -83,7 +100,7 @@ angular.module('refugeeapp',
       url: '/:favoriteId',
       views: {
         '@': {
-          templateUrl: 'templates/tab-favorites-detail.html',
+          templateUrl: 'templates/tab-infos-detail.html',
           controller: 'FavoriteDetailCtrl'
         }
       }
@@ -144,9 +161,49 @@ angular.module('refugeeapp',
  	 controller: 'SearchCtrl',
  	 onEnter: function (){console.log("ENTER-search-controller-state")}
      }
-   );
+   )
+   
+   
+   .state('about', {
+       url: '/about',
+  	 templateUrl: 'templates/about.html',
+  	 controller: 'AboutCtrl',
+  	 onEnter: function (){console.log("ENTER-About")}
+      }
+    )
+   
+    .state('feedback', {
+        url: '/feedback',
+   	 templateUrl: 'templates/feedback.html',
+   	 controller: 'FeedbackCtrl',
+   	 onEnter: function (){console.log("ENTER-Feedback-Form")}
+       }
+     )
+   
+   ;
+
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/infos');
 
-});
+})
+
+.factory('$localstorage', ['$window', function($window) {
+  return {
+    set: function(key, value) {
+      $window.localStorage[key] = value;
+    },
+    get: function(key, defaultValue) {
+      return $window.localStorage[key] || defaultValue;
+    },
+    setObject: function(key, value) {
+      $window.localStorage[key] = JSON.stringify(value);
+    },
+    getObject: function(key) {
+      return JSON.parse($window.localStorage[key] || '{}');
+    }
+  }
+}]);
+
+;

@@ -26,7 +26,7 @@ angular.module('refugeeapp.controllers.search', [])
 	//     };
 
     $scope.seachNow = function () {
-		console.log("search please...")
+		console.log("search please for term "+this.term+"...")
        $scope.hits = Infos.searchByTag(this.term) || [];
     };
 
@@ -35,6 +35,7 @@ angular.module('refugeeapp.controllers.search', [])
     	Infos.setLanguageKey($translate.use());
     });
 	
+
 })
 
 

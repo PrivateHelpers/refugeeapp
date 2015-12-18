@@ -12,10 +12,31 @@
   "PROFILE": {
 	  "TITLE": "Profile",
 	  "SETTINGS": "Settings",
-	  "LANGUAGE": "Language"
+	  "LANGUAGE": "Language",
+	  "USERINFO":{
+		  "TITLE":"For sending requests and offers",
+		  "NAME": "My Name",
+		  "EMAIL": "My eMail Address"
+	  }
   },
   "DEBUG": {
 	  "TITLE": "Show Debug Infos"
+  },
+  
+  "FEEDBACK": {
+	  "TITLE": "Feedback",
+	  "TEXT": "My Suggestions",
+	  "DESCRIPTION": "Details",
+	  "SUBMIT": "Submit Feedback"
+  },
+  
+  
+  "ABOUT": {
+	  "TITLE":  "About",
+	  "BY":  "The<br /><b>\"Danke\"</b><br />Refugee App <br /> was designed and implemented <br />at<br /> <b>FH JOANNEUM </b><br />2016",
+	  "CREDITS": "<b>Credits:</b><br />Logo designed by<br />Ra. Wa.",
+	  "SENDFEEDBACK": "Send feedback"
+  
   },
   
   
@@ -32,7 +53,17 @@
 	  "TAB_TITLE": "Give and Take",
 	  "FOR_FREE": "Goods and Services for Free",
 	  "TITLE": "Give and Take Lists",
-	  "MY_OFFERS": "I can offer"
+	  "MY_OFFERS": "I can offer",
+	  "NEW_OFFER": {
+	  	"TITLE": "My new offer",
+		"PLACEHOLDER" : {
+			"TITLE" : "What can I give",
+			"DESCRIPTION": "Description",
+			"COMMENTS": "Comments"
+		},
+		"SUBMIT":"Add my new offer"
+		
+	  }
   },
   
   "SEARCH": {
@@ -40,7 +71,8 @@
 	  "SEARCHTERM": {
 	  	  "PLACEHOLDER": "Search articles fulltext or by tag"
 	  },
-	  "HITS": "Hits for"
+	  "HITS": "Hits for",
+	  "NOSEARCHTERMENTRY": "Enter a search term above."
   }
 
 }

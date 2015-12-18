@@ -86,64 +86,71 @@ angular.module('refugeeapp.services', [])
 .factory('Favorites', function() {
 
   var items_en = [
-   {  id: 10,
+   {  id: 9910,
       top: true,
       topStars: "* * *",
    	  lastWeek: true,
 	  timestamp: "Today 9:03",
-      name: 'Landeskrankenhaus in Graz',
+	  itemId: 17,
+      //name: 'Landeskrankenhaus in Graz',
    },
-   {  id: 11,
+   {  id: 9911,
       top: true,
       topStars: "* * *",
 	  lastWeek: true,
 	  timestamp: "Today 9:07",
-      name: 'German Courses in Austria (Dates)',
+	   itemId: 12,
+      //name: 'German Courses in Austria (Dates)',
     },
-    { id: 17,
+    { id: 9917,
       top: false,
       topStars: "* *",
  	  lastWeek: true,
 	  timestamp: "Today 9:11",
-      name: 'Translations (from/to Englisch)',
+		itemId: 14,
+      //name: 'Translations (from/to Englisch)',
      },
-    {  id: 12,
+    {  id: 9912,
        top: false,
       topStars: "* * *",
  	  lastWeek: true,
 	  timestamp: "Today 9:13",
-       name: 'Take me to the nearest camp',
+		itemId: 10,
+      // name: 'Take me to the nearest camp',
      }
   ];
   var items_de = [
-    {  id: 10,
+    {  id: 9910,
        top: true,
-      topStars: "* * *",
        topStars: "* * *",
        lastWeek: true,
 	   timestamp: "Today 9:03",
-       name: 'Landeskrankenhaus in Graz',
+	   itemId: 17,
+       //name: 'Landeskrankenhaus in Graz',
     },
-    { id: 11,
+    { id: 9911,
       top: true,
       topStars: "* * *",
       lastWeek: true,
 	  timestamp: "Today 9:07",
-      name: 'Deutschkurse inklusive Datum und Zeit',
+      itemId: 12,
+	  //name: 'Deutschkurse inklusive Datum und Zeit',
     },
-    { id: 17,
+    { id: 9917,
       top: false,
       topStars: "* *",
  	  lastWeek: true,
 	  timestamp: "Today 9:11",
-      name: 'Übersetzungen (von/nach Englisch)',
+		itemId: 14,
+      //name: 'Übersetzungen (von/nach Englisch)',
     },
-    { id: 12,
+    { id: 9912,
       top: false,
       topStars: "* * *",
  	  lastWeek: true,
 	  timestamp: "Today 9:13",
-      name: 'Zum nächsten Zentrum',
+		itemId: 10,
+      //name: 'Zum nächsten Zentrum',
      }
   ];
 	
@@ -164,8 +171,16 @@ angular.module('refugeeapp.services', [])
 	  items = itemDict[ currLangKey ]; 
 	  console.log("DEBUG-Favorites: so we reset the items: ",items)
 	},
-    all: function() {
+    all: function(infos) {
 	  console.log("we return the items for lang="+currLangKey )
+		items.forEach(function(itm){
+			console.log("TODO: fetch details about this item with id="+itm.itemId)
+			var currInfo=infos.get(itm.itemId)
+			if (currInfo){
+				console.log( " => RESET: from " +itm.name+" to "+ currInfo.name)
+				itm.name=currInfo.name
+			} 
+		});
 	  return items
     },
     remove: function(item) { // TODO i18n
