@@ -1,6 +1,7 @@
 {
   "NAVIGATION": {
-   "BACK": "Back"
+   "BACK": "Back",
+   "HOME": "Home"
   },
   
   "FAVORITES": {
@@ -27,7 +28,8 @@
 	  "TITLE": "Feedback",
 	  "TEXT": "My Suggestions",
 	  "DESCRIPTION": "Details",
-	  "SUBMIT": "Submit Feedback"
+	  "SUBMIT": "Submit Feedback" ,
+	   "FROM" : "Send feedback as: "
   },
   
   

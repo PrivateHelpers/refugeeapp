@@ -4,6 +4,13 @@
   <ion-content class="padding">
     <div class="list card">
 	      <div class="item item-body">
+			  
+			  
+  			<label class="item item-input item-select">
+  			    <div class="input-label"> {{ 'FEEDBACK.FROM' | translate }} </div>
+  				<select ng-options="o as o.email for o in feedback.fromList track by o.id" ng-model="feedback.from"></select>
+  			</label>
+			  
 			  <label class="item item-input">
 			    <input type="text" placeholder="{{ 'FEEDBACK.TEXT' | translate }}">
 			  </label>
@@ -11,7 +18,7 @@
 			    <input type="text" placeholder="{{ 'FEEDBACK.DESCRIPTION' | translate }}">
 			  </label>
 			  
-			  <button class="button button-block button-stable">
+			  <button class="button button-block button-stable" ng-click="sendNow()">
 			        {{ 'FEEDBACK.SUBMIT' | translate }}
 			   </button>
 			   
@@ -20,7 +27,7 @@
   </ion-content>
   
   <div class="bar bar-footer">
-  	 <a class="title button-large button-block button-clear button-positive  ion-arrow-left-c" href="#/tab/infos" > {{ 'NAVIGATION.BACK' | translate }} </a>
+  	 <a class="title button-large button-block button-clear button-positive  ion-arrow-left-c" href="#/tab/infos" > {{ 'NAVIGATION.HOME' | translate }} </a>
   </div>
   
 </ion-view>

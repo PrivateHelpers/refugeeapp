@@ -104,7 +104,41 @@ angular.module('refugeeapp.controllers', [])
 .controller('AboutCtrl', function($translate) {
 	console.log("About-Controller: ...")
 })
-.controller('FeedbackCtrl', function($translate) {
+.controller('FeedbackCtrl', function(
+		$scope,
+		$translate,
+		$localstorage
+		) {
 	console.log("Feedback-Controller: ...")
+	
+    $scope.feedback = {
+      	from:   {email:"Anonymous", id:"anon"},
+		email: 	"..me..",
+      	fromList:  [  {email:"Anonymous", 	id:"anon"},
+					  {email: "Email", 		id:"me"  } 
+				   ]
+    };
+		
+  	$scope.feedback.email = $localstorage.get('email') || ""	
+  	$scope.feedback.from.email  = $localstorage.get('from')  || "anon"
+	
+	$scope.$watch('feedback.from', function() {
+		console.log("we store the feedback.from="+JSON.stringify( $scope.feedback.from) )
+		if ($scope.feedback.from.id == "anon"){
+			console.log(" feedback-from anonymous")
+			$localstorage.set('from',"anon");
+		}else{
+			// TODO: set email (via popup) if user selects email (or provide link)
+			var email = $localstorage.get('email') || "Please, set your email in profile!"
+			console.log(" feedback-from email="+ email)
+			$localstorage.set('from', email);
+			$scope.feedback.fromList[1].email = email
+		}
+	})
+	
+	$scope.sendNow = function(){
+		console.log("send feedback now..")
+	}
+	
 })
 ;

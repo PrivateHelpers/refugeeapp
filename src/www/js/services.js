@@ -8,7 +8,7 @@ angular.module('refugeeapp.services', [])
     my: false,
     title: 'German Course',
     description: 'Graz: Cheap German Courses at Universitätsviertel',
-    image: 'img/course.jpg',
+    image: 'img/offers/course.jpg',
   	contact: {
   		email: "ori@arelio.de",
   		person: "English / German Teacher",
@@ -23,7 +23,7 @@ angular.module('refugeeapp.services', [])
     my: false,
     title: 'Shoes for Men',
     description: 'Eight pairs of schoes from size 41 to size 43. Color: Black.',
-    image: 'img/shoe.png',
+    image: 'img/offers/shoe.png',
 	contact: {
 		email: "office@shoe.co.at",
 		tel: "+43 316 99887766",
@@ -41,7 +41,7 @@ angular.module('refugeeapp.services', [])
       my: true,
       title: 'Translation to German',
       description: 'I can offer free translation from Farsi to German.',
-      image: 'img/translation.png',
+      image: 'img/offers/translation.png',
   	contact: {
   		email: "trans@lation.co.at",
   		zip: "8020",
@@ -56,7 +56,7 @@ angular.module('refugeeapp.services', [])
       my: false,
       title: 'Stories for Kids',
       description: 'I can offer reading German stories to your kids.',
-      image: 'img/translation.png',
+      image: 'img/offers/translation.png',
   	contact: {
   		tel: "+43 316 08150815",
   		person: "Dr. Kurt",
@@ -74,7 +74,7 @@ angular.module('refugeeapp.services', [])
       my: false,
       title: 'Deutschkurs',
       description: 'Günstiger Deutschkurs im Univiertel Graz.',
-      image: 'img/course.jpg',
+      image: 'img/offers/course.jpg',
 	  	contact: {
 	  		email: "ori@arelio.de",
 	  		person: "English / German Teacher",
@@ -90,7 +90,7 @@ angular.module('refugeeapp.services', [])
       my: false,
       title: 'Männerschuhe',
       description: 'Schwarze Männerschuhe der Größen 41 vis 43 gratis abzugeben. Bitte um Abholung von 9 bis 13 Uhr am Treffpunkt in Graz. Angebot gültig bis 16. Jänner 2016.',
-      image: 'img/shoe.png',
+      image: 'img/offers/shoe.png',
 		contact: {
 			email: "office@shoe.co.at",
 			tel: "+43 316 99887766",
@@ -107,7 +107,7 @@ angular.module('refugeeapp.services', [])
         my: true,
         title: 'Übersetzungen',
         description: 'Biete gratis Übersetzung von Farsi ins Deutsche. Diese Angebot gilt für den Bezirk Mureck.',
-        image: 'img/translation.png',
+        image: 'img/offers/translation.png',
   	contact: {
 		person: "Abi Kula",
   		email: "trans@lation.co.at",
@@ -121,7 +121,7 @@ angular.module('refugeeapp.services', [])
         my: false,
         title: 'Kindern vorlesen',
         description: 'Ich biete an, Ihren Kindern Geschichten auf Deutsch vorzulesen. Großraum Graz.',
-        image: 'img/translation.png',
+        image: 'img/offers/translation.png',
   	contact: {
   		tel: "+43 316 08150815",
   		person: "Dr. Kurt",

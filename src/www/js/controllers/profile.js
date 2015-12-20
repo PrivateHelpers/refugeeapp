@@ -12,7 +12,9 @@ angular.module('refugeeapp.controllers.profile', [])
       showDebug: true,
       langs:  [ {name:"English", id:"en"},
 				{name:"Deutsch", id:"de"} ],
-      lang:   {} 
+      lang:   {},
+		name: "",
+		email: "" 
     };
 	
 	// default for the dropdown to en or de <= see defaults for translate 
@@ -35,7 +37,25 @@ angular.module('refugeeapp.controllers.profile', [])
 	  $scope.switchLanguage($scope.settings.lang.id)	 
 	});
 	
-		
+	$scope.$watch('settings.name', function() {
+		 console.log('DEBUG save state to prefs: name='+$scope.settings.name)
+		$localstorage.set('name', $scope.settings.name);
+	})
+	$scope.$watch('settings.email', function() {
+		console.log('DEBUG save state to prefs: email='+$scope.settings.email)
+		$localstorage.set('email', $scope.settings.email);
+	})
+	
+	
+  	var name = $localstorage.get('name')
+  	if (name){
+		$scope.settings.name =	name
+  	}
+  	var email = $localstorage.get('email')
+  	if (email){
+		$scope.settings.name =	email
+  	}	
+	
 })
 
 ;

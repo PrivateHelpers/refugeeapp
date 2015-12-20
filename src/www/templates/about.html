@@ -3,20 +3,24 @@
   <ion-content class="padding">
     <div class="list card">
       <div class="item item-body">
-	
-	      <div class="item item-body">
-			  <center>
-			<label class="item ">
-				<div ng-bind-html="'ABOUT.BY' | translate"></div>
-			</label>
-			<label class="item ">
-				<div ng-bind-html="'ABOUT.CREDITS' | translate"></div>
-			</label>
-			 </center>
+			<center>
+				
+				<label class="item ">
+					<div ng-bind-html="'ABOUT.BY' | translate"></div>
+					
+				</label>
+				
+				<label class="item ">
+					<img ng-src="/img/logo_72x72.png" style="width: 72px; height: 72px" class="padding">
+					<div ng-bind-html="'ABOUT.CREDITS' | translate"></div>
+				</label>
+				
+			</center>
 	      </div>
 	
       </div>
-    </div>
+   
+    </div> <!-- card -->
 	
  
 		<a class="button button-clear button-block button-positive" href="#/feedback">{{ 'ABOUT.SENDFEEDBACK' | translate }}</a>

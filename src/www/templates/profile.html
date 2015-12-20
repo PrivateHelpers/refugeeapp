@@ -23,10 +23,10 @@
 	
 	      <div class="item item-body">
 			  <label class="item item-input">
-			    <input type="text" placeholder="{{ 'PROFILE.USERINFO.NAME' | translate }}">
+			    <input type="text" placeholder="{{ 'PROFILE.USERINFO.NAME' | translate }}" ng-model="settings.name">
 			  </label>
 			  <label class="item item-input">
-			    <input type="text" placeholder="{{ 'PROFILE.USERINFO.EMAIL' | translate }}">
+			    <input type="text" placeholder="{{ 'PROFILE.USERINFO.EMAIL' | translate }}" ng-model="settings.email">
 			  </label>			  
 	      </div>
       </div>
@@ -35,7 +35,7 @@
   
   
   <div class="bar bar-footer">
-  	 <a class="title button-large button-block button-clear button-positive  ion-arrow-left-c" href="#/tab/infos" > {{ 'NAVIGATION.BACK' | translate }} </a>
+  	 <a class="title button-large button-block button-clear button-positive" href="#/tab/infos" > {{ 'NAVIGATION.HOME' | translate }} </a>
   </div>
   
   
