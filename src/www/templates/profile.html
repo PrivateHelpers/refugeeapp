@@ -1,8 +1,6 @@
 <ion-view view-title="{{ 'PROFILE.TITLE' | translate }}">
 
- <ion-nav-buttons side="left">
-       &nbsp;<a class="ion-home custom-nav-button" href="#/tab" ></a>
- </ion-nav-buttons>
+
 
   <ion-content class="padding">
     <div class="list card">
@@ -16,15 +14,10 @@
 				<select ng-options="o as o.name for o in settings.langs  track by o.id" ng-model="settings.lang"></select>
 			</label>
 	      </div>
-	
       </div>
-    
-	
-	
 	</div>
 	
-    <div class="list card">
-      
+    <div class="list card">      
 	  <div class="item item-divider">{{ 'PROFILE.USERINFO.TITLE' | translate }}</div>
       <div class="item item-body">
 	
@@ -34,14 +27,16 @@
 			  </label>
 			  <label class="item item-input">
 			    <input type="text" placeholder="{{ 'PROFILE.USERINFO.EMAIL' | translate }}">
-			  </label>
-			  
+			  </label>			  
 	      </div>
-	
       </div>
-    
-	
-	
 	</div>
   </ion-content>
+  
+  
+  <div class="bar bar-footer">
+  	 <a class="title button-large button-block button-clear button-positive  ion-arrow-left-c" href="#/tab/infos" > {{ 'NAVIGATION.BACK' | translate }} </a>
+  </div>
+  
+  
 </ion-view>

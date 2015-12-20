@@ -7,16 +7,6 @@ angular.module('refugeeapp.controllers.infos', [])
 	    $localstorage
 		) {
 
-
-	// TODO: should only be executed once at startup time!
-	// var lang = $localstorage.get('language')
-// 	if (lang){
-// 		console.log("LOCAL-STORAGE: LANG we should set the language to "+lang)
-// 		$translate.use(lang)
-// 	}
-  
-
-
   $scope.openProfile = function(){
   	console.log("DEBUG-INFOS: TODO implement profile and settings")
   }
@@ -34,10 +24,7 @@ angular.module('refugeeapp.controllers.infos', [])
     return   'medi'.indexOf(element.tags) >=0;
   };
   
-  // on startup we set the data:
-  // Items.setLanguageKey( $translate.use() );
-  
-  
+ 
   // we got the broadcast notification, that the background data has changed
   // e.g. the language was switched
   $scope.$on("updateTheData", function() {
@@ -68,13 +55,14 @@ angular.module('refugeeapp.controllers.infos', [])
 
 
   $scope.navigateTo = function ( path ) {
-	  console.log("we navigate to url: "+ path)
+	  console.log("INFO: we navigate to url: "+ path)
       $location.path( path );
     };
 
+
 })
 
-.controller('InfoDetailCtrl', function($scope, $stateParams, Infos, $translate) {
+.controller('InfoDetailCtrl', function($scope, $stateParams, Infos, $translate, $ionicHistory) {
   Infos.setLanguageKey( $translate.use() );
   console.log("DEBUG InfoDetailCtrl: All Infos = ",Infos.all() );
   console.log("DEBUG InfoDetailCtrl: currentItem: ",$stateParams.infoId );
@@ -85,6 +73,12 @@ angular.module('refugeeapp.controllers.infos', [])
   	Infos.setLanguageKey($translate.use());
 	$scope.item = Infos.get($stateParams.infoId);	
   });
+  
+  $scope.goBack = function() {
+	  console.log("INFO InfosDetailCtrl: go Back to")
+	  console.log("     history="+JSON.stringify($ionicHistory.viewHistory(), null, 4) );
+      $ionicHistory.goBack();
+    };
   
 })
 

@@ -1,8 +1,5 @@
 <ion-view view-title="{{ 'SEARCH.TITLE' | translate }}">
 
- <ion-nav-buttons side="left">
-       &nbsp;<a class="ion-home custom-nav-button" href="#/tab" ></a>
- </ion-nav-buttons>
 
   <ion-content class="padding">
           <div class="list list-inset">
@@ -22,7 +19,6 @@
 
 		  		<center> 
 					<h3 ng-show="!term" class="button button-clear button-light">
-						
 						{{ 'SEARCH.NOSEARCHTERMENTRY' | translate }}
 					</h3>
 				</center>
@@ -32,4 +28,11 @@
               </div>
           </div>
       </ion-content>
+	  
+	  
+	  <div class="bar bar-footer">
+	  	 <a class="title button-large button-block button-clear button-positive  ion-arrow-left-c" href="#/tab/infos" > {{ 'NAVIGATION.HOME' | translate }} </a>
+	  </div>
+	  
+	  
 </ion-view>

@@ -4,47 +4,132 @@ angular.module('refugeeapp.services', [])
 .factory('Items', function() {
 
   var items_en = [{
-    id: 0,
+    id: 770,
     my: false,
-    name: 'German Course',
-    lastText: 'Graz Jan 2016 German Course at ...',
-    face: 'img/course.jpg'
-  }, {
-    id: 1,
+    title: 'German Course',
+    description: 'Graz: Cheap German Courses at Universitätsviertel',
+    image: 'img/course.jpg',
+  	contact: {
+  		email: "ori@arelio.de",
+  		person: "English / German Teacher",
+  		street: "Hauptstraße 34",
+  		zip: "8320",
+  		city: "Weiz",
+  		long: 45, lat:19,
+  	}, notes:"This course is level C1 and a short intro exam has to be taken on 28. Februar 2016 at the given location.",
+  }, 
+  {
+    id: 771,
     my: false,
-    name: 'Shoes for Men',
-    lastText: 'Eight pairs of schoes from size 41 to size 43. Color: Black. Please fetch 9:00 - 13:00 at main meeting center in Graz befor Jan 12 2016',
-    face: 'img/shoe.png'
+    title: 'Shoes for Men',
+    description: 'Eight pairs of schoes from size 41 to size 43. Color: Black.',
+    image: 'img/shoe.png',
+	contact: {
+		email: "office@shoe.co.at",
+		tel: "+43 316 99887766",
+		person: "Sportwart",
+		street: "Reinfeldgasse 17b",
+		zip: "8020",
+		city: "Graz",
+		long: 44, lat:17,
+		hours: "Please fetch Mo to Fr from 11:00 to 14:00"
+	}, notes:"Valid until 12. Jannuar 2016.",
+	
   },
   {
-      id: 11,
+      id: 7711,
       my: true,
-      name: 'Translation to German',
-      lastText: 'I can offer free translation from Farsi to German.',
-      face: 'img/translation.png'
-    }];
+      title: 'Translation to German',
+      description: 'I can offer free translation from Farsi to German.',
+      image: 'img/translation.png',
+  	contact: {
+  		email: "trans@lation.co.at",
+  		zip: "8020",
+  		city: "Graz",
+  		long: 44, lat:17,
+		person: "Abi Kula",
+  	}, 
+	
+    },
+  {
+      id: 7731,
+      my: false,
+      title: 'Stories for Kids',
+      description: 'I can offer reading German stories to your kids.',
+      image: 'img/translation.png',
+  	contact: {
+  		tel: "+43 316 08150815",
+  		person: "Dr. Kurt",
+  		city: "Wildon",
+  		hours: "About 11:00"
+  	}, 
+	notes:"Valid until End of Feb 2016.",
+    
+	}
+
+];
 
     var items_de = [{
-      id: 0,
+      id: 770,
       my: false,
-      name: 'Deutschkurs',
-      lastText: 'Ab 14. Jänner in Graz. Deutschkurs an der Karl-Franzens Uni. Bitte melden Sie sich unter der Tel-Nr. 0998 1234 bis zum 3. Jänner 2016 an.',
-      face: 'img/course.jpg'
+      title: 'Deutschkurs',
+      description: 'Günstiger Deutschkurs im Univiertel Graz.',
+      image: 'img/course.jpg',
+	  	contact: {
+	  		email: "ori@arelio.de",
+	  		person: "English / German Teacher",
+	  		street: "Hauptstraße 34",
+	  		zip: "8320",
+	  		city: "Weiz",
+	  		long: 45, lat:19,
+	  	}, 
+		notes:"Deutsch mit dem Niveau von Level C1. Ein Einstufungstest ist nötig. Dieser ist am 28. Februar 2016 zu absolvieren.",
+
     }, {
-      id: 1,
+      id: 771,
       my: false,
-      name: 'Männerschuhe',
-      lastText: 'Schwarze Männerschuhe der Größen 41 vis 43 gratis abzugeben. Bitte um Abholung von 9 bis 13 Uhr am Treffpunkt in Graz. Angebot gültig bis 16. Jänner 2016.',
-      face: 'img/shoe.png'
+      title: 'Männerschuhe',
+      description: 'Schwarze Männerschuhe der Größen 41 vis 43 gratis abzugeben. Bitte um Abholung von 9 bis 13 Uhr am Treffpunkt in Graz. Angebot gültig bis 16. Jänner 2016.',
+      image: 'img/shoe.png',
+		contact: {
+			email: "office@shoe.co.at",
+			tel: "+43 316 99887766",
+			person: "Sportwart",
+			street: "Reinfeldgasse 17b",
+			zip: "8020",
+			city: "Graz",
+			long: 44, lat:17,
+			 hours: "Abzuholen Mo bis Fr von 11:00 bis 14:00 Uhr"
+		}, notes:"Angebot gültig bis 12. Jänner 2016.",
     },
     {
-        id: 11,
+        id: 7711,
         my: true,
-        name: 'Übersetzungen',
-        lastText: 'Biete gratis Übersetzung von Farsi ins Deutsche. Diese Angebot gilt für den Bezirk Mureck.',
-        face: 'img/translation.png'
+        title: 'Übersetzungen',
+        description: 'Biete gratis Übersetzung von Farsi ins Deutsche. Diese Angebot gilt für den Bezirk Mureck.',
+        image: 'img/translation.png',
+  	contact: {
+		person: "Abi Kula",
+  		email: "trans@lation.co.at",
+  		zip: "8020",
+  		city: "Graz",
+  		long: 44, lat:17,
+  	}, 
     },
-  
+    {
+        id: 7731,
+        my: false,
+        title: 'Kindern vorlesen',
+        description: 'Ich biete an, Ihren Kindern Geschichten auf Deutsch vorzulesen. Großraum Graz.',
+        image: 'img/translation.png',
+  	contact: {
+  		tel: "+43 316 08150815",
+  		person: "Dr. Kurt",
+  		city: "Wildon",
+  		hours: "Anzurufen ab 11:00"
+  	}, 
+	notes:"Bis Ende Feb 2016 würde ich zur Verfügung stehen.",
+      }
   	];
 	
 	var itemDict={
@@ -92,7 +177,7 @@ angular.module('refugeeapp.services', [])
    	  lastWeek: true,
 	  timestamp: "Today 9:03",
 	  itemId: 17,
-      //name: 'Landeskrankenhaus in Graz',
+      //title: 'Landeskrankenhaus in Graz',
    },
    {  id: 9911,
       top: true,
@@ -100,7 +185,7 @@ angular.module('refugeeapp.services', [])
 	  lastWeek: true,
 	  timestamp: "Today 9:07",
 	   itemId: 12,
-      //name: 'German Courses in Austria (Dates)',
+      //title: 'German Courses in Austria (Dates)',
     },
     { id: 9917,
       top: false,
@@ -108,7 +193,7 @@ angular.module('refugeeapp.services', [])
  	  lastWeek: true,
 	  timestamp: "Today 9:11",
 		itemId: 14,
-      //name: 'Translations (from/to Englisch)',
+      //title: 'Translations (from/to Englisch)',
      },
     {  id: 9912,
        top: false,
@@ -116,7 +201,7 @@ angular.module('refugeeapp.services', [])
  	  lastWeek: true,
 	  timestamp: "Today 9:13",
 		itemId: 10,
-      // name: 'Take me to the nearest camp',
+      // title: 'Take me to the nearest camp',
      }
   ];
   var items_de = [
@@ -126,7 +211,7 @@ angular.module('refugeeapp.services', [])
        lastWeek: true,
 	   timestamp: "Today 9:03",
 	   itemId: 17,
-       //name: 'Landeskrankenhaus in Graz',
+       //title: 'Landeskrankenhaus in Graz',
     },
     { id: 9911,
       top: true,
@@ -134,7 +219,7 @@ angular.module('refugeeapp.services', [])
       lastWeek: true,
 	  timestamp: "Today 9:07",
       itemId: 12,
-	  //name: 'Deutschkurse inklusive Datum und Zeit',
+	  //title: 'Deutschkurse inklusive Datum und Zeit',
     },
     { id: 9917,
       top: false,
@@ -142,7 +227,7 @@ angular.module('refugeeapp.services', [])
  	  lastWeek: true,
 	  timestamp: "Today 9:11",
 		itemId: 14,
-      //name: 'Übersetzungen (von/nach Englisch)',
+      //title: 'Übersetzungen (von/nach Englisch)',
     },
     { id: 9912,
       top: false,
@@ -150,7 +235,7 @@ angular.module('refugeeapp.services', [])
  	  lastWeek: true,
 	  timestamp: "Today 9:13",
 		itemId: 10,
-      //name: 'Zum nächsten Zentrum',
+      //title: 'Zum nächsten Zentrum',
      }
   ];
 	

@@ -3,16 +3,14 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'refugeeapp' is the name of this angular module (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'refugeeapp.services' is found in services.js
-// 'refugeeapp.controllers' is found in controllers.js
 angular.module('refugeeapp', 
 				['ionic', 
-				 'pascalprecht.translate',  // inject the angular-translate module
-				 'refugeeapp.controllers',
+				 'pascalprecht.translate',   // inject the angular-translate module
+				 'refugeeapp.controllers',   // 'refugeeapp.controllers' is found in controllers.js
 	 			 'refugeeapp.controllers.infos',
 				 'refugeeapp.controllers.profile',
 				 'refugeeapp.controllers.search',
- 				 'refugeeapp.services',
+ 				 'refugeeapp.services',       // 'refugeeapp.services' is found in services.js
 				 'refugeeapp.services.infos'
 				])
 
@@ -22,7 +20,9 @@ angular.module('refugeeapp',
 				$rootScope
 				) {
   $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+	  
+    // Hide the accessory bar by default 
+	// (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -33,6 +33,7 @@ angular.module('refugeeapp',
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+	
 	// Note: it would be too early to set the language in platform ready!!
 	//       because: WHY?? Who calls "setCurrLanguagKey()"
 	// var lang = $localstorage.get('language')
@@ -44,7 +45,7 @@ angular.module('refugeeapp',
   });
 
   $rootScope.$on('$stateChangeStart', function (event, next, current) {
-	  // every time the sate changes to another state
+	  console.log("INFO: (event=)"+event.name+"): the sate is changing from "+current.name+" to another state "+next.name+" with url " +next.url)
   });
  
 })
@@ -54,10 +55,13 @@ angular.module('refugeeapp',
 				$urlRouterProvider,
 				$translateProvider
 				) {
+					
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
+	
+	
 	$translateProvider
       .useStaticFilesLoader({
         prefix: 'js/locales/',
@@ -80,58 +84,79 @@ angular.module('refugeeapp',
     .state('tab', {
     	url: '/tab',
     	abstract: true,
-    	templateUrl: 'templates/tabs.html'
+    	templateUrl: 'templates/tabs.html',
+		onEnter: function (){console.log("Debug-Info: we enter state 'tab'.")}
   	})
 
 	
 
   // Each tab has its own nav history stack:
 
-  .state('tab.favorites', {
-      url: '/favorites',
-      views: {
-        'tab-favorites': {
+  // Favorites TAB:
+  // ==============
+  .state('tab.favorites', { // hierachical state should provide "back button" when suitable
+      url: '/favorites',    // for urls such as: <a href="#/favorites" ...
+      views: {              // in tabs.html:
+        'navview-tab-favorites': {  //  <ion-nav-view name="tab-favorites" in tabs.html.
           templateUrl: 'templates/tab-favorites.html',
-          controller: 'FavoritesCtrl'
+          controller: 'FavoritesCtrl',
+		  onEnter: function (){console.log("Debug-Info: we enter state 'tab.favorites'.")}
         }
       }
     })
     .state('tab.favorites.detail', {
       url: '/:favoriteId',
       views: {
-        '@': {
+        'navview-tab-favorites@tab': { // viewname@statename
           templateUrl: 'templates/tab-infos-detail.html',
-          controller: 'FavoriteDetailCtrl'
+          controller: 'FavoriteDetailCtrl',
+		  onEnter: function (){console.log("Debug-Info: we enter state 'tab.favorites.detail'.")}
         }
       }
     })
 	
 	
+    // INFO TAB:
+    // =========
   .state('tab.infos', {
     url: '/infos',
+	parent: "tab",
     views: {
-      'tab-infos': {
-        templateUrl: 'templates/tab-infos.html',
-        controller: 'InfosCtrl'
+		'navview-tab-infos': {  
+	    templateUrl: 'templates/tab-infos.html',
+        controller: 'InfosCtrl',
+		onEnter: function (){
+			console.log("Debug Infos: we enter state 'tab.infos'.")
+			console.log("Debug Infos: history="+JSON.stringify($ionicHistory.viewHistory(), null, 4) );
+		}
       }
     }
   })
-  .state('tab.infos.detail', {
-    url: '/:infoId',
+  .state('tab.infos.detail', { // used in: 
+    url: '/:infoId',           //          ui-sref="tab.infos.detail( {infoId: item.id} )"
     views: {
-      '@': {
-        templateUrl: 'templates/tab-infos-detail.html',
-        controller: 'InfoDetailCtrl'
+		'navview-tab-infos@tab': { 
+		templateUrl: 'templates/tab-infos-detail.html',
+        controller: 'InfoDetailCtrl',
+		onEnter: function (){
+			console.log("Debug Infos-Detail: we enter state 'tab.infos.detail'.")
+			console.log("Debug Infos-Detail: history="+JSON.stringify($ionicHistory.viewHistory(), null, 4) );
+		}
       }
     }
   })
  
+ 
+  // GIVE AND TAKE TAB:
+  // ================== 
   .state('tab.goods', {
     url: '/goods',
+	parent: "tab",
     views: {
-      'tab-goods': {
+      'navview-tab-goods': { 
         templateUrl: 'templates/tab-goods.html',
-        controller: 'GoodsCtrl'
+        controller: 'GoodsCtrl',
+		onEnter: function (){console.log("Debug-Info: we enter state 'tab.goods'.")}
       }
     }
   })
@@ -139,19 +164,23 @@ angular.module('refugeeapp',
   .state('tab.goods.detail', {
     url: '/:itemId',
     views: {
-      '@': {
+      'navview-tab-goods@tab': {
 		templateUrl: 'templates/tab-goods-detail.html',
-        controller: 'GoodDetailCtrl'
+        controller: 'GoodDetailCtrl',
+		onEnter: function (){console.log("Debug-Info: we enter state 'tab.goods.detail'.")}
       }
     }
   })
 
 
+
+  // SINGLE PAGES (no tab bar):
+  // ==========================
  .state('profile', {
      url: '/profile',
 	 templateUrl: 'templates/profile.html',
 	 controller: 'ProfileCtrl',
-	 onEnter: function (){console.log("ENTER-STATE")}
+	 onEnter: function (){console.log("Debug-Info: we enter state 'profile'.")}
     }
   )
   
@@ -159,30 +188,32 @@ angular.module('refugeeapp',
       url: '/search',
  	 templateUrl: 'templates/search.html',
  	 controller: 'SearchCtrl',
- 	 onEnter: function (){console.log("ENTER-search-controller-state")}
-     }
+	 onEnter: function (){console.log("Debug-Info: we enter state 'search.")}
+ }
    )
    
    
    .state('about', {
        url: '/about',
-  	 templateUrl: 'templates/about.html',
-  	 controller: 'AboutCtrl',
-  	 onEnter: function (){console.log("ENTER-About")}
-      }
-    )
+       views: {
+       		'navview-tab-infos@tab': { 
+				templateUrl: 'templates/about.html',
+  	 			controller: 'AboutCtrl',
+	 			onEnter: function (){
+					console.log("Debug-Info: we enter state 'about'.")
+				}
+      	  	}
+    	}
+    })
    
     .state('feedback', {
         url: '/feedback',
    	 templateUrl: 'templates/feedback.html',
    	 controller: 'FeedbackCtrl',
-   	 onEnter: function (){console.log("ENTER-Feedback-Form")}
+	 onEnter: function (){console.log("Debug-Info: we enter state 'feedback'.")}
        }
      )
-   
    ;
-
-
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/infos');

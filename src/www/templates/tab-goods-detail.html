@@ -5,15 +5,70 @@
   The Friends service returns an array of friend data
 -->
 
-<ion-view view-title="{{item.name}}" href="#/tab/goods" >
-	
+<ion-view view-title="{{item.title}}" href="#/tab/goods" hide-back-button="false" >
+ 
+ <ion-nav-back-button class="button-clear" >
+  </ion-nav-back-button>
+ 
   <ion-content class="padding" >
-    <center>
-    <img ng-src="{{item.face}}" style="width: 164px; height: 164px">
-    <p>
-      {{item.lastText}}
-    </p>
-    <a class="button ion-arrow-left-c" href="#/tab/goods" > {{ 'NAVIGATION.BACK' | translate }} </a>
-	</center>
+   
+	<div class="card">
+	    <center>
+	    <img ng-src="{{item.image}}" style="width: 164px; height: 164px" class="padding">
+		</center>
+		
+
+	  <div class="item item-text-wrap" ng-show="{{item.description}} " >
+	    {{item.description}}
+	  </div>
+	  	  
+	</div>
+	
+	<div class="card">
+  <a href="{{item.contact.url}}" class="item item-icon-left" ng-show="{{item.contact.url}}" >
+      <i class="icon ion-android-globe"></i>
+      {{item.contact.url}} 
+    </a>
+  
+  <a href="mailto:{{item.contact.email}}?subject=Hello&body=sent from Danke!" class="item item-icon-left" ng-show="{{item.contact.email}}" >
+      <i class="icon ion-ios-email-outline"></i>
+      {{item.contact.email}} 
+    </a>
+	
+  <a href="tel:{{item.contact.tel}} " class="item item-icon-left" ng-show="{{item.contact.tel}}" >
+      <i class="icon ion-android-call"></i>
+      {{item.contact.tel}} 
+    </a>
+  
+  <a href="http://maps.google.com/?q={{item.contact.long}},{{item.contact.lat}}" class="item item-icon-left" ng-show="{{item.contact.long}}" >
+      <i class="icon ion-android-pin"></i>
+	  <div ng-show="!{{item.contact.person}}">{{item.contact.person}}</div>
+      {{item.contact.street}}<br />
+	  {{item.contact.zip}}  {{item.contact.city}} 
+    </a>
+  
+  <a href="#" class="item item-icon-left" ng-show="{{!item.contact.long && item.contact.street}}" >
+      <i class="icon ion-ions-home"></i>
+      <div ng-show="!{{item.contact.person}}">{{item.contact.person}}</div>
+	  {{item.contact.street}}<br />
+	  {{item.contact.zip}}  {{item.contact.city}} 
+    </a>
+  
+  <a href="#" class="item item-icon-left" ng-show="{{item.contact.hours}}" >
+      <i class="icon ion-ios-clock-outline"></i>
+      {{item.contact.hours}} 
+    </a>
+  
+  
+  <div 	class="item item-text-wrap item-icon-left" 
+  		ng-bind-html="item.notes" 
+		ng-show="{{item.notes}}">
+  </div>
+  
+  </div>
+	
+	
+	
+
   </ion-content>
 </ion-view>

@@ -1,14 +1,13 @@
-  
-<ion-view view-title=" {{ 'INFOS.TITLE' | translate }}" left-buttons="leftButtons" right-buttons="rightButtons">
+<ion-view view-title=" {{ 'INFOS.TITLE' | translate }}" left-buttons="leftButtons" right-buttons="rightButtons" name="infos">
 
-   <ion-nav-buttons side="left">
-      <button class="ion-ios-person custom-nav-button" ng-click="navigateTo('/profile')" ></button>
-    </ion-nav-buttons>
- <ion-nav-buttons side="right">
-    <button class="ion-ios-search-strong custom-nav-button" ng-click="navigateTo('/search')"></button>
+  <ion-nav-buttons side="left">
+    <button class="ion-ios-person custom-nav-button button-clear" ng-click="navigateTo('/profile')" ></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="ion-ios-search-strong custom-nav-button button-clear" ng-click="navigateTo('/search')"></button>
   </ion-nav-buttons>
 
-  <ion-content class="padding">
+  <ion-content class="padding" >
     <div class="list card">
       <div class="item item-divider ion-location">
 		  {{ 'INFOS.WHERE_AM_I' | translate }}
@@ -16,7 +15,7 @@
       <div class="item item-body">
 		  
 	    <ion-list >
-	      <ion-item class="item-icon-right " ng-repeat="item in items |filter: filterLocationAndRouting |  orderBy: 'name'" type="item-text-wrap" href="#/tab/infos/{{item.id}}">
+	      <ion-item class="item-icon-right " ng-repeat="item in items |filter: filterLocationAndRouting |  orderBy: 'name'" type="item-text-wrap" ui-sref=".detail({infoId: item.id})">
 		    <div class="col">
 				<img ng-src="{{item.image}}" class="info-image-preview" ></img>&nbsp; 
 				<span>{{item.name}}</span>

@@ -14,20 +14,14 @@ angular.module('refugeeapp.controllers.search', [])
     $scope.showResults = false;
 
     $scope.searchTerm = function () {
-        $scope.hits = Infos.searchByTag(this.term) || [];
+		$scope.hits = Infos.searchFulltext(this.term) || [];
 		console.log('hits received: '+$scope.hits.length);
         $scope.showResults = true;
     };
 
-	// // not used anymore
-	//     $scope.resetResults = function () {
-	//         $scope.showResults = false;
-	//         $scope.hits = [];
-	//     };
-
     $scope.seachNow = function () {
-		console.log("search please for term "+this.term+"...")
-       $scope.hits = Infos.searchByTag(this.term) || [];
+		console.log(" We Search for term "+this.term+"...")
+	   $scope.hits = Infos.searchFulltext(this.term) || [];
     };
 
 

@@ -1,7 +1,7 @@
-<ion-view view-title="{{ 'GOODS.TITLE' | translate }}">
+<ion-view view-title="{{ 'GOODS.TITLE' | translate }}" >
 
     <ion-nav-buttons side="right">
-       <button class="ion-refresh custom-nav-button" ng-click="refreshData()"></button>
+       <button class="ion-refresh custom-nav-button button-clear" ng-click="refreshData()"></button>
      </ion-nav-buttons>
 	 
 	 
@@ -10,10 +10,10 @@
       <div class="item item-divider">{{ 'GOODS.FOR_FREE' | translate }}</div>
       <div class="item item-body">
 	    <ion-list>
-	      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="item in items|filter: filterOtherOffers |  orderBy: 'name'" type="item-text-wrap" href="#/tab/goods/{{item.id}}">
-	        <img ng-src="{{item.face}}">
-	        <h2>{{item.name}}</h2>
-	        <p>{{item.lastText}}</p>
+	      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="item in items|filter: filterOtherOffers |  orderBy: 'title'" type="item-text-wrap" href="#/tab/goods/{{item.id}}">
+	        <img ng-src="{{item.image}}">
+	        <h2>{{item.title}}</h2>
+	        <p>{{item.description}}</p>
 	        <i class="icon ion-chevron-right icon-accessory"></i>
 	        <ion-option-button class="button-assertive" ng-click="remove(item)">
 	          Delete
@@ -30,8 +30,8 @@
 	    <ion-list>
 	      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="item in items |filter: filterMyOffers |  orderBy: 'name'" type="item-text-wrap" href="#/tab/goods/{{item.id}}">
 	        <img ng-src="{{item.face}}">
-	        <h2>{{item.name}}</h2>
-	        <p>{{item.lastText}}</p>
+	        <h2>{{item.title}}</h2>
+	        <p>{{item.description}}</p>
 	        <i class="icon ion-chevron-right icon-accessory"></i>
 	        <ion-option-button class="button-assertive" ng-click="remove(item)">
 	          Delete
@@ -57,9 +57,6 @@
 		
       </div>
     </div>
-	
-	
-	
-	
+		
   </ion-content>
 </ion-view>

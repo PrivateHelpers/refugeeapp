@@ -28,17 +28,7 @@ angular.module('refugeeapp.controllers.profile', [])
   	  $translate.use(key);
 	  $localstorage.set('language', key);
 
-	  // we change those things when entering a view 
-	  // or when notifying with upddateTheData
-	  // console.log(" DEBUG-INFOS: we set lang-key'"+key+"' for items")
-	  // Items.setLanguageKey(key);
-	  // Favorites.setLanguageKey(key);
 
-	  // Tell GoodsController and InfosController to update!
-	  // ... no, we let every view update on each "enterState"
-  	  // console.log("TRIGGER EVENT: DATA CHANGED");
- //  	  $rootScope.$broadcast("updateTheData");
- // 	  $scope.items = Favorites.all();
 	};
 	$scope.$watch('settings.lang', function() {
 	  console.log('DEBUG-Dropdown: The lang has changed to '+$scope.settings.lang.id);

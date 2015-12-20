@@ -19,6 +19,7 @@ angular.module('refugeeapp.services.infos', [])
       name: 'Way to the nearest refugee camp in Styria',
 	  icon: "ion-home",
 	  image: 'img/info/waytocamp.png',
+	   notes:  'Routing information can be activated via <a href="https://openstreetmap.com/current">OpenStreetmap</a>'
    },
    {  id: 12,
       tags: ["language"],
@@ -45,26 +46,49 @@ angular.module('refugeeapp.services.infos', [])
       name: 'Translation',
       icon: "ion-home",
       image: 'img/info/translation.png',
+	   notes:  'Frequently used words: <ul><li>Bitte | Please</li><li>Danke | Thank You</li><li>Auf Wiedersehen | Good Bye</li></ul>',
    },
    {  id: 17,
       tags: ["medi"],
-      name: 'Doctors Hospitals',
+      name: 'Unfallkrankenhaus Graz',
+	   description: "For injuries drive to UKH, the Unfallkrankenhaus Graz. In this hospital wounds and broken bones are treated.",
       icon: "ion-home",
       image: 'img/info/med.png',
-   },
+	   contact: {
+		   person: null,
+		   long: 47.07,
+		   lat: 15.4,
+		   street: "Elisabethstraße 45",
+		   zip: "8020",
+		   city: "Graz",
+		   tel: "+43 316 99887766",
+		   email: "ukh@graz.at",
+		   url: "https://ukh.graz.ac.at",
+		   hours: "0-24h"
+	   },
+	  notes:  '<b>Please</b> use this <a href="#back">link</a> to get further information about the Austrian eCard.',
+    },
   ];
+
+
+
+
+
   var items_de = [
    {  id: 1,
       tags: ["location"],
-      name: 'Mein aktueller Standpunkt...',
+      name: 'Mein aktueller Standort.',
+	   description: 'Meinen aktueller Standpunkt in Google Maps anzeigen',
 	  icon: 'ion-location', 
       image: 'img/info/currentpos.png',
    },
    {  id: 10,
       tags: ["location"],
-      name: 'Wie komme ich ins nächstgelegene...', // Flüchtlingszentrum in der Steiermark.',
+      name: 'Flüchtlingszentrum Stmk.',
+	   description: 'Wie komme ich ins nächstgelegene Flüchtlingszentrum in der Steiermark.',
 	  icon: "ion-home",
       image: 'img/info/waytocamp.png',
+	   notes:  '<div>Routenberechnungensind auch via <a href="www.openstreetmap.org">OpenStreetmap</a> möglich</div>', 
    },
    {  id: 12,
       tags: ["language"],
@@ -91,12 +115,27 @@ angular.module('refugeeapp.services.infos', [])
        name: 'Übersetzungen',
        icon: "ion-home",
        image: 'img/info/translation.png',
+	   notes:  'Liste von häufig benutzten Übersetzungen: <ul><li>Bitte | Please</li><li>Danke | Thank You</li><li>Auf Wiedersehen | Good Bye</li></ul>',
     },
     {  id: 17,
        tags: ["medi"],
-       name: 'Ärzte und Spitäler',
+       name: 'Unfallkrankenhaus Graz',
        icon: "ion-home",
        image: 'img/info/med.png',
+ 	   contact: {
+ 		   person: null,
+ 		   long: 47.07,
+ 		   lat: 15.4,
+ 		   street: "Elisabethstraße 45",
+ 		   zip: "8020",
+ 		   city: "Graz",
+ 		   tel: "+43 316 99887766",
+ 		   email: "ukh@graz.at",
+ 		   url: "https://ukh.graz.ac.at",
+ 		   hours: "0-24h",
+ 	   },
+ 	  notes:  '<b>Folgen</b> Sie diesem <a href="#back">Link</a> um weitere Informationen über die österreichische eCard zu erhalten.',
+
     },
   ];
 	
@@ -133,14 +172,21 @@ angular.module('refugeeapp.services.infos', [])
       }
       return null;
     },
-	searchByTag: function(tag){
-		console.log("TODO implement a search for tag '"+tag+"'")
+
+	
+	// we search case-insensitive inside the name and the descriptions:
+	searchFulltext: function(query){
+		console.log("TODO implement/improve the search for query '"+query+"' in "+items)
 		foundItems=[];
+		var re = new RegExp(query,"i")
 		items.forEach(function(item){
-			if (item.tags[0] == tag){ foundItems.push(item);}
+			if (item.name && item.name.match( re ) ){ 
+				foundItems.push(item);
+			}else if (item.description && item.description.match( re ) ){ 
+				foundItems.push(item);
+			}
 		});
-	  console.log("TODO implement a search for tag => items: "+foundItems)
-	  return foundItems;
+		return foundItems;
 	}
   };
 })
