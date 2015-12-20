@@ -46,8 +46,10 @@
 	   "TITLE": "Welcome to Austria",
 	   "TAB_TITLE": "Infos",
 	 "WHERE_AM_I": "Where am I?",
-	 "HOW_CAN_I_GET" :"Where Can I get free ...?",
-	 "I_NEED_MEDICAL_HELP": "I Need Medical Help"
+	 "LANGUAGE" :"Where Can I get free German...?",
+	 "I_NEED_MEDICAL_HELP": "I Need Medical Help",
+	"CULTURE": "Austrian Culture",
+	"OTHERS" : "Other stuff"
   },
   
   "GOODS": {

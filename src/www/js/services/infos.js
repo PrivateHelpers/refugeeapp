@@ -68,6 +68,19 @@ angular.module('refugeeapp.services.infos', [])
 	   },
 	  notes:  '<b>Please</b> use this <a href="#back">link</a> to get further information about the Austrian eCard.',
     },
+  
+  
+    {  id: 27,
+       tags: ["culture"],
+       name: 'Deposit of trash',
+ 	   description: "In Austria, strict separation  trash is done for optimising reuse of materials.",
+       icon: "ion-home",
+       image: 'img/info/trash.jpeg',
+ 	   notes:  '<b>Please</b> use the <a href="#back">provided Trash-Bins</a> to help sorting trash for later reuse.',
+     },
+  
+  
+  
   ];
 
 
@@ -137,6 +150,19 @@ angular.module('refugeeapp.services.infos', [])
  	  notes:  '<b>Folgen</b> Sie diesem <a href="#back">Link</a> um weitere Informationen über die österreichische eCard zu erhalten.',
 
     },
+	
+	
+    {  id: 27,
+       tags: ["culture"],
+       name: 'Müll',
+ 	   description: "Müllvermeidung und Mülltrennung unterstützt bestmögliche Wiederverwendung der Materialen.",
+       icon: "ion-home",
+       image: 'img/info/trash.jpeg',
+ 	   notes:  '<b>Bitte</b> die vorgesehenen <a href="#back">Müllcontainer</a> benutzen, um die Wiederverwendung von wertvollen Stoffen wie Papier und Glas optimal zu unterstützen.',
+     },
+	
+	
+	
   ];
 	
 	var itemDict={

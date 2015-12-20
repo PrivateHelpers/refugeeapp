@@ -8,7 +8,9 @@
   </ion-nav-buttons>
 
   <ion-content class="padding" >
-    <div class="list card">
+  
+  
+    <div class="list card" ng-show="( items | filter:filterLocationAndRouting ).length ">
       <div class="item item-divider ion-location">
 		  {{ 'INFOS.WHERE_AM_I' | translate }}
 	  </div>
@@ -26,9 +28,9 @@
 		
       </div>
     </div>
-    <div class="list card">
+    <div class="list card" ng-show="( items | filter:filterLanguage ).length ">
       <div class="item item-divider  ion-university">&nbsp;
-		  {{ 'INFOS.HOW_CAN_I_GET' | translate }}</div>
+		  {{ 'INFOS.LANGUAGE' | translate }}</div>
       <div class="item item-body">
 		  
     <ion-list>
@@ -44,7 +46,7 @@
    
       </div>
     </div>
-    <div class="list card">
+    <div class="list card" ng-show="( items | filter:filterMedi ).length ">
       <div class="item item-divider ion-medkit">&nbsp;{{ 'INFOS.I_NEED_MEDICAL_HELP' | translate }}</div>
       <div class="item item-body">
 
@@ -59,6 +61,40 @@
 
       </div>
     </div>
+	
+	
+    <div class="list card" ng-show="( items | filter:filterCulture ).length ">
+      <div class="item item-divider ion-ios-people">&nbsp;{{ 'INFOS.CULTURE' | translate }}</div>
+      <div class="item item-body">
+
+	    <ion-list>
+	      <ion-item class="item-icon-right" ng-repeat="item in items |filter: filterCulture |  orderBy: 'name'" type="item-text-wrap" href="#/tab/infos/{{item.id}}">
+		    <div>
+				<img ng-src="{{item.image}}" class="info-image-preview"></img>&nbsp;{{item.name}}
+			</div>
+	        <i class="icon ion-chevron-right icon-accessory"></i>
+	      </ion-item>
+	    </ion-list>	  
+
+      </div>
+    </div>
+	
+    <div class="list card" ng-show="( items | filter:filterOthers ).length ">
+      <div class="item item-divider ion-more">&nbsp;{{ 'INFOS.OTHERS' | translate }}</div>
+      <div class="item item-body">
+
+	    <ion-list >
+	      <ion-item class="item-icon-right" ng-repeat="item in items | filter:filterOthers |  orderBy: 'name'" type="item-text-wrap" href="#/tab/infos/{{item.id}}">
+		    <div>
+				<img ng-src="{{item.image}}" class="info-image-preview"></img>&nbsp;{{item.name}}
+			</div>
+	        <i class="icon ion-chevron-right icon-accessory"></i>
+	      </ion-item>
+	    </ion-list>	  
+
+      </div>
+    </div>
+	
 	
 	<center>
 		<a class="button button-clear button-positive" href="#/about">{{ 'ABOUT.TITLE' | translate }}</a>

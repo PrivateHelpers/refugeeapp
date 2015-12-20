@@ -44,8 +44,10 @@
 	"TITLE": "Willkommen in Östereich",
 	"TAB_TITLE": "Infos",
 	"WHERE_AM_I": "Wo befinde ich mich?",
-	"HOW_CAN_I_GET" :"Wo erhalte ich kostenlose ... ?",
-	"I_NEED_MEDICAL_HELP": "Ich brauche medizinische Hilfe"
+	"LANGUAGE" :"Wo erhalte ich kostenlose Sprach-... ?",
+	"I_NEED_MEDICAL_HELP": "Ich brauche medizinische Hilfe",
+	"CULTURE": "Leben in Östereich",
+	"OTHERS" : "Sonstiges"
   },
   
   "GOODS": {

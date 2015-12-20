@@ -15,7 +15,7 @@ angular.module('refugeeapp.controllers.infos', [])
   $scope.items = Infos.all();
   
   $scope.filterLocationAndRouting = function(element) {
-    return 'location'.indexOf(element.tags) >=0; // element.location == true;
+    return  'location'.indexOf(element.tags) >=0; // element.location == true;
   };
   $scope.filterLanguage = function(element) {
     return   'language'.indexOf(element.tags) >=0;
@@ -23,7 +23,16 @@ angular.module('refugeeapp.controllers.infos', [])
   $scope.filterMedi = function(element) {
     return   'medi'.indexOf(element.tags) >=0;
   };
-  
+  $scope.filterCulture = function(element) {
+    return   'culture'.indexOf(element.tags) >=0;
+  };
+  $scope.filterOthers = function(element) {
+    return  'medi'.indexOf(element.tags) ==0 && 
+	  		'language'.indexOf(element.tags) ==0 && 
+	 	 	'location'.indexOf(element.tags) ==0 && 
+	 	 	'culture'.indexOf(element.tags) ==0  
+	  		 ;
+  };
  
   // we got the broadcast notification, that the background data has changed
   // e.g. the language was switched
