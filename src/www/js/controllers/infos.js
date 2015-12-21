@@ -7,9 +7,13 @@ angular.module('refugeeapp.controllers.infos', [])
 	    $localstorage
 		) {
 
+  $scope.lastUpdateTimestamp="Last-Update: Pull to refresh"
+  
   $scope.openProfile = function(){
   	console.log("DEBUG-INFOS: TODO implement profile and settings")
   }
+  
+  
   
   Infos.setLanguageKey( $translate.use() );
   $scope.items = Infos.all();
@@ -67,6 +71,17 @@ angular.module('refugeeapp.controllers.infos', [])
 	  console.log("INFO: we navigate to url: "+ path)
       $location.path( path );
     };
+
+	$scope.doRefresh = function(){
+		console.log("TO-BE-IMPLEMENTED: refresh data (and update timestamp)")
+		var d = new Date()
+		$translate('ABOUT.LAST_UPDATE').then( function(luStr){
+			$scope.lastUpdateTimestamp = luStr+" "+ d.toLocaleDateString() + " " + d.toTimeString().slice(0,5)
+			$scope.$broadcast('scroll.refreshComplete');
+			// changes (would not be necessary for $http.get with promise) 
+			$scope.$apply() // we did changes to the scipe outside a digest cycle! 
+		})
+	}
 
 
 })

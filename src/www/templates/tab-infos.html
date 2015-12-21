@@ -9,6 +9,7 @@
 
   <ion-content class="padding" >
   
+	<ion-refresher pulling-text="{{ 'NAVIGATION.PULL_TO_REFRESH' | translate }}" on-refresh="doRefresh()"></ion-refresher>
   
     <div class="list card" ng-show="( items | filter:filterLocationAndRouting ).length ">
       <div class="item item-divider ion-location">
@@ -98,6 +99,7 @@
 	
 	<center>
 		<a class="button button-clear button-positive" href="#/about">{{ 'ABOUT.TITLE' | translate }}</a>
+		<div class="timestamp">{{lastUpdateTimestamp}}</div>
 	</center>
 	
   </ion-content>

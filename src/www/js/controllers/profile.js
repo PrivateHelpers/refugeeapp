@@ -10,11 +10,10 @@ angular.module('refugeeapp.controllers.profile', [])
 	
     $scope.settings = {
       showDebug: true,
+	  // language dropdown with selected language
       langs:  [ {name:"English", id:"en"},
 				{name:"Deutsch", id:"de"} ],
       lang:   {},
-		name: "",
-		email: "" 
     };
 	
 	// default for the dropdown to en or de <= see defaults for translate 
@@ -47,14 +46,10 @@ angular.module('refugeeapp.controllers.profile', [])
 	})
 	
 	
-  	var name = $localstorage.get('name')
-  	if (name){
-		$scope.settings.name =	name
-  	}
-  	var email = $localstorage.get('email')
-  	if (email){
-		$scope.settings.name =	email
-  	}	
+	// When loading this controller we initialise the settings from
+	// local storage (if available)
+  	$scope.settings.name  = $localstorage.get('name') || ""
+  	$scope.settings.email = $localstorage.get('email') || ""
 	
 })
 

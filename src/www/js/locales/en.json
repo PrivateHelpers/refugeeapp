@@ -1,7 +1,8 @@
 {
   "NAVIGATION": {
    "BACK": "Back",
-   "HOME": "Home"
+   "HOME": "Home",
+   "PULL_TO_REFRESH": "Pull to refresh"
   },
   
   "FAVORITES": {
@@ -37,7 +38,8 @@
 	  "TITLE":  "About",
 	  "BY":  "The<br /><b>\"Danke\"</b><br />Refugee App <br /> was designed and implemented <br />at<br /> <b>FH JOANNEUM </b><br />2016",
 	  "CREDITS": "<b>Credits:</b><br />Logo designed by<br />Ra. Wa.",
-	  "SENDFEEDBACK": "Send feedback"
+	  "SENDFEEDBACK": "Send feedback",
+	  "LAST_UPDATE" : "Last update"
   
   },
   

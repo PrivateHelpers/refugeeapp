@@ -1,7 +1,8 @@
 {
   "NAVIGATION": {
    "BACK": "Zurück",
-   "HOME": "Zur Startseite"
+   "HOME": "Zur Startseite",
+   "PULL_TO_REFRESH": "Update der Daten"
   },
   
   "FAVORITES": {
@@ -36,7 +37,8 @@
 	  "TITLE": "Über",
 	  "BY":  "Die<br /><b>\"Danke\"</b><br />Flüchtlings App wurde an der<br /> <b>FH JOANNEUM</b><br /> im Jahre 2016 entwickelt.",
 	  "CREDITS": "<b>Danksagung:</b><br />Logo von <br />Ra. Wa.",
-	  "SENDFEEDBACK": "Feedback"
+	  "SENDFEEDBACK": "Feedback",
+	  "LAST_UPDATE" : "Aktualisiert am"
   },
   
   
