@@ -29,7 +29,7 @@
       <div class="item item-body">
 	    <ion-list>
 	      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="item in items |filter: filterMyOffers |  orderBy: 'name'" type="item-text-wrap" href="#/tab/goods/{{item.id}}">
-	        <img ng-src="{{item.face}}">
+	        <img ng-src="{{item.image}}">
 	        <h2>{{item.title}}</h2>
 	        <p>{{item.description}}</p>
 	        <i class="icon ion-chevron-right icon-accessory"></i>
@@ -41,15 +41,22 @@
 		<div class="item item-divider">{{ 'GOODS.NEW_OFFER.TITLE' | translate }}</div>
 		<ion-item  class="list">
 		  <label class="item item-input">
-		    <input type="text" placeholder="{{ 'GOODS.NEW_OFFER.PLACEHOLDER.TITLE' | translate }}">
+		    <input  type="text" 
+					placeholder="{{ 'GOODS.NEW_OFFER.PLACEHOLDER.TITLE' | translate }}"
+					ng-model="newoffer.title" >
 		  </label>
 		  <label class="item item-input">
-		    <input type="text" placeholder="{{ 'GOODS.NEW_OFFER.PLACEHOLDER.DESCRIPTION' | translate }}">
+		    <input 	type="text" 
+					placeholder="{{ 'GOODS.NEW_OFFER.PLACEHOLDER.DESCRIPTION' | translate }}" 
+					ng-model="newoffer.description">
 		  </label>
 		  <label class="item item-input">
-		    <textarea placeholder="{{ 'GOODS.NEW_OFFER.PLACEHOLDER.COMMENTS' | translate }}"></textarea>
+		    <textarea 
+					placeholder="{{ 'GOODS.NEW_OFFER.PLACEHOLDER.COMMENTS' | translate }}"
+					ng-model="newoffer.comments"
+					></textarea>
 		  </label>
-		  <button class="button button-block button-stable">
+		  <button class="button button-block button-stable" ng-click="sendMyNewOffer()">
 		        {{ 'GOODS.NEW_OFFER.SUBMIT' | translate }}
 		   </button>
 		</ion-item>
@@ -59,4 +66,40 @@
     </div>
 		
   </ion-content>
+  
+  
+  <!-- The MODAL view to ask: "are you sure? "-->
+  <script id="contact-modal.html" type="text/ng-template">
+    <div class="modal">
+      <ion-header-bar>
+        <h1 class="title">Confirm to send my new offer:</h1>
+      </ion-header-bar>
+      <ion-content>
+        <div class="list">
+          <label class="item item-input">
+            <span class="input-label">What can I give</span>
+            <input type="text" ng-model="newoffer.title">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Description</span>
+            <input type="text" ng-model="newoffer.description">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Comments</span>
+            <input type="text" ng-model="newoffer.comments">
+          </label>
+		  
+        </div>
+		<div class="padding">
+        	<button class="button button button-stable" ng-click="cancelModal()">Cancel</button> 
+			<button class="button button button-stable" ng-click="closeModal()">OK, Really send now...</button>
+		</div>
+      </ion-content>
+    </div>
+  </script>
+  
 </ion-view>
+
+
+
+

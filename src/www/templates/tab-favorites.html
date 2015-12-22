@@ -6,9 +6,15 @@
       <div class="item item-body">
   	    
 		<ion-list>
-  	      <ion-item class="item-icon-right" ng-repeat="item in items |filter: filterTopFavorites |  orderBy: 'name'" type="item-text-wrap" href="#/tab/favorites/{{item.id}}">
-  	        <div>{{item.timestamp}} <b>{{item.name}}</b></div>
-  	        <i class="icon ion-chevron-right icon-accessory"></i>
+  	      <ion-item class="item-icon-left" 
+		  			ng-repeat="item in items |filter: filterLastWeek  |  orderBy: 'name'" 
+					type="item-text-wrap" 
+					href="#/tab/favorites/{{item.id}}">
+  	        <i class="icon ion-ios-clock icon-small"></i>
+			<div>
+				 
+				<p class="truncate"> {{item.timestamp}} <b>{{item.name}}</b></p>
+			</div>
   	      </ion-item>
   	    </ion-list>
 		
@@ -19,9 +25,12 @@
       <div class="item item-body">
 
 	    <ion-list>
-	      <ion-item class="item-icon-right" ng-repeat="item in items |filter: filterLastWeek |  orderBy: 'name'" type="item-text-wrap" href="#/tab/favorites/{{item.id}}">
-	        <div><b>{{item.topStars}}</b> {{item.name}}</div>
-	        <i class="icon ion-chevron-right icon-accessory"></i>
+	      <ion-item class="item-icon-left favorite-item" 
+		  			ng-repeat="item in items |filter: filterTopFavorites |  orderBy: 'name'" 
+					type="item-text-wrap" 
+					href="#/tab/favorites/{{item.id}}">
+		  	<i class="icon ion-ios-star icon-small"></i>	        
+			<h3>{{item.name}}</h3>
 	      </ion-item>
 	    </ion-list>
 		

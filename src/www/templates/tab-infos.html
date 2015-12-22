@@ -15,17 +15,19 @@
       <div class="item item-divider ion-location">
 		  {{ 'INFOS.WHERE_AM_I' | translate }}
 	  </div>
-      <div class="item item-body">
+      <div class="item item-body item-text-wrap">
 		  
-	    <ion-list >
-	      <ion-item class="item-icon-right " ng-repeat="item in items |filter: filterLocationAndRouting |  orderBy: 'name'" type="item-text-wrap" ui-sref=".detail({infoId: item.id})">
-		    <div class="col">
-				<img ng-src="{{item.image}}" class="info-image-preview" ></img>&nbsp; 
-				<span>{{item.name}}</span>
-			</div>
-	        <i class="icon ion-chevron-right icon-accessory"></i>
-	      </ion-item>
-	    </ion-list>
+        <ion-list>
+          <ion-item class="item-icon-right item-avatar info-item" 
+    	  			ng-repeat="item in items |filter: filterLocationAndRouting |  orderBy: 'name'" 
+    				type="item-text-wrap" 
+    				href="#/tab/infos/{{item.id}}">
+    			<img ng-src="{{item.image}}" class="info-image-preview"></img>	
+    			<h2>{{item.name}}</h2>
+    			<p class="truncate">{{item.description}}</p>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+          </ion-item>
+        </ion-list>
 		
       </div>
     </div>
@@ -35,11 +37,13 @@
       <div class="item item-body">
 		  
     <ion-list>
-      <ion-item class="item-icon-right" ng-repeat="item in items |filter: filterLanguage |  orderBy: 'name'" type="item-text-wrap" href="#/tab/infos/{{item.id}}">
-	    <div>
-			<img ng-src="{{item.image}}" class="info-image-preview "></img>&nbsp; 
-			{{item.name}} 
-		</div>
+      <ion-item class="item-icon-right item-avatar info-item" 
+	  			ng-repeat="item in items |filter: filterLanguage |  orderBy: 'name'" 
+				type="item-text-wrap" 
+				href="#/tab/infos/{{item.id}}">
+			<img ng-src="{{item.image}}" class="info-image-preview"></img>	
+			<h2>{{item.name}}</h2>
+			<p class="truncate">{{item.description}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
     </ion-list>	  
@@ -51,32 +55,42 @@
       <div class="item item-divider ion-medkit">&nbsp;{{ 'INFOS.I_NEED_MEDICAL_HELP' | translate }}</div>
       <div class="item item-body">
 
-	    <ion-list>
-	      <ion-item class="item-icon-right" ng-repeat="item in items |filter: filterMedi |  orderBy: 'name'" type="item-text-wrap" href="#/tab/infos/{{item.id}}">
-		    <div>
-				<img ng-src="{{item.image}}" class="info-image-preview"></img>&nbsp;{{item.name}}
-			</div>
-	        <i class="icon ion-chevron-right icon-accessory"></i>
-	      </ion-item>
-	    </ion-list>	  
-
-      </div>
-    </div>
-	
+	   
+	   
+	   
+       <ion-list>
+         <ion-item class="item-icon-right item-avatar info-item" 
+   	  			ng-repeat="item in items |filter: filterMedi |  orderBy: 'name'" 
+   				type="item-text-wrap" 
+   				href="#/tab/infos/{{item.id}}">
+   			<img ng-src="{{item.image}}" class="info-image-preview"></img>	
+   			<h2>{{item.name}}</h2>
+   			<p class="truncate">{{item.description}}</p>
+           <i class="icon ion-chevron-right icon-accessory"></i>
+         </ion-item>
+       </ion-list>
+	   
+       </div>
+     </div>  
 	
     <div class="list card" ng-show="( items | filter:filterCulture ).length ">
       <div class="item item-divider ion-ios-people">&nbsp;{{ 'INFOS.CULTURE' | translate }}</div>
       <div class="item item-body">
 
-	    <ion-list>
-	      <ion-item class="item-icon-right" ng-repeat="item in items |filter: filterCulture |  orderBy: 'name'" type="item-text-wrap" href="#/tab/infos/{{item.id}}">
-		    <div>
-				<img ng-src="{{item.image}}" class="info-image-preview"></img>&nbsp;{{item.name}}
-			</div>
-	        <i class="icon ion-chevron-right icon-accessory"></i>
-	      </ion-item>
-	    </ion-list>	  
-
+	    
+        <ion-list>
+          <ion-item class="item-icon-right item-avatar info-item" 
+    	  			ng-repeat="item in items |filter: filterCulture |  orderBy: 'name'" 
+    				type="item-text-wrap" 
+    				href="#/tab/infos/{{item.id}}">
+    			<img ng-src="{{item.image}}" class="info-image-preview"></img>	
+    			<h2>{{item.name}}</h2>
+    			<p class="truncate">{{item.description}}</p>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+          </ion-item>
+        </ion-list>
+		
+		
       </div>
     </div>
 	
@@ -84,14 +98,19 @@
       <div class="item item-divider ion-more">&nbsp;{{ 'INFOS.OTHERS' | translate }}</div>
       <div class="item item-body">
 
-	    <ion-list >
-	      <ion-item class="item-icon-right" ng-repeat="item in items | filter:filterOthers |  orderBy: 'name'" type="item-text-wrap" href="#/tab/infos/{{item.id}}">
-		    <div>
-				<img ng-src="{{item.image}}" class="info-image-preview"></img>&nbsp;{{item.name}}
-			</div>
-	        <i class="icon ion-chevron-right icon-accessory"></i>
-	      </ion-item>
-	    </ion-list>	  
+	    
+        <ion-list>
+          <ion-item class="item-icon-right item-avatar info-item" 
+    	  			ng-repeat="item in items |filter: filterOthers |  orderBy: 'name'" 
+    				type="item-text-wrap" 
+    				href="#/tab/infos/{{item.id}}">
+    			<img ng-src="{{item.image}}" class="info-image-preview"></img>	
+    			<h2>{{item.name}}</h2>
+    			<p class="truncate">{{item.description}}</p>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+          </ion-item>
+        </ion-list>
+		
 
       </div>
     </div>

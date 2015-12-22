@@ -3,8 +3,24 @@
 .info-image-preview{
   width: 40px;
   height: 40px;
+  vertical-align:middle
 }
+
 .timestamp{
 	font-size: 6px;
 	opacity: 0.6;
+}
+
+p.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+}
+
+.info-item{
+	height:6em;
+}
+
+.favorite-item{
+	height: 4em;
 }

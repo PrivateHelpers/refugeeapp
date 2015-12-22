@@ -8,6 +8,7 @@ angular.module('refugeeapp',
 				 'pascalprecht.translate',   // inject the angular-translate module
 				 'refugeeapp.controllers',   // 'refugeeapp.controllers' is found in controllers.js
 	 			 'refugeeapp.controllers.infos',
+ 				 'refugeeapp.controllers.goods',
 				 'refugeeapp.controllers.profile',
 				 'refugeeapp.controllers.search',
  				 'refugeeapp.services',       // 'refugeeapp.services' is found in services.js
