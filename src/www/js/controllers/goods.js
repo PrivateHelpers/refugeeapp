@@ -4,7 +4,8 @@ angular.module('refugeeapp.controllers.goods', [])
 		$scope, 
 		Items, 
 		$translate,
-		$ionicModal
+		$ionicModal,
+	    $localstorage
 		) {
 	
 	// we set the language to specify which data set we like to have
@@ -15,6 +16,22 @@ angular.module('refugeeapp.controllers.goods', [])
 		description: 	"",
 		comments: 		"",
 	}
+	
+	
+     $scope.newoffer.title  = 	   $localstorage.get('newoffer.title') || ""
+     $scope.newoffer.description = $localstorage.get('newoffer.description') || ""
+     $scope.newoffer.comments =    $localstorage.get('newoffer.comments') || ""
+	
+    $scope.$watch('newoffer.title', function() { 
+  	  				$localstorage.set('newoffer.title', $scope.newoffer.title); })
+    $scope.$watch('newoffer.description', function() { 
+  	  				$localstorage.set('newoffer.description', $scope.newoffer.description); })
+    $scope.$watch('newoffer.comments', function() { 
+  	 	 			$localstorage.set('newoffer.comments', $scope.newoffer.comments ); })
+  
+	
+	
+	
 	// initialise the (current used) data:
     $scope.items = Items.all();
 	
@@ -53,7 +70,6 @@ angular.module('refugeeapp.controllers.goods', [])
 	
 	
 	/* MODAL for sending new offer */
-	
     $ionicModal.fromTemplateUrl('contact-modal.html', {
       scope: $scope,
       animation: 'slide-in-up'
@@ -67,6 +83,14 @@ angular.module('refugeeapp.controllers.goods', [])
 
     $scope.closeModal = function() {
 	  console.log("TODO: close modal and send a new offer...")
+		//  TODO: if successful uploaded to server: 
+		//  TODO:       clear variables
+		//  TODO:       put into local "watch-waiting-approval-queue"
+		$scope.newoffer={
+			title: 			"",
+			description: 	"",
+			comments: 		"",
+		};
       $scope.modal.hide();
     };
     $scope.cancelModal = function() {
@@ -90,7 +114,8 @@ angular.module('refugeeapp.controllers.goods', [])
   	Items.setLanguageKey($translate.use());
 	$scope.item = Items.get($stateParams.itemId);	
   });
-  
+  	
+
 })
 
 
