@@ -1,6 +1,6 @@
 angular.module('refugeeapp.services', [])
 
-
+// Offers and Items:
 .factory('Items', function() {
 
   var items_en = [{

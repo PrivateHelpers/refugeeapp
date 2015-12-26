@@ -5,13 +5,17 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('refugeeapp', 
 				['ionic', 
+				 'ngResource',				 // we want RESTful API calls with resources
 				 'pascalprecht.translate',   // inject the angular-translate module
+				 
 				 'refugeeapp.controllers',   // 'refugeeapp.controllers' is found in controllers.js
 	 			 'refugeeapp.controllers.infos',
  				 'refugeeapp.controllers.goods',
 				 'refugeeapp.controllers.profile',
 				 'refugeeapp.controllers.search',
- 				 'refugeeapp.services',       // 'refugeeapp.services' is found in services.js
+				 'refugeeapp.controllers.feedback',
+ 				 
+				 'refugeeapp.services',       // 'refugeeapp.services' is found in services.js
 				 'refugeeapp.services.infos'
 				])
 
@@ -43,6 +47,8 @@ angular.module('refugeeapp',
 	// 	$translate.use(lang)
 	// }
 	
+	console.log("DEBUG: Is the camera ready? navigator.camera="+navigator.camera);
+	
   });
 
   $rootScope.$on('$stateChangeStart', function (event, next, current) {
@@ -54,14 +60,18 @@ angular.module('refugeeapp',
 .config(function($ionicConfigProvider, // ??
 				$stateProvider, 
 				$urlRouterProvider,
-				$translateProvider
+				$translateProvider,
+				$resourceProvider
 				) {
-					
+
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
 	
+	
+	 // Don't strip trailing slashes from calculated URLs
+	$resourceProvider.defaults.stripTrailingSlashes = false;
 	
 	$translateProvider
       .useStaticFilesLoader({
@@ -126,6 +136,13 @@ angular.module('refugeeapp',
 		'navview-tab-infos': {  
 	    templateUrl: 'templates/tab-infos.html',
         controller: 'InfosCtrl',
+		resolve: {
+		    resolvedInfos: function(Infos,$translate){
+				console.log("DEBUG: we load the infos before moving to INFO-TAB!")
+				Infos.setLanguageKey( $translate.use() );
+		    	return Infos.all();
+			}
+		},
 		onEnter: function (){
 			console.log("Debug Infos: we enter state 'tab.infos'.")
 			console.log("Debug Infos: history="+JSON.stringify($ionicHistory.viewHistory(), null, 4) );
@@ -219,6 +236,11 @@ angular.module('refugeeapp',
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/infos');
 
+
+   /* TODO: check if we need to allow file in imag urls:
+   	$compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
+   */
+
 })
 
 .factory('$localstorage', ['$window', function($window) {
@@ -236,6 +258,29 @@ angular.module('refugeeapp',
       return JSON.parse($window.localStorage[key] || '{}');
     }
   }
-}]);
+}])
+
+
+ /*
+	Note for taking photos we need: 
+		cordova plugin add cordova-plugin-camera
+ */
+.factory('Camera', ['$q', function($q) {
+ 
+  return {
+    getPicture: function(options) {
+      var q = $q.defer();
+      
+      navigator.camera && navigator.camera.getPicture(function(result) {
+        // Do any magic you need
+        q.resolve(result);
+      }, function(err) {
+        q.reject(err);
+      }, options);
+      
+      return q.promise;
+    }
+  }
+}])
 
 ;

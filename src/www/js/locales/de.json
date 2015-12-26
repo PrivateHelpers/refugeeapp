@@ -2,7 +2,8 @@
   "NAVIGATION": {
    "BACK": "Zurück",
    "HOME": "Zur Startseite",
-   "PULL_TO_REFRESH": "Update der Daten"
+   "PULL_TO_REFRESH": "Update der Daten",
+    "ADD_PHOTO_FOR_OFFER": "Foto hinzufügen"
   },
   
   "FAVORITES": {
@@ -27,10 +28,11 @@
   
   "FEEDBACK": {
 	  "TITLE": "Feedback",
-	  "TEXT": "Meine Anregung",
-	  "DESCRIPTION": "Details",
+	  "LABEL_TITLE": "Meine Anregung",
+	  "LABEL_DESCRIPTION": "Details",
 	  "SUBMIT": "Feedback absenden",
-	  "FROM" : "Feedback senden als: "
+	  "FROM" : "Feedback senden als: ",
+	  "LAST_UPDATE" : "Last update"
   },
   
   "ABOUT": {
@@ -64,7 +66,10 @@
 			"DESCRIPTION": "Beschreibung",
 			"COMMENTS": "Kommentar"
 		},
-		"SUBMIT":"Mein Angebot absenden"
+		"SUBMIT": "Mein Angebot absenden",
+		"CONFIRM_TO_ADD_OFFER_TITLE": "Absenden bestätigen",
+		"CONFIRM_TO_ADD_OFFER_CANCEL": "Abbruch",
+		"CONFIRM_TO_ADD_OFFER_SUBMIT": "Angebot absenden!"
 	  }
   },
 

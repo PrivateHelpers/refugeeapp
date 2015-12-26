@@ -5,7 +5,8 @@ angular.module('refugeeapp.controllers.goods', [])
 		Items, 
 		$translate,
 		$ionicModal,
-	    $localstorage
+	    $localstorage,
+		Camera
 		) {
 	
 	// we set the language to specify which data set we like to have
@@ -90,6 +91,7 @@ angular.module('refugeeapp.controllers.goods', [])
 			title: 			"",
 			description: 	"",
 			comments: 		"",
+			photo: null
 		};
       $scope.modal.hide();
     };
@@ -101,6 +103,22 @@ angular.module('refugeeapp.controllers.goods', [])
       $scope.modal.remove();
     });
 	
+	
+	// Add Photo functionality:
+	$scope.photosEnabled = (navigator.camera != null)
+    $scope.getPhoto = function() {
+      Camera.getPicture().then(function(imageURI) {
+        console.log("INFO: image-uri="+imageURI);
+        $scope.newoffer.photo = imageURI;
+      }, function(err) {
+        console.err("ERROR on taking an image: "+err);
+      }, {
+        quality: 75,
+        targetWidth: 320,
+        targetHeight: 320,
+        saveToPhotoAlbum: true
+      });
+    };
 
 })
 

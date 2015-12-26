@@ -2,28 +2,89 @@
 
 
   <ion-content class="padding">
+  
+    <ion-refresher pulling-text="{{ 'NAVIGATION.PULL_TO_REFRESH' | translate }}" on-refresh="doRefresh()"></ion-refresher>
+	
+	
+	<!--  NEW Feedback to be sent by the user: -->
+	
+	
     <div class="list card">
 	      <div class="item item-body">
 			  
-			  
+			
   			<label class="item item-input item-select">
   			    <div class="input-label"> {{ 'FEEDBACK.FROM' | translate }} </div>
   				<select ng-options="o as o.email for o in feedback.fromList track by o.id" ng-model="feedback.from"></select>
   			</label>
 			  
 			  <label class="item item-input">
-			    <input type="text" placeholder="{{ 'FEEDBACK.TEXT' | translate }}">
+			    <input type="text" ng-model="feedback.title" placeholder="{{ 'FEEDBACK.LABEL_TITLE' | translate }}">
 			  </label>
 			  <label class="item item-input">
-			    <input type="text" placeholder="{{ 'FEEDBACK.DESCRIPTION' | translate }}">
+			    <textarea type="text" ng-model="feedback.description" placeholder="{{ 'FEEDBACK.LABEL_DESCRIPTION' | translate }}">
+				</textarea>
 			  </label>
 			  
-			  <button class="button button-block button-stable" ng-click="sendNow()">
+			  <button class="button button-block button-stable" ng-click="sendNow()" ng-show="feedback.title">
 			        {{ 'FEEDBACK.SUBMIT' | translate }}
 			   </button>
 			   
-	      </div>
-	</div>
+	      </div> <!-- item -- >
+	</div> <!-- list -->
+
+	
+	<!--  Queue of Feedback (maybe network is down) -->
+	
+	 <div class="list card" ng-show="feedbackMessagesQueue.length">
+		 <center>
+		 	<div class="item item-divider" ng-show="feedbackMessagesQueue.length">We try to send ...</div>
+		</center>
+			<ion-list card >
+			  <ion-item ng-repeat="item in feedbackMessagesQueue track by item.timestamp | orderBy: '-id'">
+			    {{item.modified}} {{item.name}} ({{item.description}}) ...
+		        <ion-option-button class="button-assertive" ng-click="removeFeedbackmessageFromQueue(item)">
+		          Delete
+		        </ion-option-button>
+			  </ion-item>
+		  	</ion-list>
+	  	  <button class="button button-block button-stable" ng-click="trySendingAgain()">
+	        try again
+	   	</button>
+	</div> <!-- list -- >
+	
+	
+	
+	
+	<!--  Former Feedback sent by this user: -->
+	
+	<center>
+	<button class="button-clear padding" ng-click="feedbackMessagesSentVisible = !feedbackMessagesSentVisible" ng-show="!feedbackMessagesSentVisible" >Tab to show my previous feedback.</button>
+</center>
+	 <div class="list card" ng-show="feedbackMessagesAlreadySent && feedbackMessagesSentVisible">
+		 <center>
+		 	<div class="item item-divider">Former feedback:  </div>
+			<button class="button-clear padding" ng-click="feedbackMessagesSentVisible = !feedbackMessagesSentVisible" ng-show="feedbackMessagesSentVisible">Tab to hide old feedback.</button>
+		</center>
+			<ion-list card  ng-show="feedbackMessagesSentVisible">
+			  <ion-item ng-repeat="item in feedbackMessagesAlreadySent | orderBy: '-id'">
+			    {{item.modified}} {{item.name}}:   {{item.description}}
+				<ion-option-button class="button-assertive" ng-click="removeFeedbackmessageOnServer(item)">
+						          Delete
+						        </ion-option-button>
+			  </ion-item>
+			</ion-list>
+	
+	</div> <!-- list -- >
+		
+	<center>
+		AAAR
+		<div class="timestamp">{{lastUpdateTimestamp}}>Pull to refresh</div>
+	</center>
+	
+	
+	
+	
   </ion-content>
   
   <div class="bar bar-footer">

@@ -4,7 +4,8 @@ angular.module('refugeeapp.controllers.infos', [])
 		$translate,
 		Infos,
 		$location,
-	    $localstorage
+	    $localstorage,
+		resolvedInfos // set up in app.js for state "tab.infos"
 		) {
 
   $scope.lastUpdateTimestamp="Last-Update: Pull to refresh"
@@ -13,10 +14,10 @@ angular.module('refugeeapp.controllers.infos', [])
   	console.log("DEBUG-INFOS: TODO implement profile and settings")
   }
   
+  // resolved before setting up the view:
+  //  find resolve in app.js state "tab.infos"
+  $scope.items = resolvedInfos;
   
-  
-  Infos.setLanguageKey( $translate.use() );
-  $scope.items = Infos.all();
   
   $scope.filterLocationAndRouting = function(element) {
     return  'location'.indexOf(element.tags) >=0; // element.location == true;
@@ -41,6 +42,7 @@ angular.module('refugeeapp.controllers.infos', [])
   // we got the broadcast notification, that the background data has changed
   // e.g. the language was switched
   $scope.$on("updateTheData", function() {
+	// TODO check if necessary, maybe we reload in resolve (see app.js for state tab.infos) 
     // signal that data changed, lazy load when the tab is actually clicked
 	console.log("GOT-NOTIFIED: DATA CHANGED")
 	Infos.setLanguageKey($translate.use());
@@ -54,8 +56,9 @@ angular.module('refugeeapp.controllers.infos', [])
   //
   $scope.$on('$ionicView.enter', function(e) {
   	console.log("INFO: we enter the infos view. So we check/set the language")
-	  Infos.setLanguageKey($translate.use());
-	   $scope.items = Infos.all();
+	// TODO check if necessary, maybe we reload in resolve (see app.js for state tab.infos) 
+	Infos.setLanguageKey($translate.use());
+	$scope.items = Infos.all();
   });
   $scope.$on('$ionicView.loaded', function(e){
   	console.log("INFO: the infos view is generated (ONCE). we check for language in the local storage...")

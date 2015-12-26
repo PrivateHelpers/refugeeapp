@@ -105,7 +105,12 @@ ionic platform add ios
 
 # run the xp version
 ionic emulate ios
-	  dd
+	 
+# later, after updating some HTML/JS/CSS only:
+# optional: ionic prepare ios
+ionic build ios
+	 
+	 
 ###################### RUN/EMULATE CROSS-PLATFORM APPS ######################
 
 ###################### GIT-CLONE/COMMIT/PUSH ######################
@@ -140,3 +145,24 @@ in file index.html
 	...
 ###################### Add I18N ######################
 
+
+
+
+
+###################### Add Take Photo Functionality ######################
+
+# read http://learn.ionicframework.com/formulas/cordova-camera/
+
+cordova plugin add cordova-plugin-camera
+
+###################### Add Take Photo Functionality ######################
+
+
+
+
+
+################### ADD RESOURCES ###############################
+#
+# which can be stored via Webservice calls on the server
+#
+#

@@ -2,7 +2,8 @@
   "NAVIGATION": {
    "BACK": "Back",
    "HOME": "Home",
-   "PULL_TO_REFRESH": "Pull to refresh"
+   "PULL_TO_REFRESH": "Pull to refresh",
+   "ADD_PHOTO_FOR_OFFER": "Add Photo of my offer"
   },
   
   "FAVORITES": {
@@ -27,10 +28,11 @@
   
   "FEEDBACK": {
 	  "TITLE": "Feedback",
-	  "TEXT": "My Suggestions",
-	  "DESCRIPTION": "Details",
+	  "LABEL_TEXT": "My Suggestions",
+	  "LABEL_DESCRIPTION": "Details",
 	  "SUBMIT": "Submit Feedback" ,
-	   "FROM" : "Send feedback as: "
+	   "FROM" : "Send feedback as: ",
+	   "LAST_UPDATE" : "Last update"
   },
   
   
@@ -67,8 +69,10 @@
 			"DESCRIPTION": "Description",
 			"COMMENTS": "Comments"
 		},
-		"SUBMIT":"Add my new offer"
-		
+		"SUBMIT":"Add my new offer",
+		"CONFIRM_TO_ADD_OFFER_TITLE": "Confirm to send my new offer",
+		"CONFIRM_TO_ADD_OFFER_CANCEL": "Cancel",
+		"CONFIRM_TO_ADD_OFFER_SUBMIT": "OK, Really send now..."
 	  }
   },
   
@@ -82,3 +86,6 @@
   }
 
 }
+
+
+
