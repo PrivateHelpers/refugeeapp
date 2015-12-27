@@ -42,7 +42,7 @@
 		</center>
 			<ion-list card >
 			  <ion-item ng-repeat="item in feedbackMessagesQueue track by item.timestamp | orderBy: '-id'">
-			    {{item.modified}} {{item.name}} ({{item.description}}) ...
+			    {{item.modified}} {{item.title}} ({{item.description}}) ...
 		        <ion-option-button class="button-assertive" ng-click="removeFeedbackmessageFromQueue(item)">
 		          Delete
 		        </ion-option-button>
@@ -68,7 +68,7 @@
 		</center>
 			<ion-list card  ng-show="feedbackMessagesSentVisible">
 			  <ion-item ng-repeat="item in feedbackMessagesAlreadySent | orderBy: '-id'">
-			    {{item.modified}} {{item.name}}:   {{item.description}}
+			    {{item.modified}} {{item.title}}:   {{item.description}}
 				<ion-option-button class="button-assertive" ng-click="removeFeedbackmessageOnServer(item)">
 						          Delete
 						        </ion-option-button>

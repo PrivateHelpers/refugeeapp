@@ -56,7 +56,8 @@ angular.module('refugeeapp.controllers.feedback', [])
 	*/
 	$scope.FeedbackResource = $resource(
 		//  e.g.: http://localhost:5000/widgets/:id:format
-		$rootScope.CONFIG.apiUrl +'/widgets/:id:format', 
+		//$rootScope.CONFIG.apiUrl +'/widgets/:id:format', 
+		$rootScope.CONFIG.apiUrl +'/feedbacks/:id:format', 
 		{id:'@id'}, // paramDefaults: take the id out of the object (@id), automatically
 	  	{ 	'get':    {method:'GET'},
 	    	'save':   {method:'POST'},
@@ -167,7 +168,7 @@ angular.module('refugeeapp.controllers.feedback', [])
 	
 	$scope.sendNow = function(){
 		var newFeedbackMsg =  new $scope.FeedbackResource({
-			'name': 		$scope.feedback.title,
+			'title': 		$scope.feedback.title,
 			"description": 	$scope.feedback.description,
 			"timestamp": 	"modified: "+new Date(),
 			"email": 		$scope.feedback.from.id == "anon" ? null : $scope.feedback.email 
