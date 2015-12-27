@@ -262,8 +262,8 @@ angular.module('refugeeapp.services', [])
 			console.log("TODO: fetch details about this item with id="+itm.itemId)
 			var currInfo=infos.get(itm.itemId)
 			if (currInfo){
-				console.log( " => RESET: from " +itm.name+" to "+ currInfo.name)
-				itm.name=currInfo.name
+				console.log( " => RESET: from " +itm.title+" to "+ currInfo.title)
+				itm.title=currInfo.title
 			} 
 		});
 	  return items

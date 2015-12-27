@@ -5,8 +5,9 @@ angular.module('refugeeapp.services.infos', [])
 
   var items_en = [
    {  id: 1,
-      tags: ["location"],
-      name: 'My current position on Google Maps',
+      tags: ["poi", "gps"],
+	  category: "location",
+      title: 'My current position on Google Maps',
 	  description: "Select the link below to view your current position on the Google Maps. Select 'Directions' for wayfinding.",
 	  image: 'img/info/currentpos.png',
 	  contact: {
@@ -15,15 +16,16 @@ angular.module('refugeeapp.services.infos', [])
 	  notes:  '<b>Please</b> use this <a href="#openstreetmap">link</a> to get further information about the other routing services in Austria.'
    },
    {  id: 10,
-      tags: ["location"],
-      name: 'Way to the nearest refugee camp in Styria',
-	  icon: "ion-home",
+      tags: ["poi", "routing", "gps"],
+	   category: "location",
+      title: 'Way to the nearest refugee camp in Styria',
 	  image: 'img/info/waytocamp.png',
 	   notes:  'Routing information can be activated via <a href="https://openstreetmap.com/current">OpenStreetmap</a>'
    },
    {  id: 12,
-      tags: ["language"],
-	  name: 'German Courses at KF-Uni Graz',
+      tags: ["education"],
+	  category: "language",
+	  title: 'German Courses at KF-Uni Graz',
 	  description: "You can contact the international office for dates about free german courses.",
 	  descriptionHtml: "You can contact the <a href='#intoffice'>International Office</a> for dates about free german courses.", 
       image: "img/info/language.png",
@@ -42,17 +44,17 @@ angular.module('refugeeapp.services.infos', [])
 	  notes:  '<b>Please</b> use this <a href="#back">link</a> to get further information about the Austrian Language Card.',
    },
    {  id: 14,
-      tags: ["language"],
-      name: 'Translation',
-      icon: "ion-home",
+      tags: ["translation"],
+	  category: "language",
+      title: 'Translation',
       image: 'img/info/translation.png',
 	   notes:  'Frequently used words: <ul><li>Bitte | Please</li><li>Danke | Thank You</li><li>Auf Wiedersehen | Good Bye</li></ul>',
    },
    {  id: 17,
-      tags: ["medi"],
-      name: 'Unfallkrankenhaus Graz',
+      tags: ["emergency"],
+	   category: "medi",
+      title: 'Unfallkrankenhaus Graz',
 	   description: "For injuries drive to UKH, the Unfallkrankenhaus Graz. In this hospital wounds and broken bones are treated.",
-      icon: "ion-home",
       image: 'img/info/med.png',
 	   contact: {
 		   person: null,
@@ -71,10 +73,10 @@ angular.module('refugeeapp.services.infos', [])
   
   
     {  id: 27,
-       tags: ["culture"],
-       name: 'Deposit of trash',
+       tags: ["trash"],
+		category: "culture",
+       title: 'Deposit of trash',
  	   description: "In Austria, strict separation  trash is done for optimising reuse of materials.",
-       icon: "ion-home",
        image: 'img/info/trash.jpeg',
  	   notes:  '<b>Please</b> use the <a href="#back">provided Trash-Bins</a> to help sorting trash for later reuse.',
      },
@@ -89,23 +91,24 @@ angular.module('refugeeapp.services.infos', [])
 
   var items_de = [
    {  id: 1,
-      tags: ["location"],
-      name: 'Mein aktueller Standort.',
+      tags: ["poi"],
+	   category: "location",
+      title: 'Mein aktueller Standort.',
 	   description: 'Meinen aktueller Standpunkt in Google Maps anzeigen',
-	  icon: 'ion-location', 
-      image: 'img/info/currentpos.png',
+	  image: 'img/info/currentpos.png',
    },
    {  id: 10,
-      tags: ["location"],
-      name: 'Flüchtlingszentrum Stmk.',
+      tags: ["poi"],
+	   category: "location",
+      title: 'Flüchtlingszentrum Stmk.',
 	   description: 'Wie komme ich ins nächstgelegene Flüchtlingszentrum in der Steiermark.',
-	  icon: "ion-home",
-      image: 'img/info/waytocamp.png',
+	  image: 'img/info/waytocamp.png',
 	   notes:  '<div>Routenberechnungensind auch via <a href="www.openstreetmap.org">OpenStreetmap</a> möglich</div>', 
    },
    {  id: 12,
       tags: ["language"],
-      name: 'Deutschkurse an der KF Uni Graz',
+	   category: "language",
+      title: 'Deutschkurse an der KF Uni Graz',
 	  description: "Bitte kontaktieren Sie das International Office für Informationen über die nächsten Termine für die Deutschkurse.",
 	  descriptionHtml: "Bitte kontaktieren Sie das <a href='#intoffice'>International Office</a> für die nächtsten Termine der Deutschkurse", 
       image: "img/info/language.png",
@@ -124,16 +127,16 @@ angular.module('refugeeapp.services.infos', [])
 	  notes:  '<b>Bitte</b> klicken Sie auf folgenden <a href="#back">Link</a>, um weitere Informationen bezüglich der Austrian Language Card zu erhalten.',
     },
     {  id: 14,
-       tags: ["language"],
-       name: 'Übersetzungen',
-       icon: "ion-home",
+       tags: ["translation"],
+		category: "language",
+       title: 'Übersetzungen',
        image: 'img/info/translation.png',
 	   notes:  'Liste von häufig benutzten Übersetzungen: <ul><li>Bitte | Please</li><li>Danke | Thank You</li><li>Auf Wiedersehen | Good Bye</li></ul>',
     },
     {  id: 17,
-       tags: ["medi"],
-       name: 'Unfallkrankenhaus Graz',
-       icon: "ion-home",
+       tags: ["emergency"],
+		category: "medi",
+       title: 'Unfallkrankenhaus Graz',
        image: 'img/info/med.png',
  	   contact: {
  		   person: null,
@@ -153,10 +156,10 @@ angular.module('refugeeapp.services.infos', [])
 	
 	
     {  id: 27,
-       tags: ["culture"],
-       name: 'Müll',
+       tags: ["trash"],
+		category: "culture",
+       title: 'Müll',
  	   description: "Müllvermeidung und Mülltrennung unterstützt bestmögliche Wiederverwendung der Materialen.",
-       icon: "ion-home",
        image: 'img/info/trash.jpeg',
  	   notes:  '<b>Bitte</b> die vorgesehenen <a href="#back">Müllcontainer</a> benutzen, um die Wiederverwendung von wertvollen Stoffen wie Papier und Glas optimal zu unterstützen.',
      },
@@ -200,13 +203,13 @@ angular.module('refugeeapp.services.infos', [])
     },
 
 	
-	// we search case-insensitive inside the name and the descriptions:
+	// we search case-insensitive inside the title and the descriptions:
 	searchFulltext: function(query){
 		console.log("TODO implement/improve the search for query '"+query+"' in "+items)
 		foundItems=[];
 		var re = new RegExp(query,"i")
 		items.forEach(function(item){
-			if (item.name && item.name.match( re ) ){ 
+			if (item.title && item.title.match( re ) ){ 
 				foundItems.push(item);
 			}else if (item.description && item.description.match( re ) ){ 
 				foundItems.push(item);

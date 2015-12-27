@@ -51,8 +51,14 @@ angular.module('refugeeapp.controllers', [])
 
 
 
-.controller('AboutCtrl', function($translate) {
-	console.log("About-Controller: ...")
+.controller('AboutCtrl', function(
+			$scope,
+			$translate,
+			$rootScope) {
+	
+				
+	$scope.appVersion = $rootScope.CONFIG.appVersion
+	console.log("About-Controller: version="+$scope.appVersion)
 })
 
 ;

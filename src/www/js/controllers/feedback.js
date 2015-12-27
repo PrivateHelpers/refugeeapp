@@ -5,7 +5,8 @@ angular.module('refugeeapp.controllers.feedback', [])
 		$translate,
 		$localstorage,
 		$resource,
-		$location 
+		$location,
+		$rootScope
 		) {
 	console.log("Feedback-Controller: ...")
 	
@@ -53,13 +54,9 @@ angular.module('refugeeapp.controllers.feedback', [])
 			(and maybe: only allow user-related feedback to be deleted)
 	
 	*/
-	var host = $location.host()
-	var port = $location.port()
-	if (port != 80){ port = 5000 } // we are in debug mode (on heroku we have port 80)
-	
 	$scope.FeedbackResource = $resource(
-		//'http://localhost:5000/widgets/:id:format', // url <= TODO configure at ??? and change from widget to feedback!!
-		'http://' + host + ':'+port+'/widgets/:id:format', 
+		//  e.g.: http://localhost:5000/widgets/:id:format
+		$rootScope.CONFIG.apiUrl +'/widgets/:id:format', 
 		{id:'@id'}, // paramDefaults: take the id out of the object (@id), automatically
 	  	{ 	'get':    {method:'GET'},
 	    	'save':   {method:'POST'},

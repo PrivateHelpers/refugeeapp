@@ -1,5 +1,8 @@
 // refugeeapp build with IONIC
 
+
+
+
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'refugeeapp' is the name of this angular module (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
@@ -22,8 +25,9 @@ angular.module('refugeeapp',
 .run(function(	$ionicPlatform,
 				$localstorage,
 				$translate,
-				$rootScope
-				) {
+				$rootScope,
+				$location
+) {
   $ionicPlatform.ready(function() {
 	  
     // Hide the accessory bar by default 
@@ -38,6 +42,28 @@ angular.module('refugeeapp',
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+	
+	
+	// we set up the global values to 
+	// access the web service api:
+	//  $rootScope.CONFIG.apiUrl = http://localhost:5000
+	//  (e.g. to use later: http://localhost:5000/widgets/:id:format )
+	// TODO: put the configs into a file	
+	var proto = $location.protocol()
+	var host  = $location.host()
+	var port  = $location.port()
+	if (host != 'localhost'){ // we are in live-mode on heroku
+		proto = "https"
+		host = 'privatehelpersws.herokuapp.com' 
+		port = 80
+	}else{ // we are in local debug mode 
+		port = 5000 // on localhost we ran the webservice on port 5000
+		}
+	$rootScope.CONFIG = {
+	    appVersion: "Version 0.2.0 (27. Dec. 2015)",
+	    apiUrl: proto+'://'+host+':'+port+'/'
+	
+	}
 	
 	// Note: it would be too early to set the language in platform ready!!
 	//       because: WHY?? Who calls "setCurrLanguagKey()"

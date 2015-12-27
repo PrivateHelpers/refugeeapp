@@ -20,23 +20,31 @@ angular.module('refugeeapp.controllers.infos', [])
   
   
   $scope.filterLocationAndRouting = function(element) {
-    return  'location'.indexOf(element.tags) >=0; // element.location == true;
+	return element.category == "location"
+    //return  'location'.indexOf(element.tags) >=0; // element.location == true;
   };
   $scope.filterLanguage = function(element) {
-    return   'language'.indexOf(element.tags) >=0;
+	return element.category == "language"
+    //return   'language'.indexOf(element.tags) >=0;
   };
   $scope.filterMedi = function(element) {
-    return   'medi'.indexOf(element.tags) >=0;
+	return element.category == "medi"
+    //return   'medi'.indexOf(element.tags) >=0;
   };
   $scope.filterCulture = function(element) {
-    return   'culture'.indexOf(element.tags) >=0;
+	return element.category == "culture"
+    //return   'culture'.indexOf(element.tags) >=0;
   };
   $scope.filterOthers = function(element) {
-    return  'medi'.indexOf(element.tags) ==0 && 
-	  		'language'.indexOf(element.tags) ==0 && 
-	 	 	'location'.indexOf(element.tags) ==0 && 
-	 	 	'culture'.indexOf(element.tags) ==0  
-	  		 ;
+    return 	element.category != "location" &&
+	  		element.category != "language" &&
+	  		element.category != "culture" &&
+	  		element.category != "medi"
+    // return  'medi'.indexOf(element.tags) ==0 &&
+    // 	  		'language'.indexOf(element.tags) ==0 &&
+    // 	 	 	'location'.indexOf(element.tags) ==0 &&
+    // 	 	 	'culture'.indexOf(element.tags) ==0
+    // 	  		 ;
   };
  
   // we got the broadcast notification, that the background data has changed
