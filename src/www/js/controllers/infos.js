@@ -97,16 +97,39 @@ angular.module('refugeeapp.controllers.infos', [])
 
 })
 
-.controller('InfoDetailCtrl', function($scope, $stateParams, Infos, $translate, $ionicHistory) {
+.controller('InfoDetailCtrl', function(
+	$scope, 
+	$stateParams, 
+	Infos, 
+	$translate, 
+	$ionicHistory,
+	Favorites
+	) {
   Infos.setLanguageKey( $translate.use() );
   console.log("DEBUG InfoDetailCtrl: All Infos = ",Infos.all() );
   console.log("DEBUG InfoDetailCtrl: currentItem: ",$stateParams.infoId );
   
   $scope.item = Infos.get($stateParams.infoId);
   
+  $scope.top = false
+  
+  $scope.switchIsTopFavorite = function(){
+	  if ( $scope.top ){
+		$scope.top = false
+	  	Favorites.removeWithInfoId( $stateParams.infoId )
+	  }else{
+		$scope.top = true
+	  	Favorites.addWithInfoId( $stateParams.infoId , true)	
+	  }
+  }
+  
   $scope.$on('$ionicView.enter', function(e) {
   	Infos.setLanguageKey($translate.use());
 	$scope.item = Infos.get($stateParams.infoId);	
+	$scope.top = Favorites.get($stateParams.infoId) && Favorites.get($stateParams.infoId).top
+	
+	// add to "Last-Search, Last-Viewed favorites"
+	Favorites.currentlyViewedInfoId($stateParams.infoId)
   });
   
   $scope.goBack = function() {

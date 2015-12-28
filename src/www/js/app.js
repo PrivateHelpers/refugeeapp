@@ -19,7 +19,8 @@ angular.module('refugeeapp',
 				 'refugeeapp.controllers.feedback',
  				 
 				 'refugeeapp.services',       // 'refugeeapp.services' is found in services.js
-				 'refugeeapp.services.infos'
+				 'refugeeapp.services.infos',
+				 'refugeeapp.services.favorites'
 				])
 
 .run(function(	$ionicPlatform,

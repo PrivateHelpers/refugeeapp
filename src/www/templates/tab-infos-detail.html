@@ -1,6 +1,12 @@
 <ion-view name="view-tab-infos-detail" view-title="{{item.title}}"  >
 
 
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button ng-class="{'icon ion-ios-star' : top, 
+	 				   'icon ion-ios-star-outline' : !top	}" class="button button-clear" ng-click="switchIsTopFavorite()"></button>
+  </ion-nav-buttons>
+
 
 
   
