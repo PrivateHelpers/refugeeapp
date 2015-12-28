@@ -56,13 +56,13 @@ angular.module('refugeeapp',
 	if (host != 'localhost'){ // we are in live-mode on heroku
 		proto = "https"
 		host = 'privatehelpersws.herokuapp.com' 
-		port = 80
+		port = ''
 	}else{ // we are in local debug mode 
-		port = 5000 // on localhost we ran the webservice on port 5000
+		port = ":" + 5000 // on localhost we ran the webservice on port 5000
 		}
 	$rootScope.CONFIG = {
 	    appVersion: "Version 0.2.0 (27. Dec. 2015)",
-	    apiUrl: proto+'://'+host+':'+port+'/'
+	    apiUrl: proto+'://'+host+port
 	
 	}
 	
@@ -76,6 +76,7 @@ angular.module('refugeeapp',
 	
 	console.log("DEBUG: Is the camera ready? navigator.camera="+navigator.camera);
 	
+
   });
 
   $rootScope.$on('$stateChangeStart', function (event, next, current) {

@@ -24,7 +24,7 @@ angular.module('refugeeapp')
             template: '<a class="item item-thumbnail-left item-text-wrap" '+
 				'href="#/tab/infos/{{info.id}}">' +
                 '<img ng-src="{{info.image}}">' +
-                '<h2>{{info.name}}</h2>'+
+                '<h2>{{info.title}}</h2>'+
 				'<p>{{info.description}}</p></a>'
         };
     })
