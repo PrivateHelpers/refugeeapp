@@ -1,4 +1,4 @@
-angular.module('refugeeapp.controllers.feedback', [])
+angular.module('refugeeapp.controllers.feedback_controller', [])
 
 .controller('FeedbackCtrl', function(
 		$scope,

@@ -1,10 +1,11 @@
-angular.module('refugeeapp.controllers.profile', [])
+angular.module('refugeeapp.controllers.profile_controller', [])
 
 .controller('ProfileCtrl', function(
 		$scope, 
 		$stateParams, 
 		$translate,
-		$localstorage
+		$localstorage,
+		$rootScope
 		) {
 	console.log("DEBUG Profile controlller");
 	
@@ -25,11 +26,12 @@ angular.module('refugeeapp.controllers.profile', [])
 	};
 	
 	$scope.switchLanguage = function(key) {	  
-	  console.log(" DEBUG-INFOS: we switch the GUI to lang-key='"+key+"'")
+	  console.log(" DEBUG-PROFILE-SETTINGS: we switch the GUI to lang-key='"+key+"'")
   	  $translate.use(key);
 	  $localstorage.set('language', key);
-
-
+	  // TODO: broadcast to the other views to refresh the GUI with new data (with new lang):
+	  console.log(" DEBUG-PROFILE-SETTINGs: and now we tell everyone and send a broadcast...")
+	  $rootScope.$broadcast('language.haschanged', {lang: key});
 	};
 	$scope.$watch('settings.lang', function() {
 	  console.log('DEBUG-Dropdown: The lang has changed to '+$scope.settings.lang.id);

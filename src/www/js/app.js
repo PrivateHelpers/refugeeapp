@@ -12,11 +12,11 @@ angular.module('refugeeapp',
 				 'pascalprecht.translate',   // inject the angular-translate module
 				 
 				 'refugeeapp.controllers',   // 'refugeeapp.controllers' is found in controllers.js
-	 			 'refugeeapp.controllers.infos',
- 				 'refugeeapp.controllers.goods',
-				 'refugeeapp.controllers.profile',
-				 'refugeeapp.controllers.search',
-				 'refugeeapp.controllers.feedback',
+	 			 'refugeeapp.controllers.infos_controller',
+ 				 'refugeeapp.controllers.goods_controller',
+				 'refugeeapp.controllers.profile_controller',
+				 'refugeeapp.controllers.search_controller',
+				 'refugeeapp.controllers.feedback_controller',
  				 
 				 'refugeeapp.services',       // 'refugeeapp.services' is found in services.js
 				 'refugeeapp.services.infos',
@@ -63,7 +63,6 @@ angular.module('refugeeapp',
 	$rootScope.CONFIG = {
 	    appVersion: "Version 0.2.0 (27. Dec. 2015)",
 	    apiUrl: proto+'://'+host+port
-	
 	}
 	
 	// Note: it would be too early to set the language in platform ready!!
@@ -167,7 +166,7 @@ angular.module('refugeeapp',
 		resolve: {
 		    resolvedInfos: function(Infos,$translate){
 				console.log("DEBUG: we load the infos before moving to INFO-TAB!")
-				Infos.setLanguageKey( $translate.use() );
+				Infos.setLanguageKey( $translate.use() ||"en" );
 		    	return Infos.all();
 			}
 		},

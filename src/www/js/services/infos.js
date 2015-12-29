@@ -1,7 +1,7 @@
 angular.module('refugeeapp.services.infos', [])
 
 
-.factory('Infos', function() {
+.factory('Infos', function($localstorage) {
 
   var items_en = [
    {  id: 1,
@@ -168,10 +168,12 @@ angular.module('refugeeapp.services.infos', [])
 	
   ];
 	
-	var itemDict={
+  // load the data from the cache in local storage, or use the one listed above:
+  var itemDict = $localstorage.getObject('InfoMessagesCache') || {
 		  "de": items_de,
 		  "en": items_en
-	};
+		}
+	
 	
 	// we do not know default language here ($translate.use())
 	// => we expect someone to call setLanguageKey !
@@ -179,11 +181,35 @@ angular.module('refugeeapp.services.infos', [])
 	var items = []; 
 
   return {
+	refreshTheDataAfterDownload: function(infoMessages){ // after download = after "pull-refresh"		
+		var newInfoDict={} // we will completly replace all the existing data
+		infoMessages.forEach(function(itm){
+			console.log("create List for the itm: "+JSON.stringify(itm))
+			console.log("create List for the id: "+itm.id)
+			console.log("create List for the title: "+itm.title)
+			console.log("create List for the lang: "+itm.lang)
+			if (! newInfoDict[itm.lang] ){ // create list per language inside dict
+				console.log("create List for the language: "+itm.lang)
+				newInfoDict[itm.lang]=[]
+			}
+			// map attributes thumb to image:
+			//itm.image = itm.thumb
+			newInfoDict[itm.lang].push(itm)
+		})
+		console.log("=> All the en-infos: " + JSON.stringify(newInfoDict["en"]) )
+		console.log("=> All the de-infos: " + JSON.stringify(newInfoDict["de"]) )
+	  	
+	
+	 $localstorage.setObject('InfoMessagesCache', newInfoDict )
+		
+	  console.log("DEBUG-INFOS: got new info-item-dictionary, so we refresh all the items")
+	  itemDict = newInfoDict
+  	  items = itemDict[ currLangKey ]; 
+	},
 	setLanguageKey: function(lang_key){
 	  console.log("DEBUG-INFOS: changing currLangKey to "+lang_key)
-	  currLangKey =lang_key // we change the object currLang 
+	  currLangKey =lang_key
 	  items = itemDict[ currLangKey ]; 
-	  console.log("DEBUG-INFOS: so we reset the items: ",items)
 	},
     all: function() {
 	  console.log("we return the items for lang="+currLangKey )

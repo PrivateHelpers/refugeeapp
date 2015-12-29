@@ -53,7 +53,8 @@
 	 "LANGUAGE" :"Where Can I get free German...?",
 	 "I_NEED_MEDICAL_HELP": "I Need Medical Help",
 	"CULTURE": "Austrian Culture",
-	"OTHERS" : "Other stuff"
+	"OTHERS" : "Other stuff",
+	"LAST_UPDATE" : "Last update"
   },
   
   "GOODS": {

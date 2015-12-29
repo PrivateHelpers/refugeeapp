@@ -51,7 +51,8 @@
 	"LANGUAGE" :"Wo erhalte ich kostenlose Sprach-... ?",
 	"I_NEED_MEDICAL_HELP": "Ich brauche medizinische Hilfe",
 	"CULTURE": "Leben in Östereich",
-	"OTHERS" : "Sonstiges"
+	"OTHERS" : "Sonstiges",
+	"LAST_UPDATE" : "Aktualisiert am"
   },
   
   "GOODS": {

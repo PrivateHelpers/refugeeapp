@@ -1,4 +1,4 @@
-angular.module('refugeeapp.controllers.goods', [])
+angular.module('refugeeapp.controllers.goods_controller', [])
 
 .controller('GoodsCtrl', function(
 		$scope, 

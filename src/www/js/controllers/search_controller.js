@@ -1,4 +1,4 @@
-angular.module('refugeeapp.controllers.search', [])
+angular.module('refugeeapp.controllers.search_controller', [])
 
 .controller('SearchCtrl', function(
 		$scope, 
