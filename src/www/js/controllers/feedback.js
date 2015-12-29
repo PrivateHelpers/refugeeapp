@@ -10,6 +10,7 @@ angular.module('refugeeapp.controllers.feedback', [])
 		) {
 	console.log("Feedback-Controller: ...")
 	
+	$scope.lastUpdateTimestamp=""
 	
     $scope.feedback = {
 		title: "",
@@ -156,7 +157,7 @@ angular.module('refugeeapp.controllers.feedback', [])
 	$scope.updateUIafterRefresh = function(){
 		var d = new Date()
 		$translate('FEEDBACK.LAST_UPDATE').then( function(luStr){
-			$scope.lastUpdateTimestamp = luStr+" "+ d.toLocaleDateString() + " " + d.toTimeString().slice(0,5)
+			$scope.lastUpdateTimestamp = luStr+" "+ d.toLocaleDateString() + " " + d.toTimeString().slice(0,5)+"."
 			$scope.$broadcast('scroll.refreshComplete');
 			// changes (would not be necessary for $http.get with promise) 
 			//$scope.$apply() // we did changes to the scipe outside a digest cycle! 
