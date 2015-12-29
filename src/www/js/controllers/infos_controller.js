@@ -167,6 +167,8 @@ angular.module('refugeeapp.controllers.infos_controller', [])
   		console.log("LOCAL-STORAGE: LANG we should set the language to "+lang)
   		$translate.use(lang)
   	}
+	//Infos.setLanguageKey($translate.use());
+	//$scope.items = Infos.all();
   });
 
 
