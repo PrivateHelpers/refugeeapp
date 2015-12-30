@@ -196,7 +196,7 @@ angular.module('refugeeapp.controllers.infos_controller', [])
 	$rootScope
 	) {
    
-  $scope.server_image_url = $rootScope.CONFIG.apiUrl +"/thumbs/"
+  $scope.server_image_url = $rootScope.CONFIG.apiUrl +"/pictures/"
 		
   Infos.setLanguageKey( $translate.use() );
   console.log("DEBUG InfoDetailCtrl: All Infos = ",Infos.all() );

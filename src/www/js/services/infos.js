@@ -215,7 +215,9 @@ angular.module('refugeeapp.services.infos', [])
 			// 		console.log(" => ERROR = ",error)
 			//       	  		});
 			// //
-			listOfImagesToCache.push($rootScope.CONFIG.apiUrl +"/thumbs"+itm.image)
+			
+			// PRE-LOADING images:
+			listOfImagesToCache.push($rootScope.CONFIG.apiUrl +"/thumbs/"+itm.image)
 
 			newInfoDict[itm.lang].push(itm)
 		})
