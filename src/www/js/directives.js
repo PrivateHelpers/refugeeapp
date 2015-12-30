@@ -8,9 +8,10 @@ angular.module('refugeeapp')
         "use strict";
  
         return {
-            restrict: 'E',
+            restrict: 'E', // E for Element (A for Attribute)
             scope: {
-                info: '=data'
+                baseurl: '=baseurl',
+				info: '=data'
             },
             link: function (scope, element, attrs) {
 				// not used at the moment:
@@ -21,10 +22,11 @@ angular.module('refugeeapp')
                 };
 
             },
-            template: '<a class="item item-thumbnail-left item-text-wrap" '+
+			//templateURL: "templates/search-results.html" <= TODO make it work, please!
+			template: '<a class="item item-thumbnail-left item-text-wrap" '+
 				'href="#/tab/infos/{{info.id}}">' +
-                '<img ng-src="{{info.image}}">' +
-                '<h2>{{info.title}}</h2>'+
+				'<img ng-src="{{baseurl}}{{info.thumb}}">' +
+				'<h2>{{info.title}}</h2>'+
 				'<p>{{info.description}}</p></a>'
         };
     })

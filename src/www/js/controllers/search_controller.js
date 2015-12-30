@@ -4,7 +4,8 @@ angular.module('refugeeapp.controllers.search_controller', [])
 		$scope, 
 		$stateParams, 
 		$translate,
-		Infos) {
+		Infos,
+		$rootScope) {
 	console.log("DEBUG Search controlller");
 	
     "use strict";
@@ -12,7 +13,9 @@ angular.module('refugeeapp.controllers.search_controller', [])
     $scope.term = '';
     $scope.hits = [];
     $scope.showResults = false;
-
+	
+	$scope.server_image_url = $rootScope.CONFIG.apiUrl +"/thumbs/"
+	
     $scope.searchTerm = function () {
 		$scope.hits = Infos.searchFulltext(this.term) || [];
 		console.log('hits received: '+$scope.hits.length);
