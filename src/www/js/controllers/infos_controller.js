@@ -8,6 +8,8 @@ angular.module('refugeeapp.controllers.infos_controller', [])
 		resolvedInfos, // set up in app.js for state "tab.infos"
 	    $resource,
 	    $rootScope
+		
+
 		) {
 
 
@@ -99,7 +101,7 @@ angular.module('refugeeapp.controllers.infos_controller', [])
 		
 	}
 	
-
+  $scope.server_image_url = $rootScope.CONFIG.apiUrl +"/thumbs/"
   $scope.lastUpdateTimestamp="Last-Update: Pull to refresh"
   
   $scope.openProfile = function(){
@@ -190,8 +192,12 @@ angular.module('refugeeapp.controllers.infos_controller', [])
 	Infos, 
 	$translate, 
 	$ionicHistory,
-	Favorites
+	Favorites,
+	$rootScope
 	) {
+   
+  $scope.server_image_url = $rootScope.CONFIG.apiUrl +"/thumbs/"
+		
   Infos.setLanguageKey( $translate.use() );
   console.log("DEBUG InfoDetailCtrl: All Infos = ",Infos.all() );
   console.log("DEBUG InfoDetailCtrl: currentItem: ",$stateParams.infoId );

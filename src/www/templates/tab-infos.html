@@ -22,7 +22,7 @@
     	  			ng-repeat="item in items |filter: filterLocationAndRouting |  orderBy: 'name'" 
     				type="item-text-wrap" 
     				href="#/tab/infos/{{item.id}}">
-    			<img ng-src="img/info/{{item.image}}" class="info-image-preview"></img>	
+    			<img ng-src="{{server_image_url}}{{item.image}}" class="info-image-preview"></img>	
     			<h2>{{item.title}}</h2>
     			<p class="truncate">{{item.description}}</p>
             <i class="icon ion-chevron-right icon-accessory"></i>
@@ -41,7 +41,7 @@
 	  			ng-repeat="item in items |filter: filterLanguage |  orderBy: 'name'" 
 				type="item-text-wrap" 
 				href="#/tab/infos/{{item.id}}">
-			<img ng-src="img/info/{{item.image}}" class="info-image-preview"></img>	
+			<img ng-src="{{server_image_url}}{{item.image}}" class="info-image-preview"></img>	
 			<h2>{{item.title}}</h2>
 			<p class="truncate">{{item.description}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
@@ -63,7 +63,7 @@
    	  			ng-repeat="item in items |filter: filterMedi |  orderBy: 'name'" 
    				type="item-text-wrap" 
    				href="#/tab/infos/{{item.id}}">
-   			<img ng-src="img/info/{{item.image}}" class="info-image-preview"></img>	
+   			<img ng-src="{{server_image_url}}{{item.image}}" class="info-image-preview"></img>	
    			<h2>{{item.title}}</h2>
    			<p class="truncate">{{item.description}}</p>
            <i class="icon ion-chevron-right icon-accessory"></i>
@@ -83,7 +83,7 @@
     	  			ng-repeat="item in items |filter: filterCulture |  orderBy: 'name'" 
     				type="item-text-wrap" 
     				href="#/tab/infos/{{item.id}}">
-    			<img ng-src="img/info/{{item.image}}" class="info-image-preview"></img>	
+    			<img ng-src="{{server_image_url}}{{item.image}}" class="info-image-preview"></img>	
     			<h2>{{item.title}}</h2>
     			<p class="truncate">{{item.description}}</p>
             <i class="icon ion-chevron-right icon-accessory"></i>
@@ -104,7 +104,7 @@
     	  			ng-repeat="item in items |filter: filterOthers |  orderBy: 'title'" 
     				type="item-text-wrap" 
     				href="#/tab/infos/{{item.id}}">
-    			<img ng-src="img/info/{{item.image}}" class="info-image-preview"></img>	
+    			<img ng-src="{{server_image_url}}{{item.image}}" class="info-image-preview"></img>	
     			<h2>{{item.title}}</h2>
     			<p class="truncate">{{item.description}}</p>
             <i class="icon ion-chevron-right icon-accessory"></i>

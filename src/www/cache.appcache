@@ -1,0 +1,16 @@
+CACHE MANIFEST
+# 2015-12
+# find details in http://www.html5rocks.com/en/tutorials/appcache/beginner/
+
+# explicit cached values
+CACHE:
+index.html
+
+
+# resouces you NEED to be online
+NETWORK:
+*
+
+# locally served images, if others could not be loaded
+FALLBACK:
+/thumbs/currentpos.png /img/info/currentpos.png

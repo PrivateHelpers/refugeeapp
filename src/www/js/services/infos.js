@@ -1,7 +1,11 @@
 angular.module('refugeeapp.services.infos', [])
 
 
-.factory('Infos', function($localstorage) {
+.factory('Infos', function(
+		$localstorage,
+		$rootScope,
+		$ImageCacheFactory
+		) {
 
   var items_en = [
    {  id: 1,
@@ -183,11 +187,14 @@ angular.module('refugeeapp.services.infos', [])
 	// => we expect someone to call setLanguageKey !
 	var currLangKey="";
 	var items = []; 
-
   return {
 	refreshTheDataAfterDownload: function(infoMessages){ // after download = after "pull-refresh"		
 		var newInfoDict={} // we will completly replace all the existing data
+		var listOfImagesToCache=[]
 		infoMessages.forEach(function(itm){
+			// mapping if attributes are different on server:
+			itm.category = itm.cat
+			
 			console.log("create List for the itm: "+JSON.stringify(itm))
 			console.log("create List for the id: "+itm.id)
 			console.log("create List for the title: "+itm.title)
@@ -200,12 +207,19 @@ angular.module('refugeeapp.services.infos', [])
 			// if an image file does not exist locally, we might download (and cache it now):
 			
 			console.log("We check if image '"+itm.image+"' is available:")
-			// TODO:
-			// var res = checkFile("/img/infos/",itm.image)
-			// console.log(" => available = ", res)
+			// // TODO: preload images into FILE SYSTEM (for offline usage) !!!
+			// CF.checkFile("/img/infos/",itm.image).then(
+			// 	function (success) {	// success
+			// 		console.log(" => available = ",success)
+			//       	  		}, function (error) {	// error
+			// 		console.log(" => ERROR = ",error)
+			//       	  		});
+			// //
+			listOfImagesToCache.push($rootScope.CONFIG.apiUrl +"/thumbs"+itm.image)
 
 			newInfoDict[itm.lang].push(itm)
 		})
+		$ImageCacheFactory.Cache(listOfImagesToCache);
 		console.log("=> All the en-infos: " + JSON.stringify(newInfoDict["en"]) )
 		console.log("=> All the de-infos: " + JSON.stringify(newInfoDict["de"]) )
 	  	

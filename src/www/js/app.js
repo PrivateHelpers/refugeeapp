@@ -9,7 +9,10 @@
 angular.module('refugeeapp', 
 				['ionic', 
 				 'ngResource',				 // we want RESTful API calls with resources
+				 
 				 'pascalprecht.translate',   // inject the angular-translate module
+				 'ionic.ion.imageCacheFactory', // caching images
+				 
 				 
 				 'refugeeapp.controllers',   // 'refugeeapp.controllers' is found in controllers.js
 	 			 'refugeeapp.controllers.infos_controller',

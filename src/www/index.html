@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  manifest="cache.appcache" >
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
@@ -22,6 +22,10 @@
 	<!-- angular RESTful API calls with "ngResource" -->
 	<script src="lib/ionic/js/angular/angular-resource.js"></script>
 
+	<!-- external libs and sources -->
+	<!-- caching images: -->
+	<script src="lib/ionic/js/ionic.ion.imagecachefactory.js"></script>
+	
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
@@ -42,6 +46,8 @@
 	
 	<!-- helper (partly-) views -->
 	<script src="js/directives.js"></script>
+	
+
 	
   </head>
   <body ng-app="refugeeapp">
