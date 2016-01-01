@@ -65,7 +65,14 @@ angular.module('refugeeapp.controllers.favorites_controller', [])
 	
 })
 
-.controller('FavoriteDetailCtrl', function($scope, $stateParams, Favorites, $translate, Infos) {
+.controller('FavoriteDetailCtrl', function(
+			$scope, 
+			$stateParams, 
+			Favorites, 
+			$translate, 
+			Infos,
+			$rootScope
+			) {
     console.log("DEBUG FavoriteDetailCtrl currentItem.infoId: ",$stateParams.favoriteId) 
   
     $scope.top = false // Is this it
@@ -76,8 +83,20 @@ angular.module('refugeeapp.controllers.favorites_controller', [])
 		Infos.setLanguageKey($translate.use());
 		// when we enter the view, we set the current item:
 		$scope.item = Infos.get(currFav.infoId)
+	    if ( $scope.item.isLocal ){
+	  	  // local cached path to images:
+	  	  $scope.server_image_url = "/img/info/"
+  	
+	    }else{
+	  	  // path to images on the server:
+	  	  $scope.server_image_url = $rootScope.CONFIG.apiUrl +"/pictures/"
+  	
+	    }
 		$scope.top = currFav.top // is this Info-Item a Top Favorite?
     });
+	
+	
+
 	
 	$scope.switchIsTopFavorite = function(){
 		var currFav = Favorites.get($stateParams.favoriteId); // maybe null (already removed, if tabbed several times)
