@@ -69,17 +69,20 @@ angular.module('refugeeapp.controllers.infos_controller', [])
 	
 	// on reload, we try to reload the data from the webservice:
 	$scope.doRefresh = function(){
+		console.log("DEBUG: refreshing the infos from the server (in the background)" )
 		$scope.InfoResource.query(
 			{format:".json"},
 			function(infoMessages){
-				console.log("!! All the infos: " + JSON.stringify(infoMessages) )
+				console.log(" => !! All the infos fetched from the server: " + JSON.stringify(infoMessages) )
 
 				Infos.refreshTheDataAfterDownload(infoMessages)
 				Infos.setLanguageKey($translate.use());
 				$scope.items = Infos.all();
 				
-				
-				
+		    	// path to images on the server:
+				// replaces the local path (for the cached images coming with the app)
+		    	$scope.server_image_url = $rootScope.CONFIG.apiUrl +"/thumbs/"
+								
 				$scope.updateUIafterRefresh()
 				
 			},
@@ -93,6 +96,7 @@ angular.module('refugeeapp.controllers.infos_controller', [])
 	
 	// some helpers:
 	$scope.updateUIafterRefresh = function(){
+		console.log("DEBUG: refreshing GUI for the new info items" )
 		var d = new Date()
 		$translate('INFO.LAST_UPDATE').then( function(luStr){
 			$scope.lastUpdateTimestamp = luStr+" "+ d.toLocaleDateString() + " " + d.toTimeString().slice(0,5)+"."
@@ -100,8 +104,20 @@ angular.module('refugeeapp.controllers.infos_controller', [])
 		})
 		
 	}
-	
-  $scope.server_image_url = $rootScope.CONFIG.apiUrl +"/thumbs/"
+ 
+ 	// on startup we check for already (previously downloaded infos in local cache)
+	var cachedMessage = $localstorage.getObject('InfoMessagesCache')
+	if (Object.keys(cachedMessage).length > 0) {
+    	// path to images on the server:
+		// replaces the local path (for the cached images coming with the app)
+    	$scope.server_image_url = $rootScope.CONFIG.apiUrl +"/thumbs/"
+	}else{
+	    // local cached path to images:
+	  	$scope.server_image_url = "/img/info/"
+		
+	} 
+   
+     
   $scope.lastUpdateTimestamp="Last-Update: Pull to refresh"
   
   $scope.openProfile = function(){
@@ -204,6 +220,16 @@ angular.module('refugeeapp.controllers.infos_controller', [])
   
   $scope.item = Infos.get($stateParams.infoId);
   
+  if ( $scope.item.isLocal ){
+	  // local cached path to images:
+	  $scope.server_image_url = "/img/info/"
+  	
+  }else{
+	  // path to images on the server:
+	  $scope.server_image_url = $rootScope.CONFIG.apiUrl +"/pictures/"
+  	
+  }
+  
   $scope.top = false
   
   $scope.switchIsTopFavorite = function(){
@@ -223,6 +249,7 @@ angular.module('refugeeapp.controllers.infos_controller', [])
 	
 	// add to "Last-Search, Last-Viewed favorites"
 	Favorites.currentlyViewedInfoId($stateParams.infoId)
+
   });
   
   $scope.goBack = function() {

@@ -74,7 +74,9 @@
 		"CONFIRM_TO_ADD_OFFER_TITLE": "Confirm to send my new offer",
 		"CONFIRM_TO_ADD_OFFER_CANCEL": "Cancel",
 		"CONFIRM_TO_ADD_OFFER_SUBMIT": "OK, Really send now..."
-	  }
+	  },
+	  "LAST_UPDATE" : "Last update"
+
   },
   
   "SEARCH": {

@@ -71,7 +71,8 @@
 		"CONFIRM_TO_ADD_OFFER_TITLE": "Absenden bestätigen",
 		"CONFIRM_TO_ADD_OFFER_CANCEL": "Abbruch",
 		"CONFIRM_TO_ADD_OFFER_SUBMIT": "Angebot absenden!"
-	  }
+	  },
+	"LAST_UPDATE" : "Aktualisiert am"
   },
 
   "SEARCH": {

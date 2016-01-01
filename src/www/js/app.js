@@ -13,17 +13,19 @@ angular.module('refugeeapp',
 				 'pascalprecht.translate',   // inject the angular-translate module
 				 'ionic.ion.imageCacheFactory', // caching images
 
+				 'refugeeapp.services',
+				 //'refugeeapp.services.items',
+				 'refugeeapp.services.infos',
+				 'refugeeapp.services.favorites',
+
 				 'refugeeapp.controllers.infos_controller',
  				 'refugeeapp.controllers.goods_controller',
 				 'refugeeapp.controllers.profile_controller',
 				 'refugeeapp.controllers.search_controller',
 				 'refugeeapp.controllers.feedback_controller',
 				 'refugeeapp.controllers.favorites_controller',
-				 'refugeeapp.controllers.about_controller',
- 				 
-				 'refugeeapp.services.goods',
-				 'refugeeapp.services.infos',
-				 'refugeeapp.services.favorites'
+				 'refugeeapp.controllers.about_controller'
+
 				])
 
 .run(function(	$ionicPlatform,
