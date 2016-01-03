@@ -9,9 +9,17 @@
   <ion-content class="padding">
 
 	 	<ion-refresher pulling-text="{{ 'NAVIGATION.PULL_TO_REFRESH' | translate }}" on-refresh="doRefresh()"></ion-refresher>
-
-
-
+		
+		<!-- language selection -->
+		<div class="button-bar" ng-click="selectAll">
+  			<ion-checkbox class="col col-40 item-checkbox-right button-clear padding-right" ng-model="display.de">Deutsch:</ion-checkbox>
+			<div class="padding"></div>
+  			<ion-checkbox class="col col-40 item-checkbox-right button-clear padding-right" ng-model="display.en">English:</ion-checkbox>
+			<div class="padding"></div>
+			<ion-checkbox class="col col-40 item-checkbox-right button-clear padding-right" ng-model="display.ar">Arabic:</ion-checkbox>
+		</div>
+			
+  
     <div class="list card">
       <div class="item item-divider">{{ 'GOODS.FOR_FREE' | translate }}</div>
       <div class="item item-body">
@@ -47,7 +55,7 @@
       <div class="item item-body">
 	    <ion-list>
 	      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="item in items |filter: filterMyOffers |  orderBy: 'name'" type="item-text-wrap" href="#/tab/goods/{{item.id}}">
-	        <img ng-src="{{server_image_url}}{{item.image}}">
+	        <img ng-src="{{server_image_url}}{{item.image}}" ng-show="item.image">
 	        <h2>{{item.title}}</h2>
 	        <p>{{item.description}}</p>
 	        <i class="icon ion-chevron-right icon-accessory"></i>
@@ -70,6 +78,11 @@
 		
 		<div class="item item-divider" >{{ 'GOODS.NEW_OFFER.TITLE' | translate }}</div>
 		<ion-item  class="list">
+		  <label class="item item-input item-select">
+		    <div class="input-label"> {{ 'PROFILE.LANGUAGE' | translate }} </div>
+			<select ng-options="o as o.name for o in newoffer.langs  track by o.id" ng-model="newoffer.language"></select>
+		  </label>
+		
 		  <label class="item item-input">
 		    <input  type="text" 
 					placeholder="{{ 'GOODS.NEW_OFFER.PLACEHOLDER.TITLE' | translate }}"
@@ -120,17 +133,14 @@
 	  
 	  
 	  <div class="list">
-	  
-	  	<center>
-			<hr></hr>
-			<h3>WARNING - WARNING - WARNING:<br />The functionality to add your own offers will be added soon... </h3>
-			<hr></hr>
-	  	</center>
-	  </div>
-	  
-	  
-	  
+	 	  
         <div class="list">
+			<label class="item item-input">
+	            <span class="input-label">
+						{{ 'GOODS.NEW_OFFER.SELECTED_LANGUAGE' | translate }}: {{ newoffer.language.name }}
+				</span>
+			</label>
+			
           <label class="item item-input">
             <span class="input-label">
 					{{ newoffer.title }}

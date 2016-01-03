@@ -70,6 +70,7 @@
 			"DESCRIPTION": "Description",
 			"COMMENTS": "Comments"
 		},
+		"SELECTED_LANGUAGE": "Language of this offer",
 		"SUBMIT":"Add my new offer",
 		"CONFIRM_TO_ADD_OFFER_TITLE": "Confirm to send my new offer",
 		"CONFIRM_TO_ADD_OFFER_CANCEL": "Cancel",

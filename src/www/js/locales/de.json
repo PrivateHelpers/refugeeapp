@@ -67,6 +67,7 @@
 			"DESCRIPTION": "Beschreibung",
 			"COMMENTS": "Kommentar"
 		},
+		"SELECTED_LANGUAGE": "Angebot auf: ",
 		"SUBMIT": "Mein Angebot absenden",
 		"CONFIRM_TO_ADD_OFFER_TITLE": "Absenden bestätigen",
 		"CONFIRM_TO_ADD_OFFER_CANCEL": "Abbruch",

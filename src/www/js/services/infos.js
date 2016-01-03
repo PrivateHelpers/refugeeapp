@@ -257,7 +257,7 @@ angular.module('refugeeapp.services.infos', [])
       items.splice(items.indexOf(item), 1);
     },
     get: function(itemId) { // TODO: i18n
-	  console.log(" we search for item with id: "+itemId+" in items: " + items)
+	  console.log(" we search for item with id: "+itemId+" in items: " + JSON.stringify(items))
       for (var i = 0; i < items.length; i++) {
         if (items[i].id === parseInt(itemId)) {
           return items[i];

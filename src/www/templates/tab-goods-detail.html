@@ -13,8 +13,12 @@
   <ion-content class="padding" >
    
 	<div class="card">
+		
 	    <center>
-	    <img ng-src="{{server_image_url}}{{item.image}}" style="width: 164px; height: 164px" class="padding">
+	  	  <div class="item item-text-wrap">
+	  	    {{item.title}}
+	  	  </div>
+	    <img ng-src="{{server_image_url}}{{item.image}}" style="width: 164px; height: 164px" class="padding" ng-show="item.image">
 		</center>
 		
 

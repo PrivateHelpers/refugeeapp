@@ -26,9 +26,19 @@ angular.module('refugeeapp.controllers.goods_controller', [])
 			created_at: datetime, updated_at: datetime) 
 			
 	*/
+	$scope.email = $localstorage.get('email') || ""
+	if ($scope.email.length >1){
+		// TODO: add authenticated web services:
+		// in the meantime (for the first prototype):
+		//      we add email as kind of "authentication token"
+		// (cmp: curl 'http://localhost:5000/offers/20.json?email=eva@adam' | python -m json.tool )
+		auth="?email="+$scope.email
+	}else{
+		auth=""
+	}
 	$scope.ItemsResource = $resource(
 		//  e.g.: http://localhost:5000/offers/:id:format
-		$rootScope.CONFIG.apiUrl +'/offers/:id:format', 
+		$rootScope.CONFIG.apiUrl +'/offers/:id:format'+auth, 
 		{id:'@id'}, // paramDefaults: take the id out of the object (@id), automatically
 	  	{ 	'get':    {method:'GET'},
 	    	'save':   {method:'POST'},
@@ -46,41 +56,87 @@ angular.module('refugeeapp.controllers.goods_controller', [])
 
 	
 	// we set the language to specify which data set we like to have
-	Items.setLanguageKey( $translate.use() );
+	//Items.setLanguageKey( $translate.use() );
 	
 	$scope.newoffer={
 		title: 			"",
 		description: 	"",
 		comments: 		"",
+		language: 		{name:"English", id:"en"},		// current selected language
+		langs:			[ {name:"English", id:"en"},    // all possible languages
+				   		  {name:"Deutsch", id:"de"} ]
 	}
 	
 	
      $scope.newoffer.title  = 	   $localstorage.get('newoffer.title') || ""
      $scope.newoffer.description = $localstorage.get('newoffer.description') || ""
      $scope.newoffer.comments =    $localstorage.get('newoffer.comments') || ""
+	 $scope.newoffer.language =    $localstorage.getObject('newoffer.language') || $scope.getPreferredLanguage()
 	
+	$scope.getPreferredLanguage= function(){
+		system_language = 	$translate.use()
+		if (system_language =="en") return $scope.newoffer.langs[0]
+		if (system_language =="de") return $scope.newoffer.langs[1]
+		//if (system_language =="ar") return langs[2]
+		return $scope.newoffer.langs[0] // default
+	}
     $scope.$watch('newoffer.title', function() { 
   	  				$localstorage.set('newoffer.title', $scope.newoffer.title); })
     $scope.$watch('newoffer.description', function() { 
   	  				$localstorage.set('newoffer.description', $scope.newoffer.description); })
     $scope.$watch('newoffer.comments', function() { 
   	 	 			$localstorage.set('newoffer.comments', $scope.newoffer.comments ); })
+    $scope.$watch('newoffer.language', function() { 
+  	 	 			$localstorage.setObject('newoffer.language', $scope.newoffer.language ); })
+	
   
-	
-	
+    // Language Filter on the GUI -> store to local stoarage
+	$scope.$watch('display.de', function() {
+		$localstorage.set('good_items.display.de',$scope.display.de)
+	})
+	$scope.$watch('display.en', function() {
+		$localstorage.set('good_items.display.en',$scope.display.en)
+	})
+	$scope.$watch('display.ar', function() {
+		$localstorage.set('good_items.display.ar',$scope.display.ar)
+	})
+
+	// get user preferences from the local storage, or display all
+	$scope.display={
+		de: $localstorage.get('good_items.display.de') || true,
+		en: $localstorage.get('good_items.display.en') || true,
+		ar: $localstorage.get('good_items.display.ar') || true,
+	}
 	
 	// initialise the (current used) data:
     $scope.items = Items.all();
 	
     $scope.remove = function(item) {
-      Items.remove(item);
+		console.log("DEBUG remove an offered good-item from the server...:"+JSON.stringify(item) )
+		var offerToDel = new $scope.ItemsResource(item)
+	    offerToDel.$delete(function(error){
+				 console.log("ERROR: ")
+			 	 console.log(JSON.stringify(error)	)
+		}, function(success){
+			 	console.log(success)
+				Items.remove(item); // current selected item for current GUI
+				$localstorage.setObject('GoodItemsCache', Items.itemDict )
+		})				
     };
+	
+	$scope.lang_is_selected = function(lang){
+		return  ( ($scope.display.de == true) && (lang=="de")) ||
+				( ($scope.display.en == true) && (lang=="en")) || 
+				( ($scope.display.ar == true) && (lang=="ar"))
+	}
+	
 	$scope.filterOtherOffers = function(element) {
-	  return element.my == false;
+	  return element.my == false && $scope.lang_is_selected(element.language) ;
 	};
 	$scope.filterMyOffers = function(element) {
-	  return element.my == true;
+		return element.my == true && $scope.lang_is_selected(element.language) ;
 	};
+	
 	
 	// $scope.refreshData = function(){
 	// 	console.log("TODO: refresh the data")
@@ -97,8 +153,34 @@ angular.module('refugeeapp.controllers.goods_controller', [])
     $scope.$on('$ionicView.enter', function(e) {
 		// maybe someone has entered (or removed) her/his email in the meantime
 		$scope.email = $localstorage.get('email') || ""
+		
+		if ($scope.email.length >1){
+			// TODO: add authenticated web services:
+			// in the meantime (for the first prototype):
+			//      we add email as kind of "authentication token"
+			// (cmp: curl 'http://localhost:5000/offers/20.json?email=eva@adam' | python -m json.tool )
+			auth="?email="+$scope.email
+		}else{
+			auth=""
+		}
+		$scope.ItemsResource = $resource(
+			//  e.g.: http://localhost:5000/offers/:id:format
+			$rootScope.CONFIG.apiUrl +'/offers/:id:format'+auth, 
+			{id:'@id'}, // paramDefaults: take the id out of the object (@id), automatically
+		  	{ 	'get':    {method:'GET'},
+		    	'save':   {method:'POST'},
+		   	 	'query':  {method:'GET', isArray:true},
+		    	'update':  {method:'PUT'},
+			    'remove': {method:'DELETE'},
+		    	'delete': {method:'DELETE'}
+			}
+		);
+		
+		
+		
+		
+		
 		// maybe the language has changed, so we need to update the data:
-    	Items.setLanguageKey($translate.use());
   		$scope.items = Items.all();	
     });
 	
@@ -120,18 +202,45 @@ angular.module('refugeeapp.controllers.goods_controller', [])
     $scope.openModal = function() {
       $scope.modal.show()
     }
+	
 
     $scope.closeModal = function() {
-	  console.log("TODO: close modal and send a new offer...")
-		//  TODO: if successful uploaded to server: 
-		//  TODO:       clear variables
-		//  TODO:       put into local "watch-waiting-approval-queue"
-		$scope.newoffer={
-			title: 			"",
-			description: 	"",
-			comments: 		"",
-			photo: null
-		};
+	  	console.log("TODO: close modal and send a new offer...")
+		var newItem =  new $scope.ItemsResource({
+				'title': 		$scope.newoffer.title,
+				"description": 	$scope.newoffer.description,
+				"comments": 	$scope.newoffer.comments,
+				"language": 	$scope.newoffer.language.id,
+				"timestamp": 	"modified: "+new Date(),
+				"email": 		$scope.email 
+				});
+		if ($scope.newoffer.photo){
+			console.log("NOTE: We try to add and upload some base64 image data ")
+			newItem.base64data = $.base64.encode( $scope.newoffer.photo );
+		}
+		newItem.$save({ // optional save-params
+			},function(err){ // on error
+				console.log("ERROR: goods-item = offer save-error!:" + JSON.stringify(err))
+			},function(success){ // on success
+				
+				//  TODO:       put into local "watch-waiting-approval-queue"
+				
+				$scope.newoffer={ //  clear variables
+					title: 			"",
+					description: 	"",
+					comments: 		"",
+					photo: null
+				};
+				
+				console.log("saving goods-item = offer worked!: " + JSON.stringify(success) )
+
+				// TODO: 
+				//    Add message to queue (we have no id, so we have to reload data from server !!)	
+				$localstorage.setObject('GoodItemsCache', Items.itemDict )
+				
+				$scope.doRefresh()	
+			}
+		);
       $scope.modal.hide();
     };
     $scope.cancelModal = function() {
@@ -166,14 +275,16 @@ angular.module('refugeeapp.controllers.goods_controller', [])
 		$scope.ItemsResource.query(
 			{format:".json"},
 			function(itemsJSONData){
+				itemsJSONData.forEach(function (elem){
+					console.log(" item:",elem) 
+				})
 				console.log("!! All the Items: " + JSON.stringify(itemsJSONData) )
 
 				// update all the "background"-data items = offers (=goods)
 				Items.refreshTheDataAfterDownload(itemsJSONData)
 				// set the image path to remote server
 				$scope.server_image_url = $rootScope.CONFIG.apiUrl +"/thumbs/"
-				// switch to selected language
-				Items.setLanguageKey($translate.use());
+
 				// load data for the GUI to display
 				$scope.items = Items.all();
 				// update GUI
@@ -224,7 +335,6 @@ angular.module('refugeeapp.controllers.goods_controller', [])
   
   
   $scope.$on('$ionicView.enter', function(e) {
-  	Items.setLanguageKey($translate.use());
 	$scope.item = Items.get($stateParams.itemId);	
   });
   	

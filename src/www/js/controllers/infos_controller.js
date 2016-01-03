@@ -216,14 +216,14 @@ angular.module('refugeeapp.controllers.infos_controller', [])
 		
   Infos.setLanguageKey( $translate.use() );
   console.log("DEBUG InfoDetailCtrl: All Infos = ",Infos.all() );
-  console.log("DEBUG InfoDetailCtrl: currentItem: ",$stateParams.infoId );
+  console.log("DEBUG InfoDetailCtrl: currentItem-id: ",$stateParams.infoId );
   
   $scope.item = Infos.get($stateParams.infoId);
+  console.log("DEBUG InfoDetailCtrl: currentItem: "+JSON.stringify($scope.item) );
   
-  if ( $scope.item.isLocal ){
+  if ( $scope.item && $scope.item.isLocal ){
 	  // local cached path to images:
 	  $scope.server_image_url = "/img/info/"
-  	
   }else{
 	  // path to images on the server:
 	  $scope.server_image_url = $rootScope.CONFIG.apiUrl +"/pictures/"
