@@ -194,6 +194,9 @@ angular.module('refugeeapp.services',[])
 	  	
 		$localstorage.setObject('GoodItemsCache', items )
 	}, 
+	add: function(elem){
+		items.pop(elem)
+	},
     all: function(){
 	  return items
     },

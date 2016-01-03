@@ -71,15 +71,16 @@ angular.module('refugeeapp.controllers.goods_controller', [])
      $scope.newoffer.title  = 	   $localstorage.get('newoffer.title') || ""
      $scope.newoffer.description = $localstorage.get('newoffer.description') || ""
      $scope.newoffer.comments =    $localstorage.get('newoffer.comments') || ""
-	 $scope.newoffer.language =    $localstorage.getObject('newoffer.language') || $scope.getPreferredLanguage()
-	
 	$scope.getPreferredLanguage= function(){
 		system_language = 	$translate.use()
-		if (system_language =="en") return $scope.newoffer.langs[0]
-		if (system_language =="de") return $scope.newoffer.langs[1]
+		if (system_language == "en") return $scope.newoffer.langs[0]
+		if (system_language == "de") return $scope.newoffer.langs[1]
 		//if (system_language =="ar") return langs[2]
 		return $scope.newoffer.langs[0] // default
 	}
+	 
+	 $scope.newoffer.language =    $localstorage.getObject('newoffer.language') || $scope.getPreferredLanguage()
+	
     $scope.$watch('newoffer.title', function() { 
   	  				$localstorage.set('newoffer.title', $scope.newoffer.title); })
     $scope.$watch('newoffer.description', function() { 
@@ -185,7 +186,7 @@ angular.module('refugeeapp.controllers.goods_controller', [])
     });
 	
 	$scope.sendMyNewOffer = function(){
-		console.log("TODO: send a new offer...")
+		console.log("Get (modal) conformation, before sending a new offer...")
 		$scope.openModal()
 	}
 	
@@ -218,6 +219,7 @@ angular.module('refugeeapp.controllers.goods_controller', [])
 			console.log("NOTE: We try to add and upload some base64 image data ")
 			newItem.base64data = $.base64.encode( $scope.newoffer.photo );
 		}
+		remember_language_of_last_offer = $scope.newoffer.language
 		newItem.$save({ // optional save-params
 			},function(err){ // on error
 				console.log("ERROR: goods-item = offer save-error!:" + JSON.stringify(err))
@@ -229,6 +231,7 @@ angular.module('refugeeapp.controllers.goods_controller', [])
 					title: 			"",
 					description: 	"",
 					comments: 		"",
+					language:       remember_language_of_last_offer,
 					photo: null
 				};
 				
@@ -236,8 +239,6 @@ angular.module('refugeeapp.controllers.goods_controller', [])
 
 				// TODO: 
 				//    Add message to queue (we have no id, so we have to reload data from server !!)	
-				$localstorage.setObject('GoodItemsCache', Items.itemDict )
-				
 				$scope.doRefresh()	
 			}
 		);
