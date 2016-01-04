@@ -219,7 +219,7 @@ angular.module('refugeeapp.controllers.goods_controller', [])
 			console.log("NOTE: We try to add and upload some base64 image data ")
 			newItem.base64data = $.base64.encode( $scope.newoffer.photo );
 		}
-		remember_language_of_last_offer = $scope.newoffer.language
+		var remember_language_of_last_offer = $scope.newoffer.language
 		newItem.$save({ // optional save-params
 			},function(err){ // on error
 				console.log("ERROR: goods-item = offer save-error!:" + JSON.stringify(err))

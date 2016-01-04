@@ -5,7 +5,7 @@ angular.module('refugeeapp.controllers.infos_controller', [])
 		Infos,
 		$location,
 	    $localstorage,
-		resolvedInfos, // set up in app.js for state "tab.infos"
+		//resolvedInfos, // set up in app.js for state "tab.infos" <= deactivated, did not work on iOS ??
 	    $resource,
 	    $rootScope
 		
@@ -126,7 +126,9 @@ angular.module('refugeeapp.controllers.infos_controller', [])
   
   // resolved before setting up the view:
   //  find resolve in app.js state "tab.infos"
-  $scope.items = resolvedInfos;
+  
+  // DISABLED, because it did not work on iOS: 
+  // $scope.items = resolvedInfos;
   
   
   $scope.filterLocationAndRouting = function(element) {
@@ -175,8 +177,9 @@ angular.module('refugeeapp.controllers.infos_controller', [])
   $scope.$on('$ionicView.enter', function(e) {
   	console.log("INFO: we enter the infos view. So we check/set the language")
 	// TODO check if necessary, maybe we reload in resolve (see app.js for state tab.infos) 
-	//Infos.setLanguageKey($translate.use());
-	//$scope.items = Infos.all();
+	
+	Infos.setLanguageKey($translate.use());
+	$scope.items = Infos.all();
   });
   $scope.$on('$ionicView.loaded', function(e){
   	console.log("INFO: the infos view is generated (ONCE). we check for language in the local storage...")
